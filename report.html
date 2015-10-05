@@ -4,22 +4,22 @@
 <form id="report" method="post" action="http://{FormServer}:{FormPort}" enctype="multipart/form-data">
 
 <p>
-	Callsign: <input type="text" name="Callsign" value="{Callsign}" />
+	Callsign: <input type="text" name="spotterCall" value="{Callsign}" />
 </p>
 
 <p>
 	Are you a trained spotter? <br>
-	<input type="radio" name="trainedSpotter" value="yes" /> Yes <br>
-	<input type="radio" name="trainedSpotter" value="no" /> No <br>
+	<input type="radio" name="spotterID" value="yes" /> Yes <br>
+	<input type="radio" name="spotterID" value="no" /> No <br>
 </p>
 
 <p>
-	Date of Event: <input type="text" name="dateEvent" /> <br>
-	Time of Event: <input type="text" name="timeEvent" /> <br>
+	Date of Event: <input type="text" name="eventDate" /> <br>
+	Time of Event: <input type="text" name="eventTime" /> <br>
 </p>
 
 <p>
-	Location of Event: <input type="text" name="locationEvent" /> <br>
+	Location of Event: <input type="text" name="eventLocation" /> <br>
 </p>
 
 <p>
@@ -37,7 +37,7 @@
 	<input type="radio" name="training" value="no" /> No <br>
 </p>
 
-<input type="hidden" name="Version" value="0" />
+<input type="hidden" name="formVersion" value="0" />
 
 <input type="submit" name="Submit" value="Submit" method="post" enctype="multipart/form-data" />
 <input type="submit" name="Submit" value="Cancel" method="post" enctype="multipart/form-data" />
