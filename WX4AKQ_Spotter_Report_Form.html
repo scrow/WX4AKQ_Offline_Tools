@@ -39,19 +39,26 @@
 
 <fieldset class="eventInfo">
 <p>
-	<label>Date of Event: <br> <input type="text" name="eventDate" /></label> <br>
-	<label>Time of Event: <br> <input type="text" name="eventTime" /></label> <br>
-	<label>Location of Event: <br> <input type="text" name="eventLocation" /></label> <br>
-	<label> Report Information: <br> <textarea></textarea> </label> <br>
-	<label>Contact Number: <br> <input type="text" name="contactNumber" /></label>
+	<label for="eventDate">Date of Event:</label>
+	<input type="text" id="eventDate" name="eventDate" /> <br>
+	<label for="eventTime">Time of Event:</label>
+	<input type="text" id="eventTime" name="eventTime" /> <br>
+	<label for="eventLocation">Location of Event: </label>
+	<input type="text" id="eventLocation" name="eventLocation" /></label> <br>
+	<label for="reportInfo"> Report Information: </label>
+	<textarea></textarea> <br>
+	<label for="contactNumber">Contact Number: </label>
+	<input type="text" id="contactNumber" name="contactNumber" />
 </p>
 </fieldset>
 
 <fieldset class="bottom">
 <p>
 	Is this a TRAINING REPORT? <br>
-	<label ><input type="radio" name="training" value="yes" /> Yes</label> <br>
-	<label><input type="radio" name="training" value="no" /> No</label>
+	<label for="trainingYes">Yes</label>
+	<input type="radio" name="training" id="trainingYes" value="yes" /> <br>
+	<label for="trainingNo"><input type="radio" name="training" id="trainingNo" value="no" />No</label>
+	<input type="radio" name="training" id="trainingNo" value="no" /> <br>
 </p>
 </fieldset>
 
