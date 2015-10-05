@@ -13,53 +13,55 @@
 -->
 	<head>
 		<title>WX4AKQ Spotter Report Form</title>
+<!--
+	To be uncommented in actual use in RMS Express:
+		<link href="{FormFolder}/resources/styles.css" rel="stylesheet" type="text/css" /> 
+-->
 		<link rel="stylesheet" type="text/css" href="resources/styles.css"/>
 	</head>
 <body>
 
-<!-- team logo here -->
+<img src="resources/images/WX4AKQ_Web_Banner_V2.png">
 
 <form id="report" method="post" action="http://{FormServer}:{FormPort}" enctype="multipart/form-data">
 
+<fieldset class="call">
 <p>
-	Callsign: <input type="text" name="spotterCall" value="{Callsign}" />
+<label> Callsign: <input type="text" name="spotterCall" value="{Callsign}" /> </label>
 </p>
 
 <p>
 	Are you a trained spotter? <br>
-	<input type="radio" name="spotterID" value="yes" /> Yes <br>
-	<input type="radio" name="spotterID" value="no" /> No <br>
+	<label><input type="radio" name="spotterID" value="yes" /> Yes </label><br>
+	<label><input type="radio" name="spotterID" value="no" /> No</label>
 </p>
+</fieldset>
 
+<fieldset class="eventInfo">
 <p>
-	Date of Event: <input type="text" name="eventDate" /> <br>
-	Time of Event: <input type="text" name="eventTime" /> <br>
+	<label>Date of Event: <br> <input type="text" name="eventDate" /></label> <br>
+	<label>Time of Event: <br> <input type="text" name="eventTime" /></label> <br>
+	<label>Location of Event: <br> <input type="text" name="eventLocation" /></label> <br>
+	<label> Report Information: <br> <textarea></textarea> </label> <br>
+	<label>Contact Number: <br> <input type="text" name="contactNumber" /></label>
 </p>
+</fieldset>
 
-<p>
-	Location of Event: <input type="text" name="eventLocation" /> <br>
-</p>
-
-<p>
-	Please enter your report: <br>
-	<textarea></textarea> <br>
-</p>
-
-<p>
-	Contact Number <input type="telephone" name="contactNumber" />
-</p>
-
+<fieldset class="bottom">
 <p>
 	Is this a TRAINING REPORT? <br>
-	<input type="radio" name="training" value="yes" /> Yes <br>
-	<input type="radio" name="training" value="no" /> No <br>
+	<label ><input type="radio" name="training" value="yes" /> Yes</label> <br>
+	<label><input type="radio" name="training" value="no" /> No</label>
 </p>
+</fieldset>
 
+<fieldset class="buttons">
 <input type="hidden" name="formVersion" value="0" />
 <input type="hidden" name="formName" value="WX4AKQ_Spotter_Report_Form" />
 
-<input type="submit" name="Submit" value="Submit" method="post" enctype="multipart/form-data" />
-<input type="submit" name="Submit" value="Cancel" method="post" enctype="multipart/form-data" />
+<input type="submit" name="Submit" value="Submit" class="green" method="post" enctype="multipart/form-data" />
+<input type="submit" name="Submit" value="Cancel" class="gray" method="post" enctype="multipart/form-data" />
+</fieldset>
 
 <!-- footer text here -->
 
