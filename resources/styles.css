@@ -39,7 +39,7 @@
 		background-color:#000000
 	}
 	  
-	p {
+	p, form {
 		margin: 12px 2px 14px 2px;
 		color: white;
 		text-align: left;
@@ -70,7 +70,12 @@
 		border: 1px solid #303336;
 		background: #101010;
 	}
-	  
+
+	input[type=submit], input[type=button] {
+		display: inline;
+		clear: none
+	}
+
 	input[type=submit], input[type=button] {
 		font-family: "Source Sans Pro";
 		font-size: 10pt;
@@ -106,6 +111,38 @@
 		border-radius: 7px;
 		text-shadow: 1px 1px red;
 		vertical-align: bottom
+	}
+	
+	input, textarea {
+		display: block
+	}
+	
+	input[type="radio"] {
+		display: inline;
+		float: none
+	}
+	
+	label {
+		display: block;
+		width: 170px;
+		float: left;
+		text-align: right;
+		padding-right: 5px
+	}
+	
+	fieldset.radiobuttons {
+		margin: 0px;
+		padding: 0px;
+	}
+	
+	textarea, input[type=text] {
+		border: 1px solid #303336;
+		outline: 1;
+		margin-top: 0px
+	}
+	
+	textarea:focus, input:focus {
+		border: 1px solid #F6862F
 	}
 
 }

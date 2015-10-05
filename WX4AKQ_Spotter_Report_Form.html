@@ -42,18 +42,17 @@
 
 <form id="report" method="post" action="http://{FormServer}:{FormPort}" enctype="multipart/form-data">
 
-<fieldset class="call">
-	<input type="hidden" name="spotterCall" value="{Callsign}"/>
+<input type="hidden" name="spotterCall" value="{Callsign}"/>
 
-<p>
-	Are you a trained spotter? <br>
-	<label><input type="radio" name="spotterID" value="yes" /> Yes </label><br>
-	<label><input type="radio" name="spotterID" value="no" /> No</label>
-</p>
+<fieldset class="call">
+	<label for="spotterID">Are you a Trained Spotter?</label>
+	<fieldset class="radiobuttons">
+		<input type="radio" name="spotterID" value="yes" /> Yes<br/>
+		<input type="radio" name="spotterID" value="no" checked /> No
+	</fieldset>
 </fieldset>
 
 <fieldset class="eventInfo">
-<p>
 	<label for="eventDate">Date of Event:</label>
 	<input type="text" id="eventDate" name="eventDate" /> <br>
 	<label for="eventTime">Time of Event:</label>
@@ -64,17 +63,14 @@
 	<textarea></textarea> <br>
 	<label for="contactNumber">Contact Number: </label>
 	<input type="text" id="contactNumber" name="contactNumber" />
-</p>
 </fieldset>
 
 <fieldset class="bottom">
-<p>
-	Is this a TRAINING REPORT? <br>
-	<input type="radio" name="training" id="trainingYes" value="yes" />
-	<label for="trainingYes">Yes</label> <br>
-	<input type="radio" name="training" id="trainingNo" value="no" /> 
-	<label for="trainingNo">No</label> <br>
-</p>
+	<label for="training">Is this a Training Report?</label>
+	<fieldset class="radiobuttons">
+		<input type="radio" name="training" id="training" value="yes" /> Yes<br/>
+		<input type="radio" name="training" id="training" value="no" checked/> No
+	</fieldset>
 </fieldset>
 
 <fieldset class="buttons">
