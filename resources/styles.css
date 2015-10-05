@@ -32,65 +32,71 @@
 		url('gfonts/Source_Sans_Pro/source-sans-pro-v9-latin-regular.woff') format('woff'); /* Modern Browsers */
 }
 
-body {
-    background-color:#000000
-  }
-  
-p {
-	margin: 12px 2px 14px 2px;
-    color: white;
-    text-align: left;
-    vertical-align: top;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 11pt
-  }
-  
-fieldset{
-	margin: 0px;
-	border: none
-}
+/* Begin @media all */
+@media all {
+	
+	body {
+		background-color:#000000
+	}
+	  
+	p {
+		margin: 12px 2px 14px 2px;
+		color: white;
+		text-align: left;
+		vertical-align: top;
+		font-family: 'Source Sans Pro', sans-serif;
+		font-size: 11pt
+	}
+	  
+	fieldset{
+		margin: 0px;
+		border: none
+	}
+	
+	textarea {
+		font-family: "Cousine";
+		font-size: 10pt;
+		color: white;
+		margin: 10px 10px 0px 10px;
+		border: 1px solid #303336;
+		background: #101010
+	}
+	
+	input[type=text] {
+		font-family: "Cousine";
+		font-size: 10pt;
+		color: white;
+		margin: 10px;
+		border: 1px solid #303336;
+		background: #101010;
+	}
+	  
+	input[type=submit] {
+		font-family: "Source Sans Pro";
+		font-size: 10pt;
+		cursor: pointer
+	}
+	
+	input[type=submit].gray{
+		background-color: gray;
+		border: 1px outset gray;
+		height: 25px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		border-radius: 7px;
+		vertical-align: bottom
+	}
+	
+	input[type=submit].green{
+		background-color: #00ff00;
+		border: 1px outset #00ff00;
+		height: 25px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		border-radius: 7px;
+		vertical-align: bottom
+	}
 
-textarea {
-    font-family: "Cousine";
-    font-size: 10pt;
-    color: white;
-    margin: 10px 10px 0px 10px;
-    border: 1px solid #303336;
-    background: #101010
 }
+/* End @media all */
 
-input[type=text] {
-    font-family: "Cousine";
-    font-size: 10pt;
-    color: white;
-    margin: 10px;
-    border: 1px solid #303336;
-    background: #101010;
-
-}
-  
-input[type=submit] {
-    font-family: "Source Sans Pro";
-    font-size: 10pt;
-    cursor: pointer
-}
-
-input[type=submit].gray{
-    background-color: gray;
-    border: 1px outset gray;
-    height: 25px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radius: 7px;
-    vertical-align: bottom
-}
-
-input[type=submit].green{
-    background-color: #00ff00;
-    border: 1px outset #00ff00;
-    height: 25px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radius: 7px;
-    vertical-align: bottom
-}
