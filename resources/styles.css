@@ -71,13 +71,13 @@
 		background: #101010;
 	}
 	  
-	input[type=submit] {
+	input[type=submit], input[type=button] {
 		font-family: "Source Sans Pro";
 		font-size: 10pt;
 		cursor: pointer
 	}
 	
-	input[type=submit].gray{
+	input[type=submit].gray, input[type=button].gray {
 		background-color: gray;
 		border: 1px outset gray;
 		height: 25px;
@@ -87,13 +87,24 @@
 		vertical-align: bottom
 	}
 	
-	input[type=submit].green{
+	input[type=submit].green, input[type=button].green {
 		background-color: #00ff00;
 		border: 1px outset #00ff00;
 		height: 25px;
 		-moz-border-radius: 10px;
 		-webkit-border-radius: 10px;
 		border-radius: 7px;
+		vertical-align: bottom
+	}
+	
+	input[type=submit].red, input[type=button].red {
+		background-color: red;
+		border: 1px red outset;
+		height: 25px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		border-radius: 7px;
+		text-shadow: 1px 1px red;
 		vertical-align: bottom
 	}
 
