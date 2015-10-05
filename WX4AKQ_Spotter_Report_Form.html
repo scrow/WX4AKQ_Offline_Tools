@@ -26,9 +26,7 @@
 <form id="report" method="post" action="http://{FormServer}:{FormPort}" enctype="multipart/form-data">
 
 <fieldset class="call">
-<p>
-<label> Callsign: <input type="text" name="spotterCall" value="{Callsign}" /> </label>
-</p>
+	<input type="hidden" name="spotterCall" value="{Callsign}"/>
 
 <p>
 	Are you a trained spotter? <br>
