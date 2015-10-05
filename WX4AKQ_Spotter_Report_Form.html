@@ -18,6 +18,23 @@
 		<link href="{FormFolder}/resources/styles.css" rel="stylesheet" type="text/css" /> 
 -->
 		<link rel="stylesheet" type="text/css" href="resources/styles.css"/>
+		
+		<script language="javascript">
+			
+			function submitAndClose(){
+
+				// call form validation process here
+							
+				if(condition satisfied){
+					alert("conditions satisfied, submiting the form.");
+					document.forms['report'].submit();
+					window.close();
+				} else {
+					alert("conditions not satisfied, returning to form");    
+				}
+			}
+			
+		</script>
 	</head>
 <body>
 
