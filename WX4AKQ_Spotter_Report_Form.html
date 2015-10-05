@@ -54,13 +54,13 @@
 
 <fieldset class="eventInfo">
 	<label for="eventDate">Date of Event:</label>
-	<input type="text" id="eventDate" name="eventDate" /> <br>
+	<input type="text" id="eventDate" name="eventDate" style="width: 150px"/> 
 	<label for="eventTime">Time of Event:</label>
-	<input type="text" id="eventTime" name="eventTime" /> <br>
+	<input type="text" id="eventTime" name="eventTime" style="width: 150px"/>
 	<label for="eventLocation">Location of Event: </label>
-	<input type="text" id="eventLocation" name="eventLocation" /></label> <br>
+	<textarea name="eventLocation" id="eventLocation" style="width: 450px; height:75px"></textarea>
 	<label for="reportInfo"> Report Information: </label>
-	<textarea></textarea> <br>
+	<textarea name="reportInfo" id="reportInfo" style="width: 450px; height:75px"></textarea> 
 	<label for="contactNumber">Contact Number: </label>
 	<input type="text" id="contactNumber" name="contactNumber" />
 </fieldset>
@@ -73,13 +73,13 @@
 	</fieldset>
 </fieldset>
 
-<fieldset class="buttons">
 <input type="hidden" name="formVersion" value="0" />
 <input type="hidden" name="formName" value="WX4AKQ_Spotter_Report_Form" />
-
-<input type="button" name="Submit" value="Submit" class="green" onClick="javascript:submitAndClose();"/>
-<input type="button" name="ClearForm" value="Clear Form" class="gray" onClick="" />
-<input type="button" name="Cancel" value="Cancel" class="gray" onClick="" />
+<br/>
+<fieldset class="buttons">
+	<input type="button" name="Submit" value="Submit" class="green" onClick="javascript:submitAndClose();"/>
+	<input type="button" name="ClearForm" value="Clear Form" class="gray" onClick="" />
+	<input type="button" name="Cancel" value="Cancel" class="gray" onClick="" />
 </fieldset>
 
 <!-- footer text here -->
