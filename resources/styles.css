@@ -50,6 +50,7 @@
 	  
 	fieldset{
 		margin: 0px;
+		padding: 0px
 		border: none
 	}
 	
@@ -140,11 +141,6 @@
 		outline: 1;
 		margin-top: 0px;
 		margin-bottom: 2px
-	}
-	
-	fieldset {
-		margin: 0px;
-		padding: 0px
 	}
 	
 	textarea:focus, input:focus {
