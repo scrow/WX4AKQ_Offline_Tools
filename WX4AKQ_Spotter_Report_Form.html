@@ -23,12 +23,12 @@
 			
 			function submitAndClose(){
 
-				// call form validation process here
-							
-				if(condition satisfied){
-					alert("conditions satisfied, submiting the form.");
+				if(1==1){
+					// Disable all form fields here
+					
+					// Submit the form and redirect to confirmation page
 					document.forms['report'].submit();
-					window.close();
+					setTimeout(function() { open('WX4AKQ_Submitted.html', '_self'); }, 1000);
 				} else {
 					alert("conditions not satisfied, returning to form");    
 				}
@@ -81,8 +81,8 @@
 <input type="hidden" name="formVersion" value="0" />
 <input type="hidden" name="formName" value="WX4AKQ_Spotter_Report_Form" />
 
-<input type="button" name="Submit" value="Submit" class="green" method="post" enctype="multipart/form-data" />
-<input type="button" name="ClearForm" value="Clear Form" class="gray" onClick=""/>
+<input type="button" name="Submit" value="Submit" class="green" onClick="javascript:submitAndClose();"/>
+<input type="button" name="ClearForm" value="Clear Form" class="gray" onClick="" />
 <input type="button" name="Cancel" value="Cancel" class="gray" onClick="" />
 </fieldset>
 
