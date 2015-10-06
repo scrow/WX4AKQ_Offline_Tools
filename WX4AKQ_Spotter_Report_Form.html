@@ -680,6 +680,11 @@
 					document.getElementById('clearBtn').disabled = true;
 					document.getElementById('cancelBtn').disabled = true;
 					
+					// Generate report date and time
+					var now=new Date();
+					document.getElementById('reportDate').value = now.format('isoDate');
+					document.getElementById('reportTime').value = now.format('HH:MM');
+					
 					// Submit the form and redirect to confirmation page
 					document.forms['report'].submit();
 					setTimeout(function() { showConfirmation(); }, 1000);
@@ -730,7 +735,8 @@
 		<input type="radio" name="training" id="training" value="NO" checked/> No
 	</fieldset>
 </fieldset>
-
+<input type="hidden" name="reportDate" value="" />
+<input type="hidden" name="reportTime" value="" />
 <input type="hidden" name="formVersion" value="0" />
 <input type="hidden" name="formName" value="WX4AKQ_Spotter_Report_Form" />
 <br/>
