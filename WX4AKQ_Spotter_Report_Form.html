@@ -378,6 +378,8 @@
 					font-family: "Cousine";
 					font-size: 10pt;
 					color: white;
+					width: 450px;
+					height:75px;
 					margin: 10px 10px 0px 10px;
 					border: 1px solid #303336;
 					background: #101010
@@ -390,6 +392,7 @@
 					margin: 10px;
 					border: 1px solid #303336;
 					background: #101010;
+					width: 150px
 				}
 			
 				input[type=submit], input[type=button] {
@@ -465,6 +468,15 @@
 				
 				textarea:focus, input:focus {
 					border: 1px solid #F6862F
+				}
+				
+				.table {
+					display: table;
+					width: 670px
+				}
+				
+				.tcell {
+					display: table-cell
 				}
 				
 			h1 {
@@ -716,20 +728,20 @@
 </fieldset>
 
 <fieldset class="eventInfo">
-	<div style="display: table; width: 670px">
-		<div style="display: table-cell">
+	<div class="table">
+		<div class="tcell">
 			<label for="eventDate">Date of Event:</label>
-			<input type="date" id="eventDate" name="eventDate" style="width: 150px"/>
+			<input type="date" id="eventDate" name="eventDate" />
 		</div>
-		<div style="display: table-cell"> 
+		<div class="tcell"> 
 			<label for="eventTime" style="width: 100px">Time of Event:</label>
-			<input type="time" id="eventTime" name="eventTime" style="width: 150px"/>
+			<input type="time" id="eventTime" name="eventTime" />
 		</div>
 	</div>
 	<label for="eventLocation">Location of Event: </label>
-	<textarea name="eventLocation" id="eventLocation" style="width: 450px; height:75px"></textarea>
+	<textarea name="eventLocation" id="eventLocation"></textarea>
 	<label for="reportInfo"> Report Information: </label>
-	<textarea name="reportInfo" id="reportInfo" style="width: 450px; height:75px"></textarea> 
+	<textarea name="reportInfo" id="reportInfo"></textarea> 
 	<label for="contactNumber">Contact Number: </label>
 	<input type="text" id="contactNumber" name="contactNumber" />
 </fieldset>
