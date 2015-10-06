@@ -696,7 +696,9 @@
 
 <span id='reportForm' style='display: block'>
 
-<form id="report" method="post" action="http://{FormServer}:{FormPort}" enctype="multipart/form-data">
+<iframe width=0 height=0 name="targetFrame" id="targetFrame" style="display: none" src="about:blank"></iframe>
+
+<form id="report" method="post" target="targetFrame" action="http://{FormServer}:{FormPort}" enctype="multipart/form-data">
 
 <input type="hidden" name="spotterCall" value="{Callsign}"/>
 
