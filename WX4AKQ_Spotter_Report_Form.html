@@ -727,10 +727,10 @@
 <input type="hidden" name="spotterCall" value="{Callsign}"/>
 
 <fieldset class="call">
-	<label for="spotterID">Are you a Trained Spotter?</label>
+	<label for="spotterYes">Are you a Trained Spotter?</label>
 	<fieldset class="radiobuttons">
-		<input type="radio" name="spotterID" value="YES" onClick="javascript:document.getElementById('eventDate').select();"/> Yes<br/>
-		<input type="radio" name="spotterID" value="NO" checked onClick="javascript:document.getElementById('eventDate').select();"/> No
+		<input type="radio" name="spotterID" id="spotterYes" value="YES" onClick="javascript:document.getElementById('eventDate').select();"/> Yes<br/>
+		<input type="radio" name="spotterID" id="spotterNo" value="NO" checked onClick="javascript:document.getElementById('eventDate').select();"/> No
 	</fieldset>
 </fieldset>
 
@@ -754,7 +754,7 @@
 </fieldset>
 
 <fieldset class="bottom">
-	<label for="training">Is this a Training Report?</label>
+	<label for="trainingYes">Is this a Training Report?</label>
 	<fieldset class="radiobuttons">
 		<input type="radio" name="training" id="trainingYes" value="YES" /> Yes<br/>
 		<input type="radio" name="training" id="trainingNo" value="NO" checked/> No
