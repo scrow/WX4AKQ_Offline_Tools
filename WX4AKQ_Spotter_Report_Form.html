@@ -705,7 +705,7 @@
 					document.getElementById('reportTime').value = now.format('HH:MM');
 					
 					// Submit the form and redirect to confirmation page
-					document.forms['report'].submit();
+					document.getElementById('report').submit();
 					setTimeout(function() { showConfirmation(); }, 1000);
 				} else {
 					alert("conditions not satisfied, returning to form");    
