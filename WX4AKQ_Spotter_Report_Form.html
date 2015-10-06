@@ -445,7 +445,7 @@
 				
 				label {
 					display: block;
-					width: 170px;
+					width: 165px;
 					float: left;
 					text-align: right;
 					padding-right: 5px
@@ -716,10 +716,16 @@
 </fieldset>
 
 <fieldset class="eventInfo">
-	<label for="eventDate">Date of Event:</label>
-	<input type="date" id="eventDate" name="eventDate" style="width: 150px"/> 
-	<label for="eventTime">Time of Event:</label>
-	<input type="time" id="eventTime" name="eventTime" style="width: 150px"/>
+	<div style="display: table; width: 670px">
+		<div style="display: table-cell">
+			<label for="eventDate">Date of Event:</label>
+			<input type="date" id="eventDate" name="eventDate" style="width: 150px"/>
+		</div>
+		<div style="display: table-cell"> 
+			<label for="eventTime" style="width: 100px">Time of Event:</label>
+			<input type="time" id="eventTime" name="eventTime" style="width: 150px"/>
+		</div>
+	</div>
 	<label for="eventLocation">Location of Event: </label>
 	<textarea name="eventLocation" id="eventLocation" style="width: 450px; height:75px"></textarea>
 	<label for="reportInfo"> Report Information: </label>
