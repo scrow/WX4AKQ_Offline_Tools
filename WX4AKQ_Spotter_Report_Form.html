@@ -507,15 +507,9 @@
 					float: right; 
 					width: 287px;
 					height: 82px;
-					border: none;
 					font-family: 'Source Sans Pro', sans-serif;
 					font-size: 10pt;
-					margin-right: 13px;
-					resize: none
-				}
-				
-				.help:focus {
-					border: none
+					margin-right: 13px
 				}
 				
 			h1 {
@@ -717,22 +711,22 @@
 			function showHelp(whichHelp) {
 				switch(whichHelp) {
 					case 'spotterID':
-						document.getElementById('helpSpace').value = "Please indicate whether you have received Spotter training from any NWS office within the last three years. You do NOT need to be a Trained Spotter to send a report to SKYWARN.";
+						document.getElementById('helpSpace').innerHTML = "Please indicate whether you have received Spotter training from any NWS office within the last three years. You do NOT need to be a Trained Spotter to send a report to SKYWARN.";
 						break;
 					case 'reportInfo':
-						document.getElementById('helpSpace').value = "Describe in detail the observed conditions. For wind and precip reports, always indicate measured or estimated. Make sure your reports meet SKYWARN reporting criteria.";
+						document.getElementById('helpSpace').innerHTML = "Describe in detail the observed conditions. For wind and precip reports, always indicate measured or estimated. Make sure your reports meet SKYWARN reporting criteria.";
 						break;
 					case 'eventLocation':
-						document.getElementById('helpSpace').value = "Provide the exact location. Use a street address, nearest cross-street, milepost, or well known landmark. Avoid coordinates. Please always include a locality name (county/city).";
+						document.getElementById('helpSpace').innerHTML = "Provide the exact location. Use a street address, nearest cross-street, milepost, or well known landmark. Avoid coordinates. Please always include a locality name (county/city).";
 						break;
 					case 'training':
-						document.getElementById('helpSpace').value = "Training Reports will be sent to the SKYWARN team but will never be relayed to the National Weather Service. Use this for practice reports or for any drills/exercises or SETs.";
+						document.getElementById('helpSpace').innerHTML = "Training Reports will be sent to the SKYWARN team but will never be relayed to the National Weather Service. Use this for practice reports or for any drills/exercises or SETs.";
 						break;
 					case 'dateTime':
-						document.getElementById('helpSpace').value = "Please provide the date and time the event occurred or conditions were observed. Use local (Eastern) time. If estimating, please note that in your report (\"Time is estimated\").";
+						document.getElementById('helpSpace').innerHTML = "Please provide the date and time the event occurred or conditions were observed. Use local (Eastern) time. If estimating, please note that in your report (\"Time is estimated\").";
 						break;
 					case 'contactNumber':
-						document.getElementById('helpSpace').value = "NWS employees and SKYWARN leadership may reply to your report via Winlink e-mail if more info is needed. Optionally provide a contact phone number here.";
+						document.getElementById('helpSpace').innerHTML = "NWS employees and SKYWARN leadership may reply to your report via Winlink e-mail if more info is needed. Optionally provide a contact phone number here.";
 						break;
 					default:
 						document.getElementById('helpSpace').value = "";
@@ -789,7 +783,7 @@
 
 <input type="hidden" name="spotterCall" value="{Callsign}"/>
 
-<textarea class="help" disabled id="helpSpace"></textarea>
+<div class="help" id="helpSpace"></div>
 
 <fieldset class="call">
 	<label for="spotterYes">Are you a Trained Spotter?</label>
