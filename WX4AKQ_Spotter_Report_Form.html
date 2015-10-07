@@ -394,7 +394,7 @@
 					margin: 10px;
 					border: 1px solid #303336;
 					background: #101010;
-					width: 150px
+					width: 100px
 				}
 			
 				input[type=submit], input[type=button] {
@@ -745,16 +745,10 @@
 </fieldset>
 
 <fieldset class="eventInfo">
-	<div class="table">
-		<div class="tcell">
-			<label for="eventDate">Date of Event:</label>
-			<input type="date" id="eventDate" name="eventDate" />
-		</div>
-		<div class="tcell"> 
-			<label for="eventTime" style="width: 100px">Time of Event:</label>
-			<input type="time" id="eventTime" name="eventTime" />
-		</div>
-	</div>
+	<label for="eventDate">Date of Event:</label>
+	<input type="date" id="eventDate" name="eventDate" />
+	<label for="eventTime">Time of Event:</label>
+	<input type="time" id="eventTime" name="eventTime" />
 	<label for="eventLocation">Location of Event: </label>
 	<textarea name="eventLocation" id="eventLocation"></textarea>
 	<label for="reportInfo"> Report Information: </label>
