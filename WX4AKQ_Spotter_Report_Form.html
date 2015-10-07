@@ -370,6 +370,15 @@
 					font-size: 11pt
 				}
 
+				p.criteria, ul.criteria, li.criteria {
+					margin-left: 2px;
+					margin-right: 12px;
+					color: white;
+					text-align: left;
+					font-family: 'Source Sans Pro', sans-serif;
+					font-size: 11pt
+				}
+
 				hr {
 					height: 1px;
 					border: 0;
@@ -458,7 +467,7 @@
 				
 				label {
 					display: block;
-					width: 165px;
+					width: 160px;
 					float: left;
 					text-align: right;
 					padding-right: 5px
@@ -469,6 +478,22 @@
 					padding: 0px;
 				}
 				
+				.required::after {
+					font-weight: normal;
+					color: red;
+					content: "\00a0*"
+				}
+				
+				a {
+					color: #F87336;
+					font-family: "Source Sans Pro",sans-serif;
+					text-decoration: none
+				}
+				
+				a:hover {
+					text-decoration: underline
+				}
+
 				textarea, input[type=text], input[type=date], input[type=time] {
 					border: 1px solid #303336;
 					outline: 1;
@@ -511,52 +536,51 @@
 					font-size: 10pt;
 					margin-right: 13px
 				}
+
+				h1 {
+					color: white;
+					text-align: left;
+					font-family: "Source Sans Pro",sans-serif;
+					font-size: 20pt;
+					margin-left: 2px;
+					margin-right: 2px;
+					margin-top: 7px;
+					margin-bottom: 7px;
+					text-shadow: 2px 2px #303336
+				}
 				
-			h1 {
-				color: white;
-				text-align: left;
-				font-family: "Source Sans Pro",sans-serif;
-				font-size: 20pt;
-				margin-left: 2px;
-				margin-right: 2px;
-				margin-top: 7px;
-				margin-bottom: 7px;
-				text-shadow: 2px 2px #303336
-			}
-			
-			h2 {
-				color: white;
-				text-align: left;
-				font-family: "Source Sans Pro",sans-serif;
-				font-size: 16pt;
-				margin-left: 0px;
-				margin-right: 0px;
-				margin-top: 7px;
-				margin-bottom: 7px;
-				border-top: 1px solid #303336;
-				padding-left: 2px;
-				padding-right: 2px;
-				border-top-width: 100%;
-				padding-top: 7px;
-				text-shadow: 2px 2px #303336
-			}
-				
-			h3 {
-				color: white;
-				text-align: left;
-				font-family: "Source Sans Pro",sans-serif;
-				font-size: 14pt;
-				margin-left: 0px;
-				margin-right: 0px;
-				margin-top: 7px;
-				margin-bottom: 7px;
-				border-top: 1px dotted #303336;
-				padding-left: 2px;
-				padding-right: 2px;
-				border-top-width: 100%;
-				padding-top: 7px;
-				text-shadow: 2px 2px #303336
-			}
+				h2 {
+					color: white;
+					text-align: left;
+					font-family: "Source Sans Pro",sans-serif;
+					font-size: 16pt;
+					margin-left: -2px;
+					margin-right: -2px;
+					margin-top: 7px;
+					margin-bottom: 7px;
+					padding-left: 2px;
+					padding-right: 2px;
+					border-top-width: 100%;
+					padding-top: 7px;
+					text-shadow: 2px 2px #303336
+				}
+					
+				h3 {
+					color: white;
+					text-align: left;
+					font-family: "Source Sans Pro",sans-serif;
+					font-size: 14pt;
+					margin-left: 0px;
+					margin-right: 0px;
+					margin-top: 7px;
+					margin-bottom: 7px;
+					border-top: 1px dotted #303336;
+					padding-left: 2px;
+					padding-right: 2px;
+					border-top-width: 100%;
+					padding-top: 7px;
+					text-shadow: 2px 2px #303336
+				}
 			
 			}
 			/* End @media all */
@@ -742,6 +766,15 @@
 				f.style.display = 'block';
 			}
 			
+			function showCriteria() {
+				var e = document.getElementById('criteria');
+				e.style.display = 'block';
+				
+				var f = document.getElementById('criteriaLink');
+				f.style.display = 'none';
+				document.getElementById('eventDate').focus();
+			}
+			
 			
 			function submitAndClose(){
 
@@ -775,6 +808,23 @@
 
 <hr/>
 
+<P>To generate your report, please complete the form below and click Submit.  Additional instructions will be provided upon completion.  Fields marked <span class="required"></span> are required.  <SPAN id="criteriaLink" STYLE="display: inline"><A HREF="javascript:showCriteria()">Show SKYWARN Reporting Criteria.</A></SPAN></P>
+
+<div id="criteria" style="display: none">
+	<HR/>
+	
+	<H2>SKYWARN Reporting Criteria:</H2>
+
+	<UL class="criteria">
+		<LI><B>Liquid precipitation:</B> <U>Measured</U> rainfall 1&quot; or more (indicate <I>&quot;measured since&quot;</I>); flooding of ditches, streets, streams, and rivers; coastal flooding from high tides.</LI>
+		<LI><B>Wind:</B> <U>Measured</U> wind of 50 MPH or higher; any trees, branches, power lines down due to wind; any structure damage due to wind.</LI>
+		<LI><B>Rotation:</B> Funnel clouds, rotating wall clouds, or tornadoes. Be very specific and detailed.</LI>
+		<LI><B>Hail:</B> Pea size or larger.  Indicate rain/hail mix.  Indicate whether hail size is measured or estimated.</LI>
+		<LI><B>Lightning:</B> Only deaths, injuries, and damage due to lightning are reportable.</LI>
+		<LI><B>Winter:</B> Snow depth 2&quot; or more; snow falling at 1&quot;/hour or more; any ice accumulation on roads, trees, etc.  Indicate measured or estimated depth and provide surface details (grassy area, sidewalk, elevated surface).</LI>
+	</UL>
+<HR/></div>
+
 <div id='reportForm' style='display: block'>
 
 <iframe width=0 height=0 name="targetFrame" id="targetFrame" style="display: none" src="about:blank"></iframe>
@@ -786,28 +836,28 @@
 <div class="help" id="helpSpace"></div>
 
 <fieldset class="call">
-	<label for="spotterYes">Are you a Trained Spotter?</label>
+	<label for="spotterYes" class="required">Are you a Trained Spotter?</label>
 	<fieldset class="radiobuttons">
 		<input type="radio" name="spotterID" id="spotterYes" value="YES" onClick="javascript:document.getElementById('eventDate').select();" onmouseover="javascript:showHelp('spotterID');" onfocus="javascript:showHelp('spotterID');"/> <span onmouseover="javascript:showHelp('spotterID');" onfocus="javascript:showHelp('spotterID');">Yes</span><br/>
 		<input type="radio" name="spotterID" id="spotterNo" value="NO" checked onClick="javascript:document.getElementById('eventDate').select();" onmouseover="javascript:showHelp('spotterID');" onfocus="javascript:showHelp('spotterID');"/> <span onmouseover="javascript:showHelp('spotterID');" onfocus="javascript:showHelp('spotterID');">No</span>
 	</fieldset>
-	<label for="eventDate">Date of Event:</label>
+	<label for="eventDate" class="required">Date of Event:</label>
 	<input type="date" id="eventDate" name="eventDate" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
-	<label for="eventTime">Time of Event:</label>
+	<label for="eventTime" class="required">Time of Event:</label>
 	<input type="time" id="eventTime" name="eventTime" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
 </fieldset>
 
 <fieldset class="eventInfo">
-	<label for="eventLocation">Location of Event: </label>
+	<label for="eventLocation" class="required">Location of Event: </label>
 	<textarea name="eventLocation" id="eventLocation" onmouseover="javascript:showHelp('eventLocation');" onfocus="javascript:showHelp('eventLocation');"></textarea>
-	<label for="reportInfo"> Report Information: </label>
+	<label for="reportInfo" class="required"> Report Information: </label>
 	<textarea name="reportInfo" id="reportInfo" onmouseover="javascript:showHelp('reportInfo');" onfocus="javascript:showHelp('reportInfo');"></textarea> 
 	<label for="contactNumber">Contact Number: </label>
 	<input type="text" id="contactNumber" name="contactNumber" onmouseover="javascript:showHelp('contactNumber');" onfocus="javascript:showHelp('contactNumber');"/>
 </fieldset>
 
 <fieldset class="bottom">
-	<label for="trainingYes">Is this a Training Report?</label>
+	<label for="trainingYes" class="required">Is this a Training Report?</label>
 	<fieldset class="radiobuttons">
 		<input type="radio" name="training" id="trainingYes" value="YES" onmouseover="javascript:showHelp('training');" onfocus="javascript:showHelp('training');"/> <span onmouseover="javascript:showHelp('training');" onfocus="javascript:showHelp('training');">Yes</span><br/>
 		<input type="radio" name="training" id="trainingNo" value="NO" checked onmouseover="javascript:showHelp('training');" onfocus="javascript:showHelp('training');"/> <span onmouseover="javascript:showHelp('training');" onfocus="javascript:showHelp('training');">No</span>
