@@ -505,10 +505,17 @@
 				
 				.help {
 					float: right; 
-					width: 300px;
+					width: 287px;
+					height: 82px;
 					border: none;
 					font-family: 'Source Sans Pro', sans-serif;
-					font-size: 11pt
+					font-size: 10pt;
+					margin-right: 13px;
+					resize: none
+				}
+				
+				.help:focus {
+					border: none
 				}
 				
 			h1 {
@@ -707,6 +714,32 @@
 
 			}
 			
+			function showHelp(whichHelp) {
+				switch(whichHelp) {
+					case 'spotterID':
+						document.getElementById('helpSpace').value = "Please indicate whether you have received Spotter training from any NWS office within the last three years. You do NOT need to be a Trained Spotter to send a report to SKYWARN.";
+						break;
+					case 'reportInfo':
+						document.getElementById('helpSpace').value = "Describe in detail the observed conditions. For wind and precip reports, always indicate measured or estimated. Make sure your reports meet SKYWARN reporting criteria.";
+						break;
+					case 'eventLocation':
+						document.getElementById('helpSpace').value = "Provide the exact location. Use a street address, nearest cross-street, milepost, or well known landmark. Avoid coordinates. Please always include a locality name (county/city).";
+						break;
+					case 'training':
+						document.getElementById('helpSpace').value = "Training Reports will be sent to the SKYWARN team but will never be relayed to the National Weather Service. Use this for practice reports or for any drills/exercises or SETs.";
+						break;
+					case 'dateTime':
+						document.getElementById('helpSpace').value = "Please provide the date and time the event occurred or conditions were observed. Use local (Eastern) time. If estimating, please note that in your report (\"Time is estimated\").";
+						break;
+					case 'contactNumber':
+						document.getElementById('helpSpace').value = "NWS employees and SKYWARN leadership may reply to your report via Winlink e-mail if more info is needed. Optionally provide a contact phone number here.";
+						break;
+					default:
+						document.getElementById('helpSpace').value = "";
+						break;
+				}
+			}
+			
 			function showConfirmation() {
 				var e = document.getElementById('reportForm');
 				e.style.display = 'none';
@@ -723,6 +756,8 @@
 					document.getElementById('submitBtn').disabled = true;
 					document.getElementById('clearBtn').disabled = true;
 					document.getElementById('cancelBtn').disabled = true;
+					
+					showHelp('');
 					
 					// Generate report date and time
 					var now=new Date();
@@ -754,34 +789,34 @@
 
 <input type="hidden" name="spotterCall" value="{Callsign}"/>
 
-<textarea class="help" id="helpSpace" disabled="">Help Messages Will Display Here </textarea>
+<textarea class="help" disabled id="helpSpace"></textarea>
 
 <fieldset class="call">
 	<label for="spotterYes">Are you a Trained Spotter?</label>
 	<fieldset class="radiobuttons">
-		<input type="radio" name="spotterID" id="spotterYes" value="YES" onClick="javascript:document.getElementById('eventDate').select();"/> Yes<br/>
-		<input type="radio" name="spotterID" id="spotterNo" value="NO" checked onClick="javascript:document.getElementById('eventDate').select();"/> No
+		<input type="radio" name="spotterID" id="spotterYes" value="YES" onClick="javascript:document.getElementById('eventDate').select();" onmouseover="javascript:showHelp('spotterID');" onfocus="javascript:showHelp('spotterID');"/> <span onmouseover="javascript:showHelp('spotterID');" onfocus="javascript:showHelp('spotterID');">Yes</span><br/>
+		<input type="radio" name="spotterID" id="spotterNo" value="NO" checked onClick="javascript:document.getElementById('eventDate').select();" onmouseover="javascript:showHelp('spotterID');" onfocus="javascript:showHelp('spotterID');"/> <span onmouseover="javascript:showHelp('spotterID');" onfocus="javascript:showHelp('spotterID');">No</span>
 	</fieldset>
 	<label for="eventDate">Date of Event:</label>
-	<input type="date" id="eventDate" name="eventDate" />
+	<input type="date" id="eventDate" name="eventDate" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
 	<label for="eventTime">Time of Event:</label>
-	<input type="time" id="eventTime" name="eventTime" />
+	<input type="time" id="eventTime" name="eventTime" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
 </fieldset>
 
 <fieldset class="eventInfo">
 	<label for="eventLocation">Location of Event: </label>
-	<textarea name="eventLocation" id="eventLocation"></textarea>
+	<textarea name="eventLocation" id="eventLocation" onmouseover="javascript:showHelp('eventLocation');" onfocus="javascript:showHelp('eventLocation');"></textarea>
 	<label for="reportInfo"> Report Information: </label>
-	<textarea name="reportInfo" id="reportInfo"></textarea> 
+	<textarea name="reportInfo" id="reportInfo" onmouseover="javascript:showHelp('reportInfo');" onfocus="javascript:showHelp('reportInfo');"></textarea> 
 	<label for="contactNumber">Contact Number: </label>
-	<input type="text" id="contactNumber" name="contactNumber" />
+	<input type="text" id="contactNumber" name="contactNumber" onmouseover="javascript:showHelp('contactNumber');" onfocus="javascript:showHelp('contactNumber');"/>
 </fieldset>
 
 <fieldset class="bottom">
 	<label for="trainingYes">Is this a Training Report?</label>
 	<fieldset class="radiobuttons">
-		<input type="radio" name="training" id="trainingYes" value="YES" /> Yes<br/>
-		<input type="radio" name="training" id="trainingNo" value="NO" checked/> No
+		<input type="radio" name="training" id="trainingYes" value="YES" onmouseover="javascript:showHelp('training');" onfocus="javascript:showHelp('training');"/> <span onmouseover="javascript:showHelp('training');" onfocus="javascript:showHelp('training');">Yes</span><br/>
+		<input type="radio" name="training" id="trainingNo" value="NO" checked onmouseover="javascript:showHelp('training');" onfocus="javascript:showHelp('training');"/> <span onmouseover="javascript:showHelp('training');" onfocus="javascript:showHelp('training');">No</span>
 	</fieldset>
 </fieldset>
 <input type="hidden" name="reportDate" id="reportDate" value="" />
