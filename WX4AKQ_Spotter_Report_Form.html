@@ -503,6 +503,12 @@
 					overflow: hidden
 				}
 				
+				.help {
+					float: right; 
+					width: 300px;
+					border: none
+				}
+				
 			h1 {
 				color: white;
 				text-align: left;
@@ -746,19 +752,21 @@
 
 <input type="hidden" name="spotterCall" value="{Callsign}"/>
 
+<textarea class="help" id="helpSpace" disabled="">Help Messages Will Display Here </textarea>
+
 <fieldset class="call">
 	<label for="spotterYes">Are you a Trained Spotter?</label>
 	<fieldset class="radiobuttons">
 		<input type="radio" name="spotterID" id="spotterYes" value="YES" onClick="javascript:document.getElementById('eventDate').select();"/> Yes<br/>
 		<input type="radio" name="spotterID" id="spotterNo" value="NO" checked onClick="javascript:document.getElementById('eventDate').select();"/> No
 	</fieldset>
-</fieldset>
-
-<fieldset class="eventInfo">
 	<label for="eventDate">Date of Event:</label>
 	<input type="date" id="eventDate" name="eventDate" />
 	<label for="eventTime">Time of Event:</label>
 	<input type="time" id="eventTime" name="eventTime" />
+</fieldset>
+
+<fieldset class="eventInfo">
 	<label for="eventLocation">Location of Event: </label>
 	<textarea name="eventLocation" id="eventLocation"></textarea>
 	<label for="reportInfo"> Report Information: </label>
