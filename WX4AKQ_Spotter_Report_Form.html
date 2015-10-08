@@ -852,6 +852,13 @@
 					
 					showHelp('');
 					
+					// Populate training banner
+					if(document.getElementById('trainingYes').checked) {
+						document.getElementById('trainingBanner').value = "\r    *** TRAINING REPORT *** FOR TRAINING PURPOSES ONLY ***\r";
+					} else {
+						document.getElementById('trainingBanner').value = "";
+					};
+					
 					// Generate report date and time
 					var now=new Date();
 					document.getElementById('reportDate').value = now.format('isoDate');
@@ -939,6 +946,7 @@
 <input type="hidden" name="reportDate" id="reportDate" value="" />
 <input type="hidden" name="reportTime" id="reportTime" value="" />
 <input type="hidden" name="formVersion" id="formVersion" value="0" />
+<input type="hidden" name="trainingBanner" id="trainingBanner" value="" />
 <input type="hidden" name="formName" id="formName" value="WX4AKQ_Spotter_Report_Form" />
 <br/>
 <fieldset class="buttons">
