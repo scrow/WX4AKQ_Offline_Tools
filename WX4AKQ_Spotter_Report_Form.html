@@ -775,6 +775,10 @@
 				document.getElementById('eventDate').focus();
 			}
 			
+			function hideCriteria() {
+				var e = document.getElementById('criteria');
+				e.style.display = 'none';
+			}
 			
 			function submitAndClose(){
 
@@ -793,7 +797,7 @@
 					
 					// Submit the form and redirect to confirmation page
 					document.getElementById('report').submit();
-					setTimeout(function() { showConfirmation(); }, 1000);
+					setTimeout(function() { hideCriteria(); showConfirmation(); }, 1000);
 				} else {
 					alert("conditions not satisfied, returning to form");    
 				}
