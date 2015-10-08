@@ -743,7 +743,7 @@
 				var now=new Date();
 				document.getElementById('eventDate').value = now.format("isoDate");
 				document.getElementById('eventTime').value = now.format("HH:MM");
-				document.getElementById('eventDate').focus();
+				document.getElementById('eventDate').select();
 
 			}
 			
@@ -787,19 +787,25 @@
 				
 				var f = document.getElementById('criteriaLink');
 				f.style.display = 'none';
-				document.getElementById('eventDate').focus();
+
+				document.getElementById('eventDate').select();
 			}
 			
 			function hideCriteria() {
 				var e = document.getElementById('criteria');
 				e.style.display = 'none';
+				
+				var f = document.getElementById('criteriaLink');
+				f.style.display = 'inline';
+
+				document.getElementById('eventDate').select();
 			}
 			
 			function hideInstructions() {
 				var e = document.getElementById('instructions');
 				e.style.display = 'none';
 			}
-			
+
 			function submitAndClose(){
 
 				if(1==1){
@@ -834,9 +840,11 @@
 
 <div id="instructions" style="display: block">
 
-	<P>To generate your report, please complete the form below and click Submit.  Additional instructions will be provided upon completion.  Fields marked <span class="required"></span> are required.  <SPAN id="criteriaLink" STYLE="display: inline"><A HREF="javascript:showCriteria()">Show SKYWARN Reporting Criteria.</A></SPAN></P>
+	<P>To generate your report, please complete the form below and click Submit.  Additional instructions will be provided upon completion.  Fields marked <span class="required"></span> are required.  <SPAN id="criteriaLink" STYLE="display: inline"><A HREF="javascript:showCriteria();">Show SKYWARN Reporting Criteria.</A></SPAN></P>
 
 </div>
+
+<a name="criteria"></a>
 
 <div id="criteria" style="display: none">
 	<HR/>
@@ -851,6 +859,9 @@
 		<LI><B>Lightning:</B> Only deaths, injuries, and damage due to lightning are reportable.</LI>
 		<LI><B>Winter:</B> Snow depth 2&quot; or more; snow falling at 1&quot;/hour or more; any ice accumulation on roads, trees, etc.  Indicate measured or estimated depth and provide surface details (grassy area, sidewalk, elevated surface, snow board).</LI>
 	</UL>
+
+<P>All reports should be your personal, first-person observations.  Please do not submit third-party reports, such as information gathered via public safety radio transmissions, local media, or similar sources.  You are personally responsible for the quality and credibility of your reports and should be able to furnish additional details upon request from the National Weather Service.  [<A HREF="javascript:hideCriteria();">Close</A>]</P>
+
 <HR/></div>
 
 <div id='reportForm' style='display: block'>
