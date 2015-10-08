@@ -780,6 +780,11 @@
 				e.style.display = 'none';
 			}
 			
+			function hideInstructions() {
+				var e = document.getElementById('instructions');
+				e.style.display = 'none';
+			}
+			
 			function submitAndClose(){
 
 				if(1==1){
@@ -797,7 +802,7 @@
 					
 					// Submit the form and redirect to confirmation page
 					document.getElementById('report').submit();
-					setTimeout(function() { hideCriteria(); showConfirmation(); }, 1000);
+					setTimeout(function() { hideCriteria(); hideInstructions(); showConfirmation(); }, 1000);
 				} else {
 					alert("conditions not satisfied, returning to form");    
 				}
@@ -812,7 +817,11 @@
 
 <hr/>
 
-<P>To generate your report, please complete the form below and click Submit.  Additional instructions will be provided upon completion.  Fields marked <span class="required"></span> are required.  <SPAN id="criteriaLink" STYLE="display: inline"><A HREF="javascript:showCriteria()">Show SKYWARN Reporting Criteria.</A></SPAN></P>
+<div id="instructions" style="display: block">
+
+	<P>To generate your report, please complete the form below and click Submit.  Additional instructions will be provided upon completion.  Fields marked <span class="required"></span> are required.  <SPAN id="criteriaLink" STYLE="display: inline"><A HREF="javascript:showCriteria()">Show SKYWARN Reporting Criteria.</A></SPAN></P>
+
+</div>
 
 <div id="criteria" style="display: none">
 	<HR/>
@@ -882,7 +891,7 @@
 
 <div id="confirmation" style="display: none">
 
-<p>Your report has been generated.  Please close this window, then return to RMS Express and send your message without further modification.  Be sure to leave the XML file attached.  The message and your attachment will be transmitted to Wakefield SKYWARN team the next time you connect to a Winlink gateway by radio or Internet.</p>
+<p>Your report has been generated.  Please close this window, then return to RMS Express and send your message without further modification.  Be sure to leave the XML file attached.  The message and your attachment will be transmitted to the Wakefield SKYWARN team the next time you connect to a Winlink gateway by radio or Internet.</p>
 
 <p>Thank you for your report.</p>
 
