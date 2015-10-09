@@ -64,4 +64,4 @@ This projet is maintained by [Steve Crow (KG4PEQ)](mailto:kg4peq@wx4akq.org) and
 
 # License
 
-Copyright (c) 2015, Steve Crow, Reid Barden.  This work is licensed under the BSD 2-clause “Simplified” License.  Please see the separate `LICENSE.txt` file for further information.
+Copyright (c) 2015, Steve Crow, Reid Barden.  This work is licensed under the BSD 2-clause “Simplified” License.  Please see the separate `LICENSE.md` file for further information.
