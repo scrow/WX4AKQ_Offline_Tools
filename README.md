@@ -2,9 +2,8 @@
 
 This project contains SKYWARN-related forms for use with the [RMS Express](http://www.winlink.org/tags/rms_express) amateur radio messaging software.  These forms are designed for use by SKYWARN Spotters and amateur radio team members within the 66 counties and independent cities served by the [National Weather Service Wakefield, VA WFO](http://www.nws.noaa.gov/er/akq) and the [Wakefield SKYWARN Amateur Radio Support Team](http://www.wx4akq.org/).
 
-Currently this package contains a single form, `WX4AKQ_Spotter_Report_Form`, to be used by SKYWARN Spotters in relaying reports to the National Weather Service.  This form generates an `.xml` file which is sent to a specific e-mail address, where it is automagically processed and injected into the Wakefield SKYWARN Amateur Radio Support Team logs.  The report is then visible to Wakefield SKYWARN team members and certain Emergency Management partners.  The report is then sent to the National Weather Service along with other reports collected by SKYWARN nets.
+For information on the forms included in this project, see "Included Forms."
 
-Additional forms planned for the future include utilities for SKYWARN Net Control Operators and team members.
 
 # Prerequisites
 
@@ -12,11 +11,13 @@ To use this form, you must have a current version of [RMS Express](http://www.wi
 
 You must have a current version of Internet Explorer, Firefox, Chrome, or Safari, set as your system's default browser.  Most recent versions of these browsers will be supported.  Development will always take place on the most recent version of these browsers.  Backwards compatibility with Internet Explorer, back to version 9, will be on a best-effort basis.
 
+
 # Installation
 
 Templates provided by this project can be installed for use by a specific callsign or by all users of the RMS Express installation.  To install for a specific callsign, the target folder is `C:\RMS Express\<callsign>\Templates`.  To install for all users, the target folder is `C:\RMS Express\Global Folders\Templates`.
 
 To install a form and template, simply copy the desired `.html` file along with its corresponding `.txt` file to the target folder.
+
 
 # Usage
 
@@ -46,9 +47,20 @@ Now, when accessing the `Message` > `New Message` function from the main RMS Exp
 
 The template will automatically set the destination e-mail address and attach a small XML file containing your report.  Do not alter the e-mail address or remove the file attachment.
 
+
+# Included Forms
+
+## WX4AKQ_Spotter_Report_Form
+
+Currently this package contains a single form, `WX4AKQ_Spotter_Report_Form`, to be used by SKYWARN Spotters in relaying reports to the National Weather Service.  This form generates an `.xml` file which is sent to a specific e-mail address, where it is automagically processed and injected into the Wakefield SKYWARN Amateur Radio Support Team logs.  The report is then visible to Wakefield SKYWARN team members and certain Emergency Management partners.  The report is then sent to the National Weather Service along with other reports collected by SKYWARN nets.
+
+Additional forms planned for the future include utilities for SKYWARN Net Control Operators and team members.
+
+
 # Contributors
 
 This projet is maintained by [Steve Crow (KG4PEQ)](mailto:kg4peq@wx4akq.org) and [Reid Barden (N1VCU)](mailto:n1vcu@wx4akq.org).  Additional contributors can be found on the [Contributors](https://github.com/scrow/wx4akq-winlink-forms/graphs/contributors) page.  
+
 
 # License
 
