@@ -9,7 +9,7 @@ For information on the forms included in this project, see "Included Forms."
 
 To use this form, you must have a current version of [RMS Express](http://www.winlink.org/tags/rms_express) installed and configured for your amateur radio callsign.  The installation and configuration of RMS Express is outside the scope of this document.  This form package is currently being designed and tested for RMS Express version 1.3.6.0.
 
-You must have a current version of Internet Explorer, Firefox, Chrome, or Safari, set as your system's default browser.  Most recent versions of these browsers will be supported.  Development will always take place on the most recent version of these browsers.  Backwards compatibility with Internet Explorer, back to version 9, will be on a best-effort basis.
+You must have a recent version of Internet Explorer, Firefox, Chrome, Safari, or Opera set as your system's default browser.  Most recent versions of these browsers will be supported.  Development will always take place on the most recent version of these browsers.  Backwards compatibility with Internet Explorer, back to version 9, will be on a best-effort basis.
 
 
 # Installation
