@@ -454,7 +454,8 @@
 				var now=new Date();
 				document.getElementById('eventDate').value = now.format("isoDate");
 				document.getElementById('eventTime').value = now.format("HH:MM");
-				document.getElementById('eventDate').select();
+				document.getElementById('eventDate').focus();  /* for Chrome, Opera */
+				document.getElementById('eventDate').select();  /* for all other browsers */
 
 			}
 			
@@ -499,7 +500,8 @@
 				var f = document.getElementById('criteriaLink');
 				f.style.display = 'none';
 
-				document.getElementById('eventDate').select();
+				document.getElementById('eventDate').focus();  /* for Chrome, Opera */
+				document.getElementById('eventDate').select();  /* for all other browsers */
 			}
 			
 			function hideCriteria() {
@@ -509,7 +511,8 @@
 				var f = document.getElementById('criteriaLink');
 				f.style.display = 'inline';
 
-				document.getElementById('eventDate').select();
+				document.getElementById('eventDate').focus();  /* for Chrome, Opera */
+				document.getElementById('eventDate').select();  /* for all other browsers */
 			}
 			
 			function hideInstructions() {
@@ -526,13 +529,15 @@
 				
 				if(document.getElementById('eventDate').value == '') {
 					alert('An event date must be specified. Please enter a date in YYYY-MM-DD format, Eastern time zone.');
-					document.getElementById('eventDate').select();
+					document.getElementById('eventDate').focus();  /* for Chrome, Opera */
+					document.getElementById('eventDate').select();  /* for all other browsers */
 					return false;
 				};
 				
 				if(document.getElementById('eventTime').value == '') {
 					alert('An event time must be specified. Please enter a time in 24-hour HH:MM format, Eastern time zone.');
-					document.getElementById('eventTime').select();
+					document.getElementById('eventTime').focus();  /* for Chrome, Opera */
+					document.getElementById('eventTime').select();  /* for all other browsers */
 					return false;
 				};
 				
