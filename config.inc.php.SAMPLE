@@ -16,7 +16,7 @@ $Config = array() {
 	'my_call'		=>	'',
 
 	// Operating mode.  Can be SAVE_TO_QUEUE or DOWNLOAD_ATTACHMENT
-	'op_mode'		=>	SAVE_TO_QUEUE;
+	'op_mode'		=>	SAVE_TO_QUEUE,
 
 	// SAVE_TO_QUEUE mode options
 	'queue_folder'	=>	'queue',
