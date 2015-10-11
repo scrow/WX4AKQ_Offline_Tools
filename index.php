@@ -64,8 +64,19 @@ switch($_SERVER['REQUEST_METHOD']) {
 					// Iterate through the queue folder and upload .xml files
 					foreach(glob($Config['queue_folder'].'/*.xml') as $filename) {
 						$ch = curl_init();
-						$uploadFile = new CurlFile($filename, mime_content_type($filename), $filename);
-						$uploadFile->setPostFilename(basename($filename));
+						if(class_exists('CurlFile')) {
+							$uploadFile = new CurlFile($filename, mime_content_type($filename), $filename);	
+							$uploadFile->setPostFilename(basename($filename));
+						} else {
+							if(!function_exists('curl_file_create')) {
+							    function curl_file_create($filename, $mimetype = '', $postname = '') {
+									return "@$filename;filename="
+									. ($postname ?: basename($filename))
+									. ($mimetype ? ";type=$mimetype" : '');
+								}
+							};							
+							$uploadFile = curl_file_create($filename, mime_content_type($filename), $filename);
+						};
 						$data = array(
 							'attachment[]' => $uploadFile,
 							'output' => 'xml'
