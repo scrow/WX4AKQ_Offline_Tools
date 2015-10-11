@@ -4,20 +4,4 @@ To: xmlsubmit@wx4akq.org
 Subject: Spotter Report Form
 
 Msg:
-NWS Wakefield SKYWARN
-Spotter Report via Amateur Radio
-<var trainingBanner>
-Training Report: <var training>
-NOTE:  If the line above reads "YES" this should NOT be considered an actual report and, if received by NWS, should be discarded.
-
-Spotter Call Sign: <var spotterCall> (Trained Spotter: <var spotterID>)
-
-Event Location: <var eventLocation>
-<var trainingBanner>
-Reported Conditions: <var reportInfo>
-
-Event Date and Time: <var eventDate> at <var eventTime>
-
-Report Sent: <var reportDate> at <var reportTime>
-<var TrainingBanner>
-<var formName> ver <var formVersion>
+XML file attached.
