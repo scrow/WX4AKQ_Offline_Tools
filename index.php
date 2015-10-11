@@ -22,12 +22,19 @@
 	something similar. 
 */
 
+const SAVE_TO_QUEUE = 1;
+const DOWNLOAD_ATTACHMENT = 2;
+
+// Read configuration Options
+require_once('config.inc.php');
+
 switch($_SERVER['REQUEST_METHOD']) {
 	case 'GET':
 		if(isset($_GET['form'])) {
 			$form = trim(strtolower($_GET['form']));
 			switch($form) {
 				case 'wx4akq_spotter_report_form':
+					// Serve the WX4AKQ_Spotter_Report_Form.html file
 					$fd = file_get_contents('WX4AKQ_Spotter_Report_Form.html');
 					$fd = str_replace('{FormServer}', $_SERVER['SERVER_NAME'], $fd);
 					$fd = str_replace('{FormPort}', $_SERVER['SERVER_PORT'].dirname($_SERVER['REQUEST_URI'].'/index.php'),$fd);
@@ -37,6 +44,8 @@ switch($_SERVER['REQUEST_METHOD']) {
 					// Then use document.getElementById('appName').value to customize the confirmation messaging
 					echo($fd);
 					break;
+				case 'doupload':
+					//
 				default:
 					die('Unrecognized form name.');
 					break;
@@ -60,9 +69,18 @@ switch($_SERVER['REQUEST_METHOD']) {
 		// Generate a filename
 		$filename = $_POST['formname'].'-'.time().'.xml';
 		// Send the file to the browser (we might also want to provide a config option to save to disk)
-		header('Content-type: text/xml');
-		header('Content-Disposition: attachment; filename="'.$filename.'"');
-		echo $xml->asXML();
+		switch($Config['op_mode']) {
+			case SAVE_TO_QUEUE:
+				$fp = $fopen($Config['queue_folder'].'/'.$name);
+				fwrite($fp, $xml->asXML());
+				fclose($fp);
+				break;
+			case DOWNLOAD_ATTACHMENT:
+				header('Content-type: text/xml');
+				header('Content-Disposition: attachment; filename="'.$filename.'"');
+				echo $xml->asXML();
+				break;
+		}; // end switch($Config['op_mode']);
 		break;
 	default:
 		die('Unsupported request method.');

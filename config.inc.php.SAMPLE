@@ -1,0 +1,25 @@
+<?php
+/*	
+#	This file is part of WX4AKQ Winlink Forms for RMS Express
+#	
+#	Copyright (c) 2015, Steve Crow, Reid Barden
+#	Licensed under the BSD 2-clause “Simplified” License
+#	
+#	For license information, see the LICENSE.md file or visit
+#	http://wx4akq.org/software
+*/
+
+/*	Configuration options for "runlocal" mode */
+
+$Config = array() {
+	// Define user call sign
+	'my_call'		=>	'',
+
+	// Operating mode.  Can be SAVE_TO_QUEUE or DOWNLOAD_ATTACHMENT
+	'op_mode'		=>	SAVE_TO_QUEUE;
+
+	// SAVE_TO_QUEUE mode options
+	'queue_folder'	=>	'queue',
+	'upload_url'	=>	'http://ops.wx4akq.org/xml_upload.php',
+	'api_key'		=>	null;
+};
