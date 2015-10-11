@@ -28,6 +28,21 @@ const DOWNLOAD_ATTACHMENT = 2;
 // Read configuration Options
 require_once('config.inc.php');
 
+// Verify configuration
+if($Config['my_call'] == '') {
+	die('Call sign not defined in config.inc.php');
+} else {
+	$Config['my_call'] = trim(strtoupper($Config['my_call']));
+};
+
+if($Config['queue_folder'] == '') {
+	die('Queue folder not defined in config.inc.php');
+} else {
+	if(!file_exists($Config['queue_folder'])) {
+		mkdir($Config['queue_folder']);
+	};
+};
+
 switch($_SERVER['REQUEST_METHOD']) {
 	case 'GET':
 		if(isset($_GET['form'])) {
@@ -38,6 +53,7 @@ switch($_SERVER['REQUEST_METHOD']) {
 					$fd = file_get_contents('WX4AKQ_Spotter_Report_Form.html');
 					$fd = str_replace('{FormServer}', $_SERVER['SERVER_NAME'], $fd);
 					$fd = str_replace('{FormPort}', $_SERVER['SERVER_PORT'].dirname($_SERVER['REQUEST_URI'].'/index.php'),$fd);
+					$fd = str_replace('{Callsign}', $Config['my_call'], $fd);
 					// Eventually set the value of a hidden form value specifying an app name
 					// For example, <INPUT TYPE="hidden" ID="appName" NAME="appName" VALUE="RMS_Express"/>
 					//              str_replace('VALUE="RMS_Express"','VALUE="runlocal"');
@@ -45,7 +61,39 @@ switch($_SERVER['REQUEST_METHOD']) {
 					echo($fd);
 					break;
 				case 'doupload':
-					//
+					// Iterate through the queue folder and upload .xml files
+					foreach(glob($Config['queue_folder'].'/*.xml') as $filename) {
+						$ch = curl_init();
+						$uploadFile = new CurlFile($filename, mime_content_type($filename), $filename);
+						$uploadFile->setPostFilename(basename($filename));
+						$data = array(
+							'attachment[]' => $uploadFile,
+							'output' => 'xml'
+							);
+//						$data = array('attachment[]' => '@' . $filename,
+//							'output' => 'xml');
+						$opt_array = array(
+							CURLOPT_URL => $Config['upload_url'],
+							CURLOPT_RETURNTRANSFER => true,
+							CURLOPT_POST => 1,
+							CURLOPT_POSTFIELDS => $data
+						);
+						curl_setopt_array($ch, $opt_array);
+						$result = curl_exec($ch);
+						curl_close($ch);
+						$xml = simplexml_load_string($result);
+						$success = true;
+						if(trim($xml->files->file['name']) !== trim(basename($filename))) {
+							$success = false;
+						};
+						if(trim($xml->files->file) !== 'OK') {
+							$success = false;
+						};
+						if($success) {
+							unlink($filename);
+						};
+					};
+					break;
 				default:
 					die('Unrecognized form name.');
 					break;
@@ -71,7 +119,7 @@ switch($_SERVER['REQUEST_METHOD']) {
 		// Send the file to the browser (we might also want to provide a config option to save to disk)
 		switch($Config['op_mode']) {
 			case SAVE_TO_QUEUE:
-				$fp = $fopen($Config['queue_folder'].'/'.$name);
+				$fp = fopen($Config['queue_folder'].'/'.$filename, 'w');
 				fwrite($fp, $xml->asXML());
 				fclose($fp);
 				break;
