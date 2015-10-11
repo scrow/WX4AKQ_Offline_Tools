@@ -2,7 +2,7 @@
 
 This project contains SKYWARN-related forms for use with the [RMS Express](http://www.winlink.org/tags/rms_express) amateur radio messaging software.  These forms are designed for use by SKYWARN Spotters and amateur radio team members within the 66 counties and independent cities served by the [National Weather Service Wakefield, VA WFO](http://www.nws.noaa.gov/er/akq) and the [Wakefield SKYWARN Amateur Radio Support Team](http://www.wx4akq.org/).
 
-An optional `runlocal` release adds the ability to utilize these forms independent of RMS Express through the use of a locally installed web server.  The XML output can be downloaded and saved to a folder for transmission through another Winlink application or standard e-mail, or can be queued for upload to the SKYWARN server over an Internet connection.
+An advanced configuration option adds the ability to utilize these forms independent of RMS Express through the use of a locally installed web server.  The XML output can be downloaded and saved to a folder for transmission through another Winlink application or standard e-mail, or can be queued for upload to the SKYWARN server over an Internet connection.
 
 For information on the forms included in this project, see "Included Forms."
 
@@ -14,13 +14,13 @@ To use this form, you must have a current version of [RMS Express](http://www.wi
 You must have a recent version of Internet Explorer, Firefox, Chrome, Safari, or Opera set as your system's default browser.  Most recent versions of these browsers will be supported.  Development will always take place on the most recent version of these browsers.  Backwards compatibility with Internet Explorer, back to version 9, will be on a best-effort basis.
 
 
-# Standard Release
+# Standard Installation
 
 ## Installation
 
 Templates provided by this project can be installed for use by a specific callsign or by all users of the RMS Express installation.  To install for a specific callsign, the target folder is `C:\RMS Express\<callsign>\Templates`.  To install for all users, the target folder is `C:\RMS Express\Global Folders\Templates`.
 
-To install a form and template, simply copy the desired `.html` file along with its corresponding `.txt` file to the target folder.
+To install a form and template, simply copy the desired `.html` file along with its corresponding `.txt` file from the `forms/` folder to the installation target folder.
 
 
 ## Usage
@@ -52,21 +52,17 @@ Now, when accessing the `Message` > `New Message` function from the main RMS Exp
 The template will automatically set the destination e-mail address and attach a small XML file containing your report.  Do not alter the e-mail address or remove the file attachment.
 
 
-# Optional `runlocal` Release
+# Advanced Installation
 
-An optional `runlocal` bundle provides all of the functionality of the standard release plus provides the ability to utilize these forms independent of RMS Express through the use of a locally installed web server.  The XML output can be downloaded and saved to a folder for transmission through another Winlink application or standard e-mail, or can be queued for upload to the SKYWARN server over an Internet connection.
+An advanced installation option provides all of the functionality of the standard release plus provides the ability to utilize these forms independent of RMS Express through the use of a locally installed web server.  The XML output can be downloaded and saved to a folder for transmission through another Winlink application or standard e-mail, or can be queued for upload to the SKYWARN server over an Internet connection.
 
 An existing PHP 5.3+ web server can be used (`libcurl` and the PHP `cURL` extension required) and a `Vagrantfile` is provided for use with the [Vagrant](http://www.vagrantup.com/) virtualization environment.
 
-## Installation
+## Configuration
 
-To install, extract the `runlocal` bundle to a folder on your drive:
+Extract the bundle to a folder on your drive:
 
 	unzip wx4akq-winlink-forms-2.0.1+runlocal.zip /home/scrow/skywarn
-
-...and that's about it for the installation.
-
-## Configuration
 
 To configure the installation, copy the provided `config.inc.php.SAMPLE` file to `config.inc.php` and edit the configuration according to the notes in the configuration file:
 
