@@ -50,14 +50,11 @@ switch($_SERVER['REQUEST_METHOD']) {
 			switch($form) {
 				case 'wx4akq_spotter_report_form':
 					// Serve the WX4AKQ_Spotter_Report_Form.html file
-					$fd = file_get_contents('WX4AKQ_Spotter_Report_Form.html');
+					$fd = file_get_contents('forms/WX4AKQ_Spotter_Report_Form.html');
 					$fd = str_replace('{FormServer}', $_SERVER['SERVER_NAME'], $fd);
 					$fd = str_replace('{FormPort}', $_SERVER['SERVER_PORT'].dirname($_SERVER['REQUEST_URI'].'/index.php'),$fd);
+					$fd = str_replace('id="appName" value="RMSExpress"', 'id="appName" value="runlocal"', $fd);
 					$fd = str_replace('{Callsign}', $Config['my_call'], $fd);
-					// Eventually set the value of a hidden form value specifying an app name
-					// For example, <INPUT TYPE="hidden" ID="appName" NAME="appName" VALUE="RMS_Express"/>
-					//              str_replace('VALUE="RMS_Express"','VALUE="runlocal"');
-					// Then use document.getElementById('appName').value to customize the confirmation messaging
 					echo($fd);
 					break;
 				case 'doupload':
