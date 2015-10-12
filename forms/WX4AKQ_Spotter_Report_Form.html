@@ -489,7 +489,12 @@
 				var e = document.getElementById('reportForm');
 				e.style.display = 'none';
 				
-				var f = document.getElementById('confirmation');
+				if(document.getElementById('appName').value=="runlocal") {
+					var f = document.getElementById('runlocalConfirmation');
+				} else {
+					var f = document.getElementById('confirmation');
+				};
+				
 				f.style.display = 'block';
 			}
 			
@@ -679,6 +684,15 @@
 <p>Your report has been generated.  Please close this window, then return to RMS Express and send your message without further modification.  Be sure to leave the XML file attached.  The message and your attachment will be transmitted to the Wakefield SKYWARN team the next time you connect to a Winlink gateway by radio or Internet.</p>
 
 <p>Thank you for your report.</p>
+
+</div>
+
+<div id="runlocalConfirmation" style="display: none">
+
+	<p>Your report has been generated.  If you are configured to queue reports for upload, you will need to remember to use the upload link on the main menu to upload your files once you have access to the Internet.</p>
+	<p>If you are configured to download individual reports, your browser should prompt you to save an XML file.  You will need to attach this file to an e-mail or Winlink message and send it to <code>xmlsubmit@wx4akq.org</code> or upload it to <code>http://ops.wx4akq.org/xml_upload.php</code> for your report to reach the National Weather Service.</p>
+	
+	<p><a href="?form=menu">Click here to return to the main menu.</a></p>
 
 </div>
 
