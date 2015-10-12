@@ -43,6 +43,9 @@ if(file_exists('config.xml')) {
 		};
 	};
 	$Config['queue_folder'] = trim($configFile->queue_folder);
+	if($Config['queue_folder']=='') {
+		$Config['queue_folder']=='queue';
+	};
 	if(!file_exists($Config['queue_folder'])) {
 		mkdir($Config['queue_folder']);
 	};
@@ -596,6 +599,11 @@ switch($_SERVER['REQUEST_METHOD']) {
 						$xml->addChild('api_key',trim($_GET['api_key']));
 					} else {
 						$xml->addChild('api_key',$Config['api_key']);
+					};
+					if(isset($_GET['queue_folder']) && (trim($_GET['queue_folder']!==''))) {
+						$xml->addChild('queue_folder',trim($_GET['queue_folder']));
+					} else {
+						$xml->addChild('queue_folder',trim($_GET['queue_folder']));
 					};
 					$fp = fopen('config.xml','w');
 					fwrite($fp, $xml->asXML());
