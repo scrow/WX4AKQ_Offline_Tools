@@ -637,6 +637,19 @@
 <div class="help" id="helpSpace"></div>
 
 <fieldset class="call">
+	<label for="areaNum" class="required"> Area </label>
+	<select name="areaNum" id="areaNum" onchange="javascript:getSurvey(document.getElementById('spotterCall').value);form.spotterCall.focus()" style="width: 350px; ">
+		<option value="1" selected="">1 - Richmond</option>
+		<option value="2">2 - Southern VA</option>
+		<option value="3">3 - Williamsburg</option>
+		<option value="4">4 - Piedmont</option>
+		<option value="5">5 - Southeast VA</option>
+		<option value="6">6 - Smithfield</option>
+		<option value="7">7 - Northeast NC</option>
+		<option value="8">8 - Northern Neck</option>
+		<option value="9">9 - Eastern Shore</option>
+		<option value="99">99 - WFO Wakefield</option>
+	</select>
 	<label for="spotterYes" class="required">Trained Spotter?</label>
 	<fieldset class="radiobuttons">
 		<input type="radio" name="spotterID" id="spotterYes" value="YES" onClick="javascript:document.getElementById('eventDate').select();" onmouseover="javascript:showHelp('spotterID');" onfocus="javascript:showHelp('spotterID');"/> <span onmouseover="javascript:showHelp('spotterID');" onfocus="javascript:showHelp('spotterID');">Yes</span><br/>
