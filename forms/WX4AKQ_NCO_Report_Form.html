@@ -481,7 +481,7 @@
 					case 'contactNumber':
 						document.getElementById('helpSpace').innerHTML = "NWS employees and SKYWARN leadership may reply to your report via Winlink e-mail if more info is needed. Optionally provide a contact phone number here.";
 						break;
-					case 'logInfo':
+					case 'logComments':
 						document.getElementById('helpSpace').innerHTML = "This area is for any comments you may have about this particular report.";
 						break;
 					default:
@@ -677,8 +677,8 @@
 	<textarea name="eventLocation" id="eventLocation" onmouseover="javascript:showHelp('eventLocation');" onfocus="javascript:showHelp('eventLocation');"></textarea>
 	<label for="reportInfo" class="required"> Report Information: </label>
 	<textarea name="reportInfo" id="reportInfo" onmouseover="javascript:showHelp('reportInfo');" onfocus="javascript:showHelp('reportInfo');"></textarea>
-		<label for="reportInfo" class="required"> Log Information: </label>
-	<textarea name="logInfo" id="logInfo" onmouseover="javascript:showHelp('logInfo');" onfocus="javascript:showHelp('logInfo');"></textarea> 
+	<label for="logComments" class="required"> Log Comments: </label>
+	<textarea name="logComments" id="logComments" onmouseover="javascript:showHelp('logComments');" onfocus="javascript:showHelp('logComments');"></textarea> 
 	<label for="contactNumber">Contact Number: </label>
 	<input type="text" id="contactNumber" name="contactNumber" onmouseover="javascript:showHelp('contactNumber');" onfocus="javascript:showHelp('contactNumber');"/>
 </fieldset>
