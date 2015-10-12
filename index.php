@@ -498,6 +498,10 @@ switch($_SERVER['REQUEST_METHOD']) {
 					<P>Available forms:
 					<br/><a href="?form=WX4AKQ_Spotter_Report_Form">Spotter Report Form</a></P>
 
+					<P>System Options:
+					<br/><a href="?form=config">System Configuration</a>
+					<br/><a href="?form=doupload">Upload Queued Reports</a></P>
+
 					<?php includeFooter();?>
 					</div>
 					</body>
