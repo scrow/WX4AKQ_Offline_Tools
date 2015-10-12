@@ -482,15 +482,17 @@ switch($_SERVER['REQUEST_METHOD']) {
 					echo('<P><B>User:</B> '.$Config['my_call'].' &middot; <B>Operating mode:</B> ');
 					if($Config['op_mode']==SAVE_TO_QUEUE) {
 						echo('Queue for Upload');
-						$numXML = sizeof(glob($Config['queue_folder'].'/*.xml'));
-						if($numXML == 0) {
-							echo(' (no reports queued)');
-						} else {
-							echo(' with '.$numXML.' reports queued. <A HREF="?form=doupload">Upload now?</A>');
-						};
 					} else {
 						echo('Download as XML');
 					};
+
+					$numXML = sizeof(glob($Config['queue_folder'].'/*.xml'));
+					if($numXML == 0) {
+						echo(' (no reports queued)');
+					} else {
+						echo(' ('.$numXML.' report(s) queued) <A HREF="?form=doupload">Upload now</A>');
+					};
+
 					echo('</P>');
 					?>
 					<HR/>
