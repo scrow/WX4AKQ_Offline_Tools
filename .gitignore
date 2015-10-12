@@ -1,4 +1,4 @@
 *.zip
-config.inc.php
 queue/*
 .vagrant
+config.xml
