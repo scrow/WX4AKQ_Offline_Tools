@@ -454,8 +454,10 @@
 				var now=new Date();
 				document.getElementById('eventDate').value = now.format("isoDate");
 				document.getElementById('eventTime').value = now.format("HH:MM");
-				document.getElementById('eventDate').focus();  /* for Chrome, Opera */
-				document.getElementById('eventDate').select();  /* for all other browsers */
+				document.getElementById('reportDate').value = now.format("isoDate");
+				document.getElementById('reportTime').value = now.format("HH:MM");
+				document.getElementById('reportDate').focus();  /* for Chrome, Opera */
+				document.getElementById('reportDate').select();  /* for all other browsers */
 
 			}
 			
