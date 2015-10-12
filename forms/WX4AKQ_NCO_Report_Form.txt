@@ -1,0 +1,7 @@
+Form: WX4AKQ_NCO_Report_Form.html,WX4AKQ_NCO_Report_Form_Viewer.html
+
+To: xmlsubmit@wx4akq.org
+Subject: NCO Log Entry Form
+
+Msg:
+XML file attached.
