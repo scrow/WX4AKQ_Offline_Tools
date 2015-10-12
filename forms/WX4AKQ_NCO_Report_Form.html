@@ -657,9 +657,13 @@
 		<input type="radio" name="spotterID" id="spotterYes" value="YES" onClick="javascript:document.getElementById('eventDate').select();" onmouseover="javascript:showHelp('spotterID');" onfocus="javascript:showHelp('spotterID');"/> <span onmouseover="javascript:showHelp('spotterID');" onfocus="javascript:showHelp('spotterID');">Yes</span><br/>
 		<input type="radio" name="spotterID" id="spotterNo" value="NO" checked onClick="javascript:document.getElementById('eventDate').select();" onmouseover="javascript:showHelp('spotterID');" onfocus="javascript:showHelp('spotterID');"/> <span onmouseover="javascript:showHelp('spotterID');" onfocus="javascript:showHelp('spotterID');">No</span>
 	</fieldset>
-	<label for="eventDate" class="required">Date of Event:</label>
+	<label for="reportDate" class="required">Report Date:</label>
+	<input type="date" id="reportDate" name="reportDate" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
+	<label for="reportTime" class="required">Report Time:</label>
+	<input type="time" id="reportTime" name="reportTime" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
+	<label for="eventDate" class="required">Event Date:</label>
 	<input type="date" id="eventDate" name="eventDate" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
-	<label for="eventTime" class="required">Time of Event:</label>
+	<label for="eventTime" class="required">Event Date:</label>
 	<input type="time" id="eventTime" name="eventTime" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
 </fieldset>
 
