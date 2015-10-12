@@ -546,7 +546,7 @@ switch($_SERVER['REQUEST_METHOD']) {
 					</fieldset>
 
 					<fieldset class="eventInfo">
-						<label for="api_key" class="required">API Key:</label>
+						<label for="upload_url" class="required">Upload URL:</label>
 						<input type="text" name="upload_url" id="upload_url" style="width: 400px" value="<?php echo($Config['upload_url']);?>"/>
 					</fieldset>
 					
