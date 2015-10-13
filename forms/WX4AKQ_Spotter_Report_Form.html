@@ -470,6 +470,13 @@
 				};
 			};
 			
+			function confirmReset() {
+				if(confirm('Clear this form and start over?')) {
+					document.getElementById('report').reset();
+					initialValues();
+				};
+			};
+			
 			function showHelp(whichHelp) {
 				switch(whichHelp) {
 					case 'spotterID':
@@ -684,7 +691,7 @@
 <br/>
 <fieldset class="buttons">
 	<input type="button" id="submitBtn" name="submitBtn" value="Submit" class="green" onClick="javascript:submitAndClose();"/>
-	<input type="button" id="clearBtn" name="clearBtn" value="Clear Form" class="gray" onClick="" />
+	<input type="button" id="clearBtn" name="clearBtn" value="Clear Form" class="gray" onClick="javascript:confirmReset();" />
 	<input type="button" id="cancelBtn" name="cancelBtn" value="Cancel" class="gray" style="display: none" onClick="javascript:confirmBack();" />
 </fieldset>
 </form>
