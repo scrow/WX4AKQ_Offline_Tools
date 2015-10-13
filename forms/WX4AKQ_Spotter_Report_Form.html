@@ -456,8 +456,19 @@
 				document.getElementById('eventTime').value = now.format("HH:MM");
 				document.getElementById('eventDate').focus();  /* for Chrome, Opera */
 				document.getElementById('eventDate').select();  /* for all other browsers */
+				
+				// Display a cancel button on the form when loaded from the runlocal server
+				if(document.getElementById('appName').value == "runlocal") {
+					document.getElementById('cancelBtn').style.display = 'inline';
+				};
 
 			}
+			
+			function confirmBack() {
+				if(confirm('Abandon this form and return to the menu?')) {
+					window.location = 'index.php?form=menu';
+				};
+			};
 			
 			function showHelp(whichHelp) {
 				switch(whichHelp) {
@@ -674,7 +685,7 @@
 <fieldset class="buttons">
 	<input type="button" id="submitBtn" name="submitBtn" value="Submit" class="green" onClick="javascript:submitAndClose();"/>
 	<input type="button" id="clearBtn" name="clearBtn" value="Clear Form" class="gray" onClick="" />
-	<input type="button" id="cancelBtn" name="cancelBtn" value="Cancel" class="gray" onClick="" />
+	<input type="button" id="cancelBtn" name="cancelBtn" value="Cancel" class="gray" style="display: none" onClick="javascript:confirmBack();" />
 </fieldset>
 </form>
 </div>
