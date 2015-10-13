@@ -1,27 +1,23 @@
 # Synopsis
 
-This project contains SKYWARN-related forms for use with the [RMS Express](http://www.winlink.org/tags/rms_express) amateur radio messaging software.  These forms are designed for use by SKYWARN Spotters and amateur radio team members within the 66 counties and independent cities served by the [National Weather Service Wakefield, VA WFO](http://www.nws.noaa.gov/er/akq) and the [Wakefield SKYWARN Amateur Radio Support Team](http://www.wx4akq.org/).
-
-An advanced configuration option adds the ability to utilize these forms independent of RMS Express through the use of a locally installed web server.  The XML output can be downloaded and saved to a folder for transmission through another Winlink application or standard e-mail, or can be queued for upload to the SKYWARN server over an Internet connection.
+This project contains SKYWARN-related forms for use by SKYWARN Spotters and Net Control Operators within the NWS Wakefield, Virginia County Warning Area (CWA).  The forms can be used either with the [RMS Express](http://www.winlink.org/tags/rms_express) amateur radio messaging software or in a standalone form using a locally-installed web browser.  These forms are designed and maintained for the [Wakefield SKYWARN Amateur Radio Support Team](http://www.wx4akq.org/).
 
 For information on the forms included in this project, see "Included Forms."
 
 
-# Prerequisites
+# Winlink Use with RMS Express
 
-To use this form, you must have a current version of [RMS Express](http://www.winlink.org/tags/rms_express) installed and configured for your amateur radio callsign.  The installation and configuration of RMS Express is outside the scope of this document.  This form package is currently being designed and tested for RMS Express version 1.3.5.0 and newer.
+## Prequisites
+
+To use these forms with RMS Express you must have a current version installed and configured for your amateur radio callsign.  The installation and configuration of RMS Express is outside the scope of this document.  This project is currently being designed and tested for RMS Express version 1.3.5.0 and newer.
 
 You must have a recent version of Internet Explorer, Firefox, Chrome, Safari, or Opera set as your system's default browser.  Most recent versions of these browsers will be supported.  Development will always take place on the most recent version of these browsers.  Backwards compatibility with Internet Explorer, back to version 9, will be on a best-effort basis.
-
-
-# Standard Installation
 
 ## Installation
 
 Templates provided by this project can be installed for use by a specific callsign or by all users of the RMS Express installation.  To install for a specific callsign, the target folder is `C:\RMS Express\<callsign>\Templates`.  To install for all users, the target folder is `C:\RMS Express\Global Folders\Templates`.
 
 To install a form and template, simply copy the desired `.html` file along with its corresponding `.txt` file from the `forms/` folder to the installation target folder.
-
 
 ## Usage
 
@@ -52,52 +48,36 @@ Now, when accessing the `Message` > `New Message` function from the main RMS Exp
 The template will automatically set the destination e-mail address and attach a small XML file containing your report.  Do not alter the e-mail address or remove the file attachment.
 
 
-# Advanced Installation
+# Running from a Local Web Browser
 
-An advanced installation option provides all of the functionality of the standard release plus provides the ability to utilize these forms independent of RMS Express through the use of a locally installed web server.  The XML output can be downloaded and saved to a folder for transmission through another Winlink application or standard e-mail, or can be queued for upload to the SKYWARN server over an Internet connection.
+The forms incldued in this project can also be accessed through a local web browser.  In this configuration, there are four ways to get reports to the SKYWARN team:
 
-An existing PHP 5.3+ web server can be used (`libcurl` and the PHP `cURL` extension required) and a `Vagrantfile` is provided for use with the [Vagrant](http://www.vagrantup.com/) virtualization environment.
+1. Reports can be staged in a queue folder and either:
+	a. Uploaded to the SKYWARN server once Internet access is restored using a built-in uploader tool; or,
+	b. Manually attached to an e-mail or Winlink message.
+2. Reports can be downloaded as an XML file to be:
+	a. Uploaded through a web browser; or,
+	b. Manually attached to an e-mail or Winlink message.
 
-## Configuration
+## Using an Existing Local Web Server
 
-Extract the bundle to a folder on your drive:
+An existing locally-installed web server can be used.  Installing, configuring, and troubleshooting issues with a locally-installed web server are outside the scope of this documentation.  The server used must have PHP 5.3 or higher with the PHP `cURL` extension installed.
 
-	unzip wx4akq-winlink-forms-2.0.1+runlocal.zip /home/scrow/skywarn
+Copy the project files to your web server's content folder, such as `/var/www/sites/` and then browse to the `index.php` file.
 
-To configure the installation, copy the provided `config.inc.php.SAMPLE` file to `config.inc.php` and edit the configuration according to the notes in the configuration file:
+## Using Vagrant
 
-	$Config = array(
-		// Define user call sign
-		'my_call'		=>	'AB1CDE',
-	
-		// Operating mode.  Can be SAVE_TO_QUEUE or DOWNLOAD_ATTACHMENT
-		'op_mode'		=>	SAVE_TO_QUEUE,
-	
-		// SAVE_TO_QUEUE mode options
-		'queue_folder'	=>	'queue',
-		'upload_url'	=>	'http://ops.wx4akq.org/xml_upload.php',
-		'api_key'		=>	null
-	);
+For users without an existing local web server, a `Vagrantfile` is provided for use with the [Vagrant](http://www.vagrantup.com) virtualization environment.
 
-Then, launch Vagrant by executing `vagrant up`.  The first time you run this command, Vagrant will download and configure your virtual machine.  This will require an Internet connection, and the time required will vary depending on the speed of your Internet connection and the capabilities of your computer.
+To use Vagrant, extract the project files to a folder on your machine, for example, `/home/ab1cde` or `C:\skywarn`.  Then from a terminal or command prompt, navigate to that folder and run `vagrant up`.
 
-## Usage
+The first time you run this command, Vagrant will download and configure your virtual machine.  This will require an Internet connection, and the time required will vary depending on the speed of your Internet connection and the capabilities of your computer.
 
-With the Vagrant virtual machine running, point your web browser to:
+The offline tools will be available by browsing to [http://localhost:8080](http://localhost:8080).
 
-	http://localhost:8080/
-	
-At this time the only included form will automatically load.  If you are queueing files for later upload to the SKYWARN server, you can trigger those uploads by accessing the URL:
+## API Key
 
-	http://localhost:8080/index.php?form=doupload
-	
-You can confirm the files have been uploaded by checking the `queue` folder.  If any XML files remain, check the server's error log for guidance:
-
-	vagrant ssh
-	sudo su
-	tail -s 0.01 -f /var/log/apache2/error.log
-	
-If errors occur, please open an issue on the Github issue tracker.
+The "NCO Report Form" requires an API Key to submit reports from a local web server.  SKYWARN Net Controls can obtain their API key by logging in to [Ops Portal](http://ops.wx4akq.org) and clicking on the [My Account](http://ops.wx4akq.org/myaccount.php) link.
 
 
 # Included Forms
@@ -111,7 +91,7 @@ Additional forms planned for the future include utilities for SKYWARN Net Contro
 
 # Contributors
 
-This projet is maintained by [Steve Crow (KG4PEQ)](mailto:kg4peq@wx4akq.org) and [Reid Barden (N1VCU)](mailto:n1vcu@wx4akq.org).  Additional contributors can be found on the [Contributors](https://github.com/scrow/wx4akq-winlink-forms/graphs/contributors) page.  
+This projet is maintained by [Steve Crow (KG4PEQ)](mailto:kg4peq@wx4akq.org) and [Reid Barden (N1VCU)](mailto:n1vcu@wx4akq.org).  Additional contributors can be found on the [Contributors](https://github.com/scrow/wx4akq-offline-tools/graphs/contributors) page.  
 
 
 # License
