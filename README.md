@@ -72,9 +72,9 @@ Now, when accessing the `Message` > `New Message` function from the main RMS Exp
 The template will automatically set the destination e-mail address and attach a small XML file containing your report.  Do not alter the e-mail address or remove the file attachment.
 
 
-# Running from a Local Web Browser
+# Running from a Local Web Server
 
-The forms incldued in this project can also be accessed through a local web browser.  In this configuration, there are four ways to get reports to the SKYWARN team:
+The forms incldued in this project can also be accessed through a local web server.  In this configuration, there are four ways to get reports to the SKYWARN team:
 
 1. Reports can be staged in a queue folder and either:
 	a. Uploaded to the SKYWARN server once Internet access is restored using a built-in uploader tool; or,
