@@ -97,6 +97,9 @@
 				$result = curl_exec($ch);
 				$error = curl_errno($ch);
 				echo('Download '.$thisFile->title.' ... ');
+				
+				ob_flush(); flush();
+				
 				if($error==0) {
 					file_put_contents('files/'.$thisFile->saveas, $result);
 					echo('pass<br/>');
