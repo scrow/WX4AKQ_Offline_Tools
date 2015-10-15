@@ -466,8 +466,9 @@
 				document.getElementById('eventTime').value = now.format("HH:MM");
 				document.getElementById('reportDate').value = now.format("isoDate");
 				document.getElementById('reportTime').value = now.format("HH:MM");
-				document.getElementById('reportDate').focus();  /* for Chrome, Opera */
-				document.getElementById('reportDate').select();  /* for all other browsers */
+				document.getElementById('areaNum').focus();
+				
+				/* FORM_EDIT_PLACEHOLDER */
 
 			}
 			
@@ -483,35 +484,6 @@
 					initialValues();
 				};
 			};
-			
-			function showHelp(whichHelp) {
-				switch(whichHelp) {
-					case 'spotterID':
-						document.getElementById('helpSpace').innerHTML = "Please indicate whether you have received Spotter training from any NWS office within the last three years. You do NOT need to be a Trained Spotter to send a report to SKYWARN.";
-						break;
-					case 'reportInfo':
-						document.getElementById('helpSpace').innerHTML = "Describe in detail the observed conditions. For wind and precip reports, always indicate measured or estimated. Make sure your reports meet SKYWARN reporting criteria.";
-						break;
-					case 'eventLocation':
-						document.getElementById('helpSpace').innerHTML = "Provide the exact location. Use a street address, nearest cross-street, milepost, or well known landmark. Avoid coordinates. Please always include a locality name (county/city).";
-						break;
-					case 'training':
-						document.getElementById('helpSpace').innerHTML = "Training Reports will be sent to the SKYWARN team but will never be relayed to the National Weather Service. Use this for practice reports or for any drills/exercises or SETs.";
-						break;
-					case 'dateTime':
-						document.getElementById('helpSpace').innerHTML = "Please provide the date and time the event occurred or conditions were observed. Use local (Eastern) time. If estimating, please note that in your report (\"Time is estimated\").";
-						break;
-					case 'contactNumber':
-						document.getElementById('helpSpace').innerHTML = "NWS employees and SKYWARN leadership may reply to your report via Winlink e-mail if more info is needed. Optionally provide a contact phone number here.";
-						break;
-					case 'logComments':
-						document.getElementById('helpSpace').innerHTML = "This area is for any comments you may have about this particular report.";
-						break;
-					default:
-						document.getElementById('helpSpace').value = "";
-						break;
-				}
-			}
 			
 			function showConfirmation() {
 				var e = document.getElementById('reportForm');
@@ -662,12 +634,10 @@
 
 <input type="hidden" name="ncoCall" value="{Callsign}"/>
 
-<div class="help" id="helpSpace"></div>
-
 <fieldset class="call">
 	<label for="areaNum" class="required"> Area </label>
 	<select name="areaNum" id="areaNum">
-		<option value="1" selected="">1 - Richmond</option>
+		<option value="1">1 - Richmond</option>
 		<option value="2">2 - Southern VA</option>
 		<option value="3">3 - Williamsburg</option>
 		<option value="4">4 - Piedmont</option>
@@ -680,30 +650,35 @@
 	</select>
 	<label for="spotterCall" class="required"> Spotter Callsign </label>
 	<input type="text" id="spotterCall" name="spotterCall" />
-	<label for="spotterYes" class="required">Trained Spotter?</label>
-	<fieldset class="radiobuttons">
-		<input type="radio" name="spotterID" id="spotterYes" value="YES" onClick="javascript:document.getElementById('eventDate').select();" onmouseover="javascript:showHelp('spotterID');" onfocus="javascript:showHelp('spotterID');"/> <span onmouseover="javascript:showHelp('spotterID');" onfocus="javascript:showHelp('spotterID');">Yes</span><br/>
-		<input type="radio" name="spotterID" id="spotterNo" value="NO" checked onClick="javascript:document.getElementById('eventDate').select();" onmouseover="javascript:showHelp('spotterID');" onfocus="javascript:showHelp('spotterID');"/> <span onmouseover="javascript:showHelp('spotterID');" onfocus="javascript:showHelp('spotterID');">No</span>
-	</fieldset>
+
+
+<fieldset class="eventInfo">
+	<label for="reportInfo" class="required"> Report Information: </label>
+	<textarea name="reportInfo" id="reportInfo" onfocus="javascript:showHelp('reportInfo');"></textarea>
+	<label for="eventLocation" class="required">Location of Event: </label>
+	<textarea name="eventLocation" id="eventLocation"></textarea>
+	<label for="flagReport"> Flag: </label>
+	<input name="flagReport" type="checkbox" value="yes" style="display: inline"/> Suspicious or Potentially Fraudulent Report
+</fieldset>
+
+
 	<label for="reportDate" class="required">Report Date:</label>
 	<input type="date" id="reportDate" name="reportDate" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
 	<label for="reportTime" class="required">Report Time:</label>
 	<input type="time" id="reportTime" name="reportTime" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
 	<label for="eventDate" class="required">Event Date:</label>
 	<input type="date" id="eventDate" name="eventDate" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
-	<label for="eventTime" class="required">Event Date:</label>
+	<label for="eventTime" class="required">Event Time:</label>
 	<input type="time" id="eventTime" name="eventTime" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
+
+	<label for="spotterID" class="required">Trained Spotter?</label>
+	<input name="spotterID" id="spotterID" type="checkbox" value="yes" style="display: inline"/> YES - This person identifies as a Trained Spotter
+
 </fieldset>
 
 <fieldset class="eventInfo">
-	<label for="eventLocation" class="required">Location of Event: </label>
-	<textarea name="eventLocation" id="eventLocation" onmouseover="javascript:showHelp('eventLocation');" onfocus="javascript:showHelp('eventLocation');"></textarea>
-	<label for="reportInfo" class="required"> Report Information: </label>
-	<textarea name="reportInfo" id="reportInfo" onmouseover="javascript:showHelp('reportInfo');" onfocus="javascript:showHelp('reportInfo');"></textarea>
 	<label for="logComments"> Log Comments: </label>
-	<textarea name="logComments" id="logComments" onmouseover="javascript:showHelp('logComments');" onfocus="javascript:showHelp('logComments');"></textarea> 
-	<label for="flagReport"> Flag: </label>
-	<input name="flagReport" type="checkbox" value="yes" style="display: inline"/> Suspicious or Potentially Fraudulent Report
+	<textarea name="logComments" id="logComments"></textarea> 
 </fieldset>
 
 <fieldset class="bottom">
@@ -712,7 +687,9 @@
 		<input type="radio" name="training" id="trainingYes" value="YES" onmouseover="javascript:showHelp('training');" onfocus="javascript:showHelp('training');"/> <span onmouseover="javascript:showHelp('training');" onfocus="javascript:showHelp('training');">Yes</span><br/>
 		<input type="radio" name="training" id="trainingNo" value="NO" checked onmouseover="javascript:showHelp('training');" onfocus="javascript:showHelp('training');"/> <span onmouseover="javascript:showHelp('training');" onfocus="javascript:showHelp('training');">No</span>
 	</fieldset>
+
 </fieldset>
+
 
 <input type="hidden" name="formVersion" id="formVersion" value="1" />
 <input type="hidden" name="appName" id="appName" value="RMSExpress" />
