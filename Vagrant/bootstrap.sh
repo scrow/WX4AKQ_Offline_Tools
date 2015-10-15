@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
+#	
+#	This file is part of WX4AKQ Offline Tools
+#	
+#	Copyright (c) 2015, Steve Crow, Reid Barden
+#	Licensed under the BSD 2-clause “Simplified” License
+#	
+#	For license information, see the LICENSE.md file or visit
+#	http://wx4akq.org/software
+#	
 
-# Vagrant bootstrap file for wx4akq-winlink-forms
+# Vagrant bootstrap file for wx4akq-offline-tools
 
 # Initial package installation
 

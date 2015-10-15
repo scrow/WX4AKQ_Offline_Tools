@@ -1,6 +1,16 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+#	
+#	This file is part of WX4AKQ Offline Tools
+#	
+#	Copyright (c) 2015, Steve Crow, Reid Barden
+#	Licensed under the BSD 2-clause “Simplified” License
+#	
+#	For license information, see the LICENSE.md file or visit
+#	http://wx4akq.org/software
+#	
+
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
