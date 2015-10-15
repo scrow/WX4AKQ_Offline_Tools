@@ -23,6 +23,12 @@
 <hr/>
 
 <?php
+	if(!isOnline()) {
+		echo('<P>You are not currently connected to the Internet.</P>');
+		echo('<P><A HREF="index.php?form=menu">Return to the main menu</A>.</P>');
+		includeFooter();
+		die();
+	};
 
 	$ch = curl_init();
 	$data = array(

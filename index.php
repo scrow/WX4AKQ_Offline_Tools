@@ -25,6 +25,19 @@
 const SAVE_TO_QUEUE = 1;
 const DOWNLOAD_ATTACHMENT = 2;
 
+// functions to see if we are online
+function connect_attempt($ip = '8.8.4.4', $port=53) {
+	return (bool) @fsockopen($ip, $port, $errnum, $errstring, 1);
+};
+function isOnline() {
+	// Test both Google nameservers
+	if(connect_attempt('8.8.4.4',53) || connect_attempt('8.8.8.8',53)) {
+		return true;
+	} else {
+		return false;
+	};
+};
+
 // Read configuration Options or redirect to configuration form
 
 if(!file_exists('config.xml')) {

@@ -23,6 +23,13 @@
 <hr/>
 
 <?php
+	
+	if(!isOnline()) {
+		echo('<P>You are not currently connected to the Internet.</P>');
+		echo('<P><A HREF="index.php?form=menu">Return to the main menu.</A></P>');
+		includeFooter();
+		die();
+	};
 
 	// Validate the call sign and API key
 	// Note that we will only refuse to upload a file IF the API key mismatches
@@ -127,7 +134,7 @@
 		echo('<P>One or more files were rejected due to a bad API key. Check your <A HREF="?form=config">System Configuration</A> and try again.</P>');
 	};
 ?>
-<P><A HREF="index.php">Return to main menu</A></P>
+<P><A HREF="index.php">Return to main menu.</A></P>
 
 <?php includeFooter();?>
 </div>
