@@ -182,7 +182,7 @@
 					vertical-align: bottom
 				}
 				
-				input, textarea {
+				input, textarea, select {
 					display: block
 				}
 				
@@ -227,7 +227,7 @@
 					margin-bottom: 2px
 				}
 				
-				textarea:focus, input:focus {
+				textarea:focus, input:focus, select:focus {
 					border: 1px solid #F6862F
 				}
 								
@@ -309,11 +309,13 @@
 				}
 				
 				select {
-					font-family: "Source Sans Pro";
+					font-family: "Cousine";
 					font-size: 10pt;
 					color: white;
 					border: 1px solid #303336;
-					background: #101010
+					background: #101010;
+					width: 140px;
+					outline: none
 				}
 			
 			}
@@ -664,7 +666,7 @@
 
 <fieldset class="call">
 	<label for="areaNum" class="required"> Area </label>
-	<select name="areaNum" id="areaNum" onchange="javascript:getSurvey(document.getElementById('spotterCall').value);form.spotterCall.focus()" style="width: 350px; ">
+	<select name="areaNum" id="areaNum">
 		<option value="1" selected="">1 - Richmond</option>
 		<option value="2">2 - Southern VA</option>
 		<option value="3">3 - Williamsburg</option>
@@ -676,7 +678,7 @@
 		<option value="9">9 - Eastern Shore</option>
 		<option value="99">99 - WFO Wakefield</option>
 	</select>
-	<label for="" class="required"> Spotter Callsign </label>
+	<label for="spotterCall" class="required"> Spotter Callsign </label>
 	<input type="text" id="spotterCall" name="spotterCall" />
 	<label for="spotterYes" class="required">Trained Spotter?</label>
 	<fieldset class="radiobuttons">
@@ -701,7 +703,7 @@
 	<label for="logComments"> Log Comments: </label>
 	<textarea name="logComments" id="logComments" onmouseover="javascript:showHelp('logComments');" onfocus="javascript:showHelp('logComments');"></textarea> 
 	<label for="flagReport"> Flag: </label>
-	<input name="flagReport" type="checkbox" value="yes" /> Suspicious or Potentially Fraudulent Report
+	<input name="flagReport" type="checkbox" value="yes" style="display: inline"/> Suspicious or Potentially Fraudulent Report
 </fieldset>
 
 <fieldset class="bottom">
