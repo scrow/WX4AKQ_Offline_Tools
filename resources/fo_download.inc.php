@@ -41,6 +41,8 @@
 	curl_close($ch);
 	$xml = simplexml_load_string($result);
 
+	ob_flush(); flush();
+
 	if(trim($xml->passfail)=='PASS') {
 		if(!file_exists('data')) {
 			mkdir('data');
@@ -51,6 +53,8 @@
 	} else {
 		echo('<P>Download Team Roster ... failed</br>');
 	};
+
+	ob_flush(); flush();
 	
 	// Get the list of supplemental files
 	$ch = curl_init();
@@ -65,6 +69,7 @@
 	curl_close($ch);
 	if($error!==0) {
 		echo('Download supplemental files list ... failed<br/>');
+		ob_flush(); flush();
 	} else {
 		$doDownload = true;
 		if(file_exists('offline_files.xml')) {
@@ -73,6 +78,7 @@
 				$doDownload = false;
 			};
 			echo('Download supplemental files list ... passed and up-to-date<br/>');
+			ob_flush(); flush();
 		};
 
 		if($doDownload) {
@@ -97,6 +103,7 @@
 				} else {
 					echo('fail<br/>');
 				};
+				ob_flush(); flush();
 				curl_close($ch);
 			};
 		};

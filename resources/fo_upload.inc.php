@@ -37,6 +37,9 @@
 		CURLOPT_POST => 1,
 		CURLOPT_POSTFIELDS => $data
 	);
+
+	ob_flush(); flush();
+
 	curl_setopt_array($ch, $opt_array);
 	$result = curl_exec($ch);
 	curl_close($ch);
