@@ -602,29 +602,9 @@
 
 <div id="instructions" style="display: block">
 
-	<P>To generate your report, please complete the form below and click Submit.  Additional instructions will be provided upon completion.  Fields marked <span class="required"></span> are required.  This form is for use only in sending reports to the Wakefield, Virginia WFO.  <SPAN id="criteriaLink" STYLE="display: inline"><A HREF="javascript:showCriteria();">Show SKYWARN Reporting Criteria.</A></SPAN></P>
+	<P>To generate your report, please complete the form below and click Submit.  Additional instructions will be provided upon completion.  Fields marked <span class="required"></span> are required.</P>
 
 </div>
-
-<a name="criteria"></a>
-
-<div id="criteria" style="display: none">
-	<HR/>
-	
-	<H2>SKYWARN Reporting Criteria:</H2>
-
-	<UL class="criteria">
-		<LI><B>Liquid precipitation:</B> <U>Measured</U> rainfall 1&quot; or more (indicate <I>&quot;measured since&quot;</I>); flooding of ditches, streets, streams, and rivers; coastal flooding from high tides.</LI>
-		<LI><B>Wind:</B> <U>Measured</U> wind of 50 MPH or higher; any trees, branches, power lines down due to wind; any structure damage due to wind.</LI>
-		<LI><B>Rotation:</B> Funnel clouds, rotating wall clouds, or tornadoes. Be very specific and detailed.</LI>
-		<LI><B>Hail:</B> Pea size or larger.  Indicate rain/hail mix.  Indicate whether hail size is measured or estimated. Note any damage such as broken glass or defoliation.</LI>
-		<LI><B>Lightning:</B> Only deaths, injuries, and damage due to lightning are reportable.</LI>
-		<LI><B>Winter:</B> Snow depth 2&quot; or more; snow falling at 1&quot;/hour or more; any ice accumulation on roads, trees, etc.  Indicate measured or estimated depth and provide surface details (grassy area, sidewalk, elevated surface, snow board).</LI>
-	</UL>
-
-<P>All reports should be your personal, first-person observations.  Please do not submit third-party reports, such as information gathered via public safety radio transmissions, local media, or similar sources.  You are personally responsible for the quality and credibility of your reports and should be able to furnish additional details upon request from the National Weather Service.  [<A HREF="javascript:hideCriteria();">Close</A>]</P>
-
-<HR/></div>
 
 <div id='reportForm' style='display: block'>
 
@@ -650,7 +630,7 @@
 	</select>
 	<label for="spotterCall" class="required"> Spotter Callsign </label>
 	<input type="text" id="spotterCall" name="spotterCall" />
-
+</fieldset>
 
 <fieldset class="eventInfo">
 	<label for="reportInfo" class="required"> Report Information: </label>
@@ -664,22 +644,43 @@
 
 	<label for="reportDate" class="required">Report Date:</label>
 	<input type="date" id="reportDate" name="reportDate" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
+
 	<label for="reportTime" class="required">Report Time:</label>
 	<input type="time" id="reportTime" name="reportTime" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
+
 	<label for="eventDate" class="required">Event Date:</label>
 	<input type="date" id="eventDate" name="eventDate" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
+
 	<label for="eventTime" class="required">Event Time:</label>
 	<input type="time" id="eventTime" name="eventTime" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
 
 	<label for="spotterID">Trained Spotter?</label>
 	<input name="spotterID" id="spotterID" type="checkbox" value="yes" style="display: inline"/> YES - This person identifies as a Trained Spotter
 
-</fieldset>
-
 <fieldset class="eventInfo">
 	<label for="logComments"> Log Comments: </label>
 	<textarea name="logComments" id="logComments"></textarea> 
 </fieldset>
+
+	<label for="relayedVia" class="required">Message Handling: </label>
+	<select name="relayedVia" id="relayedVia" style="width: 450px">
+		<option value="6">Hold for Future Edit</option>
+		<option value="0">Non-Reportable/Log Only</option>
+		<option value="1">Already Relayed to NWS - Phone/Other</option>
+		<option value="2">Already Relayed to NWS - Amateur Radio</option>
+		<option value="3" CHECKED>Send to NWS</option>
+		<option value="4">Send to NWS, Copy WX4AKQ via Winlink</option>
+	</select>
+	
+	<label for="relayedTo" class="required">Destination WFO: </label>
+	<select name="relayedTo" id="relayedTo" style="width: 450px">
+		<option value="WFO AKQ" CHECKED>AKQ - WFO Wakefield, VA</option>
+		<option value="WFO LWX">LWX - WFO Sterling, VA</option>
+		<option value="WFO MHX">MHX - WFO Newport/Morehead City, NC</option>
+		<option value="WFO PHI">PHI - WFO Mt. Holly, NJ</option>
+		<option value="WFO RAH">RAH - WFO Raleigh, NC</option>
+		<option value="WFO RNK">RNK - WFO Blacksburg, VA</option>
+	</select>
 
 <fieldset class="bottom">
 	<label for="trainingYes" class="required">Is this a Training Report?</label>
@@ -687,7 +688,6 @@
 		<input type="radio" name="training" id="trainingYes" value="YES" onmouseover="javascript:showHelp('training');" onfocus="javascript:showHelp('training');"/> <span onmouseover="javascript:showHelp('training');" onfocus="javascript:showHelp('training');">Yes</span><br/>
 		<input type="radio" name="training" id="trainingNo" value="NO" checked onmouseover="javascript:showHelp('training');" onfocus="javascript:showHelp('training');"/> <span onmouseover="javascript:showHelp('training');" onfocus="javascript:showHelp('training');">No</span>
 	</fieldset>
-
 </fieldset>
 
 
