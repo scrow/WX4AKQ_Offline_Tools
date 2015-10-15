@@ -8,7 +8,8 @@
 #	For license information, see the LICENSE.md file or visit
 #	http://wx4akq.org/software
 */
-?><!doctype html>
+?>
+<!doctype html>
 <html>
 <head>
 	<title>WX4AKQ Offline Tools: System Configuration</title>
