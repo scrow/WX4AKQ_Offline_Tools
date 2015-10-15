@@ -1,4 +1,9 @@
 *.zip
 queue/*
+data/*
+files/*
+!data/.htaccess
+!files/.htaccess
 .vagrant
 config.xml
+offline_files.xml

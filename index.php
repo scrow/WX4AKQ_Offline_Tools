@@ -91,8 +91,8 @@ switch($_SERVER['REQUEST_METHOD']) {
 					$fd = str_replace('{Callsign}', $Config['my_call'], $fd);
 					echo($fd);
 					break;
-				case 'doupload':
-					include('resources/fo_doupload.inc.php');
+				case 'upload':
+					include('resources/fo_upload.inc.php');
 					break;
 				case 'menu':
 					include('resources/fo_menu.inc.php');
@@ -131,6 +131,9 @@ switch($_SERVER['REQUEST_METHOD']) {
 					fwrite($fp, $xml->asXML());
 					fclose($fp);
 					header('Location: index.php?form=menu');
+					break;
+				case 'download':
+					include('resources/fo_download.inc.php');
 					break;
 				default:
 					die('Unrecognized form name.');

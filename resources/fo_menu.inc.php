@@ -41,7 +41,7 @@ $numXML = sizeof(glob($Config['queue_folder'].'/*.xml'));
 if($numXML == 0) {
 	echo(' (no reports queued)');
 } else {
-	echo(' ('.$numXML.' report(s) queued) <A HREF="?form=doupload">Upload now</A>');
+	echo(' ('.$numXML.' report(s) queued) <A HREF="?form=upload">Upload now</A>');
 };
 
 echo('</P>');
@@ -51,9 +51,21 @@ echo('</P>');
 <P>Available forms:
 <br/><a href="?form=WX4AKQ_Spotter_Report_Form">Spotter Report Form</a></P>
 
+<?php
+	if(file_exists('offline_files.xml')) {
+		echo('<P>Offline files:');
+		$xml = new SimpleXMLElement(file_get_contents('offline_files.xml'));
+		foreach($xml->file as $thisFile) {
+			echo('<br/><A HREF="files/'.$thisFile->saveas.'" TARGET="_blank">'.$thisFile->title.'</A>');
+		};
+		echo('<P>');
+	};
+?>
+
 <P>System Options:
 <br/><a href="?form=config">System Configuration</a>
-<br/><a href="?form=doupload">Upload Queued Reports</a></P>
+<br/><a href="?form=upload">Upload Queued Reports</a>
+<br/><a href="?form=download">Download Offline Data and Files from Server</a></P>
 
 <?php includeFooter();?>
 </div>
