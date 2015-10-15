@@ -56,13 +56,13 @@ if(file_exists('config.xml')) {
 	};
 	$Config['upload_url'] = trim($configFile->upload_url);
 	if($Config['upload_url'] == '') {
-		$Config['upload_url'] = 'http://dev.wx4akq.org/ops/xml_upload.php';
+		$Config['upload_url'] = 'http://ops.wx4akq.org/xml_upload.php';
 	};
 } else {
 	$Config['my_call'] = '';
 	$Config['queue_folder'] = 'queue';
 	$Config['op_mode'] = SAVE_TO_QUEUE;
-	$Config['upload_url'] = 'http://dev.wx4akq.org/ops/xml_upload.php';
+	$Config['upload_url'] = 'http://ops.wx4akq.org/xml_upload.php';
 	$Config['api_key'] = '';
 };
 
