@@ -7,7 +7,7 @@ else
 	currdir=`pwd`
 	cd ..
 	cp -R "$currdir" "$newver"
-	zip -9o "$newver.zip" $newver/* --exclude .* queue config.xml mkrelease.sh
+	zip -9 "$newver.zip" $newver/*.md $newver/*.php $newver/*.bat $newver/start_server.sh $newver/Vagrant* $newver/resources/* $newver/data/.htaccess $newver/forms/* $newver/files/.htaccess
 	rm -Rf "$newver"
 	mv "$newver.zip" "$currdir" 
 	cd $currdir
