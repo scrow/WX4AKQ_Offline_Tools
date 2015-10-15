@@ -41,9 +41,20 @@
 	<input type="text" maxlength="32" name="api_key" id="api_key" style="width: 400px" value="<?php echo($Config['api_key']);?>"/>
 </fieldset>
 
+<!--
 <fieldset class="eventInfo">
 	<label for="upload_url" class="required">Upload URL:</label>
 	<input type="text" name="upload_url" id="upload_url" style="width: 400px" value="<?php echo($Config['upload_url']);?>"/>
+</fieldset>
+-->
+<input type="hidden" name="upload_url" id="upload_url" value="<?php echo($Config['upload_url']);?>"/>
+
+<fieldset class="call">
+	<label for="override_connect_detect" class="required">Connection Detect:</label>
+	<fieldset class="radiobuttons">
+		<input type="radio" name="override_connect_detect" id="connect_detect_false" <?php if(!$Config['override_connect_detect']) { echo('CHECKED'); };?> VALUE="false"> Enabled<br/>
+		<input type="radio" name="override_connect_detect" id="connect_detect_true" <?php if($Config['override_connect_detect']) { echo('CHECKED'); };?> VALUE="true"> Disabled
+	</fieldset>
 </fieldset>
 
 <fieldset class="call">

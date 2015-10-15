@@ -71,12 +71,18 @@ if(file_exists('config.xml')) {
 	if($Config['upload_url'] == '') {
 		$Config['upload_url'] = 'http://ops.wx4akq.org/xml_upload.php';
 	};
+	if(trim($configFile->override_connect_detect)=='true') {
+		$Config['override_connect_detect']=true;
+	} else {
+		$Config['override_connect_detect']=false;
+	};
 } else {
 	$Config['my_call'] = '';
 	$Config['queue_folder'] = 'queue';
 	$Config['op_mode'] = SAVE_TO_QUEUE;
 	$Config['upload_url'] = 'http://ops.wx4akq.org/xml_upload.php';
 	$Config['api_key'] = '';
+	$Config['override_connect_detect'] = false;
 };
 
 function includeFooter() {
@@ -139,6 +145,11 @@ switch($_SERVER['REQUEST_METHOD']) {
 						$xml->addChild('queue_folder',trim($_GET['queue_folder']));
 					} else {
 						$xml->addChild('queue_folder',trim($_GET['queue_folder']));
+					};
+					if(isset($_GET['override_connect_detect']) && (trim($_GET['override_connect_detect']=='true'))) {
+						$xml->addChild('override_connect_detect','true');
+					} else {
+						$xml->addChild('override_connect_detect','false');
 					};
 					$fp = fopen('config.xml','w');
 					fwrite($fp, $xml->asXML());
