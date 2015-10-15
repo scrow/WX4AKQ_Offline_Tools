@@ -469,6 +469,19 @@
 
 			}
 			
+			function confirmBack() {
+				if(confirm('Abandon this form and return to the menu?')) {
+					window.location = 'index.php?form=menu';
+				};
+			};
+			
+			function confirmReset() {
+				if(confirm('Clear this form and start over?')) {
+					document.getElementById('report').reset();
+					initialValues();
+				};
+			};
+			
 			function showHelp(whichHelp) {
 				switch(whichHelp) {
 					case 'spotterID':
