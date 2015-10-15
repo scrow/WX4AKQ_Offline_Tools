@@ -24,7 +24,7 @@
 
 <?php
 	
-	if(!isOnline()) {
+	if((!isOnline()) && (!$Config['override_connect_detect'])) {
 		echo('<P>You are not currently connected to the Internet.</P>');
 		echo('<P><A HREF="index.php?form=menu">Return to the main menu.</A></P>');
 		includeFooter();
