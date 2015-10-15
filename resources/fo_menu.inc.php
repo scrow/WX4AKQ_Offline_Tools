@@ -49,7 +49,11 @@ echo('</P>');
 <HR/>
 
 <P>Available forms:
-<br/><a href="?form=WX4AKQ_Spotter_Report_Form">Spotter Report Form</a></P>
+<br/><a href="?form=WX4AKQ_Spotter_Report_Form">Spotter Report Form</a>
+<?php if($Config['api_key']!=='') {
+	echo('<br/><a href="?form=WX4AKQ_NCO_Report_Form">NCO Report Form</a>');
+};?>
+</P>
 
 <?php
 	if(file_exists('offline_files.xml')) {

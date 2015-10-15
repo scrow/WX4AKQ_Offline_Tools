@@ -110,6 +110,15 @@ switch($_SERVER['REQUEST_METHOD']) {
 					$fd = str_replace('{Callsign}', $Config['my_call'], $fd);
 					echo($fd);
 					break;
+				case 'wx4akq_nco_report_form':
+					// Serve the WX4AKQ_NCO_Report_Form.html file
+					$fd = file_get_contents('forms/WX4AKQ_NCO_Report_Form.html');
+					$fd = str_replace('{FormServer}', $_SERVER['SERVER_NAME'], $fd);
+					$fd = str_replace('{FormPort}', $_SERVER['SERVER_PORT'].dirname($_SERVER['REQUEST_URI'].'/index.php'),$fd);
+					$fd = str_replace('id="appName" value="RMSExpress"', 'id="appName" value="runlocal"', $fd);
+					$fd = str_replace('{Callsign}', $Config['my_call'], $fd);
+					echo($fd);
+					break;
 				case 'upload':
 					include('resources/fo_upload.inc.php');
 					break;
