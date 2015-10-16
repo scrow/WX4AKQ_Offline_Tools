@@ -615,21 +615,33 @@
 <input type="hidden" name="ncoCall" value="{Callsign}"/>
 
 <fieldset class="call">
-	<label for="areaNum" class="required"> Area </label>
-	<select name="areaNum" id="areaNum">
-		<option value="1">1 - Richmond</option>
-		<option value="2">2 - Southern VA</option>
-		<option value="3">3 - Williamsburg</option>
-		<option value="4">4 - Piedmont</option>
-		<option value="5">5 - Southeast VA</option>
-		<option value="6">6 - Smithfield</option>
-		<option value="7">7 - Northeast NC</option>
-		<option value="8">8 - Northern Neck</option>
-		<option value="9">9 - Eastern Shore</option>
-		<option value="99">99 - WFO Wakefield</option>
-	</select>
-	<label for="spotterCall" class="required"> Spotter Callsign </label>
-	<input type="text" id="spotterCall" name="spotterCall" />
+	<table>
+		<tr>
+			<td>
+				<label for="areaNum" class="required"> Area </label>
+			</td>
+			<td>
+				<select name="areaNum" id="areaNum">
+					<option value="1">1 - Richmond</option>
+					<option value="2">2 - Southern VA</option>
+					<option value="3">3 - Williamsburg</option>
+					<option value="4">4 - Piedmont</option>
+					<option value="5">5 - Southeast VA</option>
+					<option value="6">6 - Smithfield</option>
+					<option value="7">7 - Northeast NC</option>
+					<option value="8">8 - Northern Neck</option>
+					<option value="9">9 - Eastern Shore</option>
+					<option value="99">99 - WFO Wakefield</option>
+				</select>
+			</td>
+			<td>
+				<label for="spotterCall" class="required" style="width: 120px"> Spotter Callsign </label>
+			</td>
+			<td>
+				<input type="text" id="spotterCall" name="spotterCall" />
+			</td>
+		</tr>
+	</table>
 </fieldset>
 
 <fieldset class="eventInfo">
