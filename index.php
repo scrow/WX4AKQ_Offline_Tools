@@ -159,7 +159,7 @@ switch($_SERVER['REQUEST_METHOD']) {
 							$edit_js .= 'document.getElementById("trainingNo").checked = true;';
 						};
 
-						$edit_js .= 'document.getElementById("edit_filename").value="'.$edit_filename.'";';
+						$edit_js .= 'document.getElementById("edit_filename").value="'.basename($edit_filename).'";';
 						
 						$fd = str_replace('/* FORM_EDIT_PLACEHOLDER */',$edit_js, $fd);
 					};
