@@ -641,18 +641,17 @@
 	<input name="flagReport" type="checkbox" value="yes" style="display: inline"/> Suspicious or Potentially Fraudulent Report
 </fieldset>
 
+<fieldset>
+	<label for="reportDate" class="required">Report Date/Time:</label>
+	<input style="display: inline !important" type="date" id="reportDate" name="reportDate" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
+	<input style="display: inline !important" type="time" id="reportTime" name="reportTime" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
+</fieldset>
 
-	<label for="reportDate" class="required">Report Date:</label>
-	<input type="date" id="reportDate" name="reportDate" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
-
-	<label for="reportTime" class="required">Report Time:</label>
-	<input type="time" id="reportTime" name="reportTime" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
-
-	<label for="eventDate" class="required">Event Date:</label>
-	<input type="date" id="eventDate" name="eventDate" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
-
-	<label for="eventTime" class="required">Event Time:</label>
-	<input type="time" id="eventTime" name="eventTime" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
+<fieldset>
+	<label for="eventDate" class="required">Event Date/Time:</label>
+	<input style="display: inline !important" type="date" id="eventDate" name="eventDate" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
+	<input style="display: inline !important" type="time" id="eventTime" name="eventTime" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
+</fieldset>
 
 	<label for="spotterID">Trained Spotter?</label>
 	<input name="spotterID" id="spotterID" type="checkbox" value="yes" style="display: inline"/> YES - This person identifies as a Trained Spotter
