@@ -476,14 +476,14 @@
 				if(confirm('Abandon this form and return to the menu?')) {
 					window.location = 'index.php?form=menu';
 				};
-			};
+			}
 			
 			function confirmReset() {
 				if(confirm('Clear this form and start over?')) {
 					document.getElementById('report').reset();
 					initialValues();
 				};
-			};
+			}
 			
 			function showConfirmation() {
 				var e = document.getElementById('reportForm');
@@ -498,39 +498,11 @@
 				f.style.display = 'block';
 			}
 			
-			function showCriteria() {
-				var e = document.getElementById('criteria');
-				e.style.display = 'block';
-				
-				var f = document.getElementById('criteriaLink');
-				f.style.display = 'none';
-
-				document.getElementById('eventDate').focus();  /* for Chrome, Opera */
-				document.getElementById('eventDate').select();  /* for all other browsers */
-			}
-			
-			function hideCriteria() {
-				var e = document.getElementById('criteria');
-				e.style.display = 'none';
-				
-				var f = document.getElementById('criteriaLink');
-				f.style.display = 'inline';
-
-				document.getElementById('eventDate').focus();  /* for Chrome, Opera */
-				document.getElementById('eventDate').select();  /* for all other browsers */
-			}
-			
-			function hideInstructions() {
-				var e = document.getElementById('instructions');
-				e.style.display = 'none';
-			}
-			
 			function validate() {
 				document.getElementById('eventDate').value.trim();
 				document.getElementById('eventTime').value.trim();
 				document.getElementById('eventLocation').value.trim();
 				document.getElementById('reportInfo').value.trim();
-				document.getElementById('contactNumber').value.trim();
 				
 				if(document.getElementById('eventDate').value == '') {
 					alert('An event date must be specified. Please enter a date in YYYY-MM-DD format, Eastern time zone.');
@@ -571,23 +543,9 @@
 					document.getElementById('clearBtn').disabled = true;
 					document.getElementById('cancelBtn').disabled = true;
 					
-					showHelp('');
-					
-					// Populate training banner
-					if(document.getElementById('trainingYes').checked) {
-						document.getElementById('trainingBanner').value = "\r    *** TRAINING REPORT *** FOR TRAINING PURPOSES ONLY ***\r";
-					} else {
-						document.getElementById('trainingBanner').value = "";
-					};
-					
-					// Generate report date and time
-					var now=new Date();
-					document.getElementById('reportDate').value = now.format('isoDate');
-					document.getElementById('reportTime').value = now.format('HH:MM');
-					
 					// Submit the form and redirect to confirmation page
 					document.getElementById('report').submit();
-					setTimeout(function() { hideCriteria(); hideInstructions(); showConfirmation(); }, 0);
+					setTimeout(function() { showConfirmation(); }, 0);
 				}
 			}
 			
@@ -646,31 +604,31 @@
 
 <fieldset class="eventInfo">
 	<label for="reportInfo" class="required"> Report Information: </label>
-	<textarea name="reportInfo" id="reportInfo" onfocus="javascript:showHelp('reportInfo');"></textarea>
+	<textarea name="reportInfo" id="reportInfo"></textarea>
 	<label for="eventLocation" class="required">Location of Event: </label>
 	<textarea name="eventLocation" id="eventLocation"></textarea>
 	<label for="flagReport"> Flag: </label>
-	<input name="flagReport" type="checkbox" value="yes" style="display: inline"/> Suspicious or Potentially Fraudulent Report
+	<input name="flagReport" id="flagReport" type="checkbox" value="yes" style="display: inline"/> Suspicious or Potentially Fraudulent Report
 </fieldset>
 
 <fieldset>
 	<label for="reportDate" class="required">Report Date/Time:</label>
-	<input style="display: inline !important" type="date" id="reportDate" name="reportDate" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
-	<input style="display: inline !important" type="time" id="reportTime" name="reportTime" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
+	<input style="display: inline !important" type="date" id="reportDate" name="reportDate"/>
+	<input style="display: inline !important" type="time" id="reportTime" name="reportTime"/>
 </fieldset>
 
 <fieldset>
 	<label for="eventDate" class="required">Event Date/Time:</label>
-	<input style="display: inline !important" type="date" id="eventDate" name="eventDate" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
-	<input style="display: inline !important" type="time" id="eventTime" name="eventTime" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
+	<input style="display: inline !important" type="date" id="eventDate" name="eventDate"/>
+	<input style="display: inline !important" type="time" id="eventTime" name="eventTime"/>
 </fieldset>
 
 	<label for="spotterID">Trained Spotter?</label>
 	<input name="spotterID" id="spotterID" type="checkbox" value="yes" style="display: inline"/> YES - This person identifies as a Trained Spotter
 
 <fieldset class="eventInfo">
-	<label for="logComments"> Log Comments: </label>
-	<textarea name="logComments" id="logComments"></textarea> 
+	<label for="reportComments"> Log Comments: </label>
+	<textarea name="reportComments" id="reportComments"></textarea> 
 </fieldset>
 
 	<label for="relayedVia" class="required">Message Handling: </label>
@@ -679,13 +637,13 @@
 		<option value="0">Non-Reportable/Log Only</option>
 		<option value="1">Already Relayed to NWS - Phone/Other</option>
 		<option value="2">Already Relayed to NWS - Amateur Radio</option>
-		<option value="3" CHECKED>Send to NWS</option>
+		<option value="3" SELECTED>Send to NWS</option>
 		<option value="4">Send to NWS, Copy WX4AKQ via Winlink</option>
 	</select>
 	
 	<label for="relayedTo" class="required">Destination WFO: </label>
 	<select name="relayedTo" id="relayedTo" style="width: 450px">
-		<option value="WFO AKQ" CHECKED>AKQ - WFO Wakefield, VA</option>
+		<option value="WFO AKQ" SELECTED>AKQ - WFO Wakefield, VA</option>
 		<option value="WFO LWX">LWX - WFO Sterling, VA</option>
 		<option value="WFO MHX">MHX - WFO Newport/Morehead City, NC</option>
 		<option value="WFO PHI">PHI - WFO Mt. Holly, NJ</option>
@@ -696,8 +654,8 @@
 <fieldset class="bottom">
 	<label for="trainingYes" class="required">Is this a Training Report?</label>
 	<fieldset class="radiobuttons">
-		<input type="radio" name="training" id="trainingYes" value="YES" onmouseover="javascript:showHelp('training');" onfocus="javascript:showHelp('training');"/> <span onmouseover="javascript:showHelp('training');" onfocus="javascript:showHelp('training');">Yes</span><br/>
-		<input type="radio" name="training" id="trainingNo" value="NO" checked onmouseover="javascript:showHelp('training');" onfocus="javascript:showHelp('training');"/> <span onmouseover="javascript:showHelp('training');" onfocus="javascript:showHelp('training');">No</span>
+		<input type="radio" name="training" id="trainingYes" value="yes"/> <span>Yes</span><br/>
+		<input type="radio" name="training" id="trainingNo" value="no" checked/> <span>No</span>
 	</fieldset>
 </fieldset>
 
@@ -706,6 +664,7 @@
 <input type="hidden" name="appName" id="appName" value="RMSExpress" />
 <input type="hidden" name="trainingBanner" id="trainingBanner" value="" />
 <input type="hidden" name="formName" id="formName" value="WX4AKQ_NCO_Report_Form" />
+<input type="hidden" name="edit_filename" id="edit_filename" value="" />
 <br/>
 <fieldset class="buttons">
 	<input type="button" id="submitBtn" name="submitBtn" value="Submit" class="green" onClick="javascript:submitAndClose();"/>

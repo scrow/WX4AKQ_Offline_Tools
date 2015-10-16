@@ -117,6 +117,53 @@ switch($_SERVER['REQUEST_METHOD']) {
 					$fd = str_replace('{FormPort}', $_SERVER['SERVER_PORT'].dirname($_SERVER['REQUEST_URI'].'/index.php'),$fd);
 					$fd = str_replace('id="appName" value="RMSExpress"', 'id="appName" value="runlocal"', $fd);
 					$fd = str_replace('{Callsign}', $Config['my_call'], $fd);
+
+					if(isset($_GET['edit']) && trim($_GET['edit'])!=='') {
+						$edit_filename = $Config['queue_folder'].'/'.$_GET['edit'];
+					};
+
+					if(isset($_GET['edit']) && (trim($_GET['edit'])!=='') && (file_exists($edit_filename))) {
+						$edit_js = '';
+						
+						$xml = new SimpleXMLElement(file_get_contents($Config['queue_folder'].'/'.$_GET['edit']));
+						$edit_js .= 'document.getElementById("areaNum").value="'.$xml->variables->areanum.'";';
+						$edit_js .= 'document.getElementById("spotterCall").value="'.$xml->variables->spottercall.'";';
+						$edit_js .= 'document.getElementById("reportInfo").value="'.$xml->variables->reportinfo.'";';
+						$edit_js .= 'document.getElementById("eventLocation").value="'.$xml->variables->eventlocation.'";';
+
+
+						if(trim($xml->variables->flagreport)=='yes') {
+							$edit_js .= 'document.getElementById("flagReport").checked = true;';
+						} else {
+							$edit_js .= 'document.getElementById("flagReport").checked = false;';
+						};
+
+						$edit_js .= 'document.getElementById("reportDate").value="'.$xml->variables->reportdate.'";';
+						$edit_js .= 'document.getElementById("reportTime").value="'.$xml->variables->reporttime.'";';
+						$edit_js .= 'document.getElementById("eventDate").value="'.$xml->variables->eventdate.'";';
+						$edit_js .= 'document.getElementById("eventTime").value="'.$xml->variables->eventtime.'";';
+
+						if(trim($xml->variables->spotterid)=='yes') {
+							$edit_js .= 'document.getElementById("spotterID").checked = true;';
+						} else {
+							$edit_js .= 'document.getElementById("spotterID").checked = false;';
+						};
+
+						$edit_js .= 'document.getElementById("reportComments").value="'.$xml->variables->reportcomments.'";';
+						$edit_js .= 'document.getElementById("relayedVia").value="'.trim($xml->variables->relayedvia).'";';
+						$edit_js .= 'document.getElementById("relayedTo").value="'.trim($xml->variables->relayedto).'";';
+
+						if(trim($xml->variables->training)=='yes') {
+							$edit_js .= 'document.getElementById("trainingYes").checked = true;';
+						} else {
+							$edit_js .= 'document.getElementById("trainingNo").checked = true;';
+						};
+
+						$edit_js .= 'document.getElementById("edit_filename").value="'.$edit_filename.'";';
+						
+						$fd = str_replace('/* FORM_EDIT_PLACEHOLDER */',$edit_js, $fd);
+					};
+
 					echo($fd);
 					break;
 				case 'upload':
@@ -189,7 +236,11 @@ switch($_SERVER['REQUEST_METHOD']) {
 			$xmlVariables->addChild($thiskey, $_POST[$thiskey]);
 		};
 		// Generate a filename
-		$filename = $_POST['formname'].'-'.time().'.xml';
+		if(isset($_POST['edit_filename']) && (trim($_POST['edit_filename'])!=='')) {
+			$filename = trim($_POST['edit_filename']);
+		} else {
+			$filename = $_POST['formname'].'-'.time().'.xml';
+		};
 		// Send the file to the browser (we might also want to provide a config option to save to disk)
 		switch($Config['op_mode']) {
 			case SAVE_TO_QUEUE:
