@@ -215,6 +215,9 @@ switch($_SERVER['REQUEST_METHOD']) {
 				case 'download':
 					include('resources/fo_download.inc.php');
 					break;
+				case 'editreport':
+					include('resources/fo_editreport.inc.php');
+					break;
 				default:
 					die('Unrecognized form name.');
 					break;

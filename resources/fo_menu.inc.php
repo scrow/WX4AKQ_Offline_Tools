@@ -68,7 +68,12 @@ echo('</P>');
 
 <P>System Options:
 <br/><a href="?form=config">System Configuration</a>
-<br/><a href="?form=upload">Upload Queued Reports</a>
+<?php if(sizeof(glob($Config['queue_folder'].'/*.xml'))>0) {
+	echo('<br/><a href="?form=upload">Upload Queued Reports</a>');
+};
+if(($Config['api_key']!=='') && (sizeof(glob($Config['queue_folder'].'/WX4AKQ_NCO_Report_Form-*.xml'))>0)) {
+	echo('<br/><a href="?form=editreport">Edit Queued NCO Reports</a>');
+};?>
 <br/><a href="?form=download">Download Offline Data and Files from Server</a></P>
 
 <?php includeFooter();?>
