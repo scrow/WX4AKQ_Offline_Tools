@@ -485,6 +485,13 @@
 				};
 			}
 			
+			function confirmDelete () {
+				if(confirm('Delete this report?')) {
+					document.getElementById('operation').value='delete';
+					submitAndClose(true);
+				};
+			}
+			
 			function showConfirmation() {
 				var e = document.getElementById('reportForm');
 				e.style.display = 'none';
@@ -538,9 +545,9 @@
 
 			}
 
-			function submitAndClose(){
+			function submitAndClose(skipValidate = false){
 
-				if(validate()){
+				if(skipValidate || validate()){
 					// Disable all form fields here
 					document.getElementById('submitBtn').disabled = true;
 					document.getElementById('clearBtn').disabled = true;
@@ -662,6 +669,7 @@
 	</fieldset>
 </fieldset>
 
+<input type="hidden" name="operation" id="operation" value="" />
 <input type="hidden" name="api_key" id="api_key" value="" />
 <input type="hidden" name="formVersion" id="formVersion" value="1" />
 <input type="hidden" name="appName" id="appName" value="RMSExpress" />
@@ -673,6 +681,7 @@
 	<input type="button" id="submitBtn" name="submitBtn" value="Submit" class="green" onClick="javascript:submitAndClose();"/>
 	<input type="button" id="clearBtn" name="clearBtn" value="Clear Form" class="gray" onClick="javascript:confirmReset();" />
 	<input type="button" id="cancelBtn" name="cancelBtn" value="Cancel" class="gray" style="display: none" onClick="javascript:confirmBack();" />
+	<input type="button" id="deleteBtn" name="deleteBtn" value="Delete Report" class="red" style="display: none" onClick="javascript:confirmDelete();" />
 </fieldset>
 </form>
 </div>

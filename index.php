@@ -161,6 +161,7 @@ switch($_SERVER['REQUEST_METHOD']) {
 
 						$edit_js .= 'document.getElementById("api_key").value="'.$Config['api_key'].'";';
 						$edit_js .= 'document.getElementById("edit_filename").value="'.basename($edit_filename).'";';
+						$edit_js .= 'document.getElementById("deleteBtn").style.display="inline";';
 						
 						$fd = str_replace('/* FORM_EDIT_PLACEHOLDER */',$edit_js, $fd);
 					};
@@ -245,6 +246,15 @@ switch($_SERVER['REQUEST_METHOD']) {
 		} else {
 			$filename = $_POST['formname'].'-'.time().'.xml';
 		};
+		
+		// Delete the report if so requested
+		if(isset($_POST['formname']) && ($_POST['formname']=='WX4AKQ_NCO_Report_Form') && ($_POST['operation']=='delete')) {
+			if(file_exists($Config['queue_folder'].'/'.$filename)) {
+				unlink($Config['queue_folder'].'/'.$filename);
+			};
+			die();
+		};
+		
 		// Send the file to the browser (we might also want to provide a config option to save to disk)
 		switch($Config['op_mode']) {
 			case SAVE_TO_QUEUE:
