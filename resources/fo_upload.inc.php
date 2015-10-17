@@ -59,6 +59,7 @@
 	};
 	
 	$rejected_due_to_acl = false;
+	$rejected_due_to_hold = false;
 
 	$api_key_required=array();
 	$api_key_required[] = 'WX4AKQ_NCO_Report_Form';
@@ -66,9 +67,11 @@
 	// Iterate through the queue folder and upload .xml files
 	$uploaded = 0;
 	$failed = 0;
+	$skipped = 0;
 	foreach(glob($Config['queue_folder'].'/*.xml') as $filename) {
 		
 		$rejected_due_to_acl = false;
+		$rejected_due_to_hold = false;
 		
 		// Let's make sure the API key and username are set to match current config
 		$xml = new SimpleXMLElement(file_get_contents($filename));
@@ -77,10 +80,14 @@
 			$xml->variables->api_key = $Config['api_key'];
 		};
 		file_put_contents($filename, $xml->asXML());
+				
+		if(isset($xml->variables->formname) && ($xml->variables->formname=='WX4AKQ_NCO_Report_Form') && ($xml->variables->relayedvia=='6')) {
+			$rejected_due_to_hold = true;
+		};
 		
 		$success = true;
 		
-		if(!$rejected_due_to_acl) {
+		if((!$rejected_due_to_acl) && (!$rejected_due_to_hold)) {
 			$ch = curl_init();
 			if(class_exists('CurlFile')) {
 				$uploadFile = new CurlFile($filename, mime_content_type($filename), $filename);	
@@ -125,10 +132,14 @@
 			unlink($filename);
 			$uploaded++;
 		} else {
-			$failed++;
+			if($rejected_due_to_hold) {
+				$skipped++;
+			} else {
+				$failed++;			
+			};
 		};
 	}; // end foreach(glob(...
-	echo('<P>'.$uploaded.' files uploaded, '.$failed.' failed.</P>');
+	echo('<P>'.$uploaded.' files uploaded, '.$skipped.' skipped, '.$failed.' failed.</P>');
 	
 	if($rejected_due_to_acl) {
 		echo('<P>One or more files were rejected due to a bad API key. Check your <A HREF="?form=config">System Configuration</A> and try again.</P>');
