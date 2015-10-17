@@ -22,7 +22,9 @@ Working Internet access is required to complete the initial setup.
 
 Ensure you have [Vagrant](http://www.vagrantup.com) installed.
 
-Navigate to the folder where you extracted the project files.  Windows users run the `start_server.bat` file.  Mac and Linux users, run `start_server.sh` from a terminal window.  It will take several minutes to download and configure the virtual machine.  When the setup is complete, you will be prompted to navigate to [http://localhost:8080](http://localhost:8080).  You should see the WX4AKQ Offline Tools configuration window.
+Navigate to the folder where you extracted the project files.  Windows users run the `start_server.bat` file.  Mac and Linux users, run `start_server.sh` from a terminal window.  The first time you run this script, Vagrant will download and configure a virtual machine.  This process will take 10 to 20 minutes, potentially longer, depending on the speed of your Internet connection and your computer's processor speed.  Users with slower computers or slow Internet connections (satellite, DSL) may require significantly longer setup time.
+
+When the setup is complete, you will be prompted to navigate to [http://localhost:8080](http://localhost:8080).  You should see the WX4AKQ Offline Tools configuration window.
 
 In a new browser window or tab, log in to the SKYWARN Ops Portal [My Account](http://ops.wx4akq.org/myaccount.php) page.  Highlight and copy your API Key to the clipboard.  Return to the WX4AKQ Offline Tools configuration window.  Enter your call sign and paste your API Key into the boxes provided.
 
