@@ -141,7 +141,11 @@
 	}; // end foreach(glob(...
 	echo('<P>'.$uploaded.' files uploaded, '.$skipped.' skipped, '.$failed.' failed.</P>');
 	
-	if($rejected_due_to_acl) {
+	if($skipped > 0) {
+		echo('<P>You have one or more reports on hold.  These reports were skipped.  Please <A HREF="?form=editreport">complete these reports and set message handling</A> and then retry the upload.</P>');
+	};
+	
+	if($rejected > 0) {
 		echo('<P>One or more files were rejected due to a bad API key. Check your <A HREF="?form=config">System Configuration</A> and try again.</P>');
 	};
 ?>
