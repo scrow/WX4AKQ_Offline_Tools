@@ -41,7 +41,13 @@
 			$summary = $xml->variables->reportinfo;
 		};
 		
-		echo('<br/><a href="?form=WX4AKQ_NCO_Report_Form&edit='.basename($filename).'">'.$summary.' from '.$xml->variables->spottercall.' reported '.$xml->variables->eventdate.' at '.$xml->variables->eventtime.'</A>');
+		if($xml->variables->relayedvia==6) {
+			$holdtext = ' <B>(ON HOLD)</B>';
+		} else {
+			$holdtext = '';
+		};
+		
+		echo('<br/><a href="?form=WX4AKQ_NCO_Report_Form&edit='.basename($filename).'">'.$summary.' from '.$xml->variables->spottercall.' reported '.$xml->variables->eventdate.' at '.$xml->variables->eventtime.$holdtext.'</A>');
 		unset($xml);
 	}; //end foreach(glob...
 ?>
