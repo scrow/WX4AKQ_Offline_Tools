@@ -120,6 +120,10 @@ switch($_SERVER['REQUEST_METHOD']) {
 					// Serve the WX4AKQ_NCO_Report_Form.html file
 					$fd = file_get_contents('forms/WX4AKQ_NCO_Report_Form.html');
 					$fd = str_replace('{FormServer}', $_SERVER['SERVER_NAME'], $fd);
+					
+					$uri_parts = explode('?', dirname($_SERVER['REQUEST_URI']), 2);
+					$fd = str_replace('{AjaxPort}', $_SERVER['SERVER_PORT'].$uri_parts[0].'index.php',$fd);
+					
 					$fd = str_replace('{FormPort}', $_SERVER['SERVER_PORT'].dirname($_SERVER['REQUEST_URI'].'/index.php'),$fd);
 					$fd = str_replace('id="appName" value="RMSExpress"', 'id="appName" value="runlocal"', $fd);
 					$fd = str_replace('{Callsign}', $Config['my_call'], $fd);
@@ -233,6 +237,45 @@ switch($_SERVER['REQUEST_METHOD']) {
 					break;
 				case 'roster':
 					include('resources/fo_roster.inc.php');
+					break;
+				case 'ajax':
+					error_log('trigger');
+					if(isset($_GET['req'])) {
+						switch($_GET['req']) {
+							case 'fcc':
+								// Do FCC database dip and return string formatted for NCO Form
+								if(file_exists('data/fcc.sqlite3')) {
+									$db = new PDO('sqlite:data/fcc.sqlite3');
+									$sth = $db->prepare('SELECT * FROM fcc WHERE callsign=?');
+									$sth->execute(array(strtoupper(trim($_GET['callsign']))));
+									$result = $sth->fetch(PDO::FETCH_ASSOC);
+									if(($result['callsign']==strtoupper(trim($_GET['callsign']))) && (trim($result['last'])!=='')) {
+										if(trim($result['address']=='')) {
+											$address = '';
+											$divHeight = '42px';
+											$insertLink = '';
+										} else {
+											$address = $result['address'].'<br/>';
+											$divHeight = '82px';
+											$insertLink = "<br/><A HREF=\"#\" onClick=\"javascript:document.getElementById('eventLocation').value='".$result['address'].", ".$result['city']." ".$result['state']."';document.getElementById('reportInfo').select();\">Use as Event Location</A>";
+										};
+										echo('<LABEL FOR="fccdata" style="height: '.$divHeight.'">FCC Data:</LABEL><div style="height:'.$divHeight.'">'.$result['last'].', '.$result['first'].' '.$result['middle'].'<br>'.$address.$result['city'].' '.$result['state'].' '.$result['zip'].$insertLink.'</div>');
+									} else {
+										echo('<LABEL FOR="fccdata">FCC Data:</LABEL>Call sign not found.');
+										// return nothing, callsign not found
+									};
+									unset($db);
+								} else {
+									// return nothing, database does not exist
+								};
+								break;
+							default:
+								die('Unrecognized AJAX request.');
+								break;
+						}; // end switch($POST['req']);
+					} else {
+						die('AJAX request not supplied.');
+					};
 					break;
 				default:
 					die('Unrecognized form name.');
