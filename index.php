@@ -220,6 +220,9 @@ switch($_SERVER['REQUEST_METHOD']) {
 				case 'editreport':
 					include('resources/fo_editreport.inc.php');
 					break;
+				case 'roster':
+					include('resources/fo_roster.inc.php');
+					break;
 				default:
 					die('Unrecognized form name.');
 					break;
