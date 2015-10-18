@@ -504,10 +504,14 @@
 				var e = document.getElementById('instructions');
 				e.style.display = 'none';
 				
-				if(document.getElementById('appName').value=="runlocal") {
-					var f = document.getElementById('runlocalConfirmation');
+				if(document.getElementById('operation').value == 'delete') {
+					var f = document.getElementById('deleteConfirmation');
 				} else {
-					var f = document.getElementById('confirmation');
+					if(document.getElementById('appName').value=="runlocal") {
+						var f = document.getElementById('runlocalConfirmation');
+					} else {
+						var f = document.getElementById('confirmation');
+					};
 				};
 				
 				f.style.display = 'block';
@@ -714,6 +718,12 @@
 	
 	<p><a href="?form=menu">Click here to return to the main menu.</a></p>
 
+</div>
+
+<div id="deleteConfirmation" style="display: none">
+	<p>Your report has been deleted.</p>
+	
+	<p><a href="?form=menu">Click here to return to the main menu.</a></p>
 </div>
 
 <hr/>
