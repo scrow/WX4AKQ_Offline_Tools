@@ -297,6 +297,18 @@
 		padding-top: 7px;
 		text-shadow: 2px 2px #303336
 	}
+	
+	table {
+		color: white
+	}
+	
+	tr {
+		color: white
+	}
+	
+	td {
+		color: white
+	}
 
 }
 /* End @media all */

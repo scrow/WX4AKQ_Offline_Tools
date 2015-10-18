@@ -73,13 +73,15 @@
 	} else {
 		// Step through the roster data and show summary.  Sort order is determined by the XML file.
 		// This should look similar to http://ops.wx4akq.org/roster.php
+		echo "<table><thead><tr><td>Area</td><td>Callsign</td><td>Name</td><td>Role</td></tr></thead>";
 		foreach($xml->entry as $entry) {
-			echo($entry->areanum);
-			echo($entry->callsign); // display as link to ?form=roster&callsign=$entry->callsign
-			echo($entry->firstname);
-			echo($entry->lastname);
-			echo($entry->role);
+			echo "<tr><td>$entry->areanum</td>";
+			echo "<td><a href=\"?form=roster&callsign=$entry->callsign\"> $entry->callsign </a></td>"; // display as link to ?form=roster&callsign=$entry->callsign
+			echo "<td>$entry->firstname ";
+			echo "$entry->lastname</td>";
+			echo "<td>$entry->role</td></tr>";
 		};
+		echo "</table>";
 	};
 
 ?>
