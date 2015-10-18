@@ -476,6 +476,37 @@
 				/* FORM_EDIT_PLACEHOLDER */
 
 			}
+
+
+			function getFcc(str)
+			{
+				if(str.trim().length >= 4) {
+					document.getElementById("fcc").innerHTML='<LABEL FOR="fcc">FCC Data:</LABEL>Searching...';
+					if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+						xmlhttp=new XMLHttpRequest();
+					} else { // code for IE6, IE5
+						xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					xmlhttp.onreadystatechange=function() {
+						if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+							document.getElementById("fcc").innerHTML=xmlhttp.responseText;
+						}
+					}
+					xmlhttp.open("GET","index.php?form=ajax&req=fcc&callsign="+str,true);
+					xmlhttp.send();
+				} else {
+					document.getElementById("fcc").innerHTML="";
+				};
+			};
+
+			function processSpotterCall() {
+				e = document.getElementById('spotterCall');
+				e.value = e.value.toUpperCase();
+				
+				if(document.getElementById('appName').value=='runlocal') {
+					getFcc(e.value);
+				};
+			}
 			
 			function confirmBack() {
 				if(confirm('Abandon this form and return to the menu?')) {
@@ -621,11 +652,13 @@
 				<label for="spotterCall" class="required" style="width: 155px; padding-right: 0px"> Spotter Callsign </label>
 			</td>
 			<td>
-				<input type="text" id="spotterCall" name="spotterCall" />
+				<input type="text" id="spotterCall" name="spotterCall" onchange="javascript:processSpotterCall();" />
 			</td>
 		</tr>
 	</table>
 </fieldset>
+
+<span id="fcc"></span>
 
 <fieldset class="eventInfo">
 	<label for="reportInfo" class="required"> Report Information: </label>
