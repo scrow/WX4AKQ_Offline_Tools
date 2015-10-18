@@ -48,10 +48,16 @@ echo('</P>');
 ?>
 <HR/>
 
-<P>Available forms:
+<P>Available forms and tools:
 <br/><a href="?form=WX4AKQ_Spotter_Report_Form">Spotter Report Form</a>
 <?php if($Config['api_key']!=='') {
 	echo('<br/><a href="?form=WX4AKQ_NCO_Report_Form">NCO Report Form</a>');
+	if(file_exists('data/roster.xml')) {
+		$xml = simplexml_load_file('data/roster.xml');
+		if($xml->passfail == 'PASS') {
+			echo('<br/><a href="?form=roster">Team Roster Viewer</a>');
+		};
+	};
 };?>
 </P>
 
