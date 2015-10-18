@@ -24,6 +24,7 @@ then
 	sudo apt-get --purge -y remove php5
 	sudo apt-get install -y php5 php5-sqlite php5-mysql
 	sudo apt-get install -y php-pear php-apc php5-curl
+	sudo apt-get install -y libcurl3-dev
 
 	if ! [ -L /var/www ]; then
 		rm -rf /var/www
