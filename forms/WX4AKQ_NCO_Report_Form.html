@@ -469,6 +469,10 @@
 				document.getElementById('reportTime').value = now.format("HH:MM");
 				document.getElementById('areaNum').focus();
 				
+				if(document.getElementById('appName').value == 'runlocal') {
+					document.getElementById('cancelBtn').style.display = 'inline';
+				};
+				
 				/* FORM_EDIT_PLACEHOLDER */
 
 			}
