@@ -65,6 +65,15 @@
 			</fieldset>
 		</fieldset>
 		
+		<fieldset class="call">
+			<label for="include_fcc">Download FCC Data:</label>
+			<fieldset>
+				<input type="checkbox" name="include_fcc" id="include_fcc" value="1" style="display: inline" <?php if($Config['include_fcc']) echo 'CHECKED';?>> Include FCC database when downloading from server
+			</fieldset>
+		</fieldset>
+		
+		&nbsp;<br/>
+		
 		<fieldset class="buttons">
 			<input type="submit" id="submitBtn" name="submitBtn" value="Submit" class="green" onClick=""/>
 			<input type="reset" id="resetBtn" name="resetBtn" value="Reset Form" class="gray" onClick="" />

@@ -76,6 +76,11 @@ if(file_exists('config.xml')) {
 	} else {
 		$Config['override_connect_detect']=false;
 	};
+	if(trim($configFile->include_fcc)=='1') {
+		$Config['include_fcc']=true;
+	} else {
+		$Config['include_fcc']=false;
+	};
 } else {
 	$Config['my_call'] = '';
 	$Config['queue_folder'] = 'queue';
@@ -83,6 +88,7 @@ if(file_exists('config.xml')) {
 	$Config['upload_url'] = 'http://ops.wx4akq.org/xml_upload.php';
 	$Config['api_key'] = '';
 	$Config['override_connect_detect'] = false;
+	$Config['include_fcc'] = false;
 };
 
 function includeFooter() {
@@ -203,6 +209,11 @@ switch($_SERVER['REQUEST_METHOD']) {
 						$xml->addChild('queue_folder',trim($_GET['queue_folder']));
 					} else {
 						$xml->addChild('queue_folder',trim($_GET['queue_folder']));
+					};
+					if(isset($_GET['include_fcc']) && (trim($_GET['include_fcc']!==''))) {
+						$xml->addChild('include_fcc',1);
+					} else {
+						$xml->addChild('include_fcc',0);
 					};
 					if(isset($_GET['override_connect_detect']) && (trim($_GET['override_connect_detect']=='true'))) {
 						$xml->addChild('override_connect_detect','true');

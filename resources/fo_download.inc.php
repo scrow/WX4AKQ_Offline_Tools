@@ -23,12 +23,26 @@
 <hr/>
 
 <?php
+	
+	function gzUncompressFile($srcName, $dstName) {
+		$sfp = gzopen($srcName, "rb");
+		$fp = fopen($dstName, "w");
+		while (!gzeof($sfp)) {
+			$string = gzread($sfp, 4096);
+			fwrite($fp, $string, strlen($string));
+		};
+		gzclose($sfp);
+		fclose($fp);
+	};
+	
 	if((!isOnline()) && (!$Config['override_connect_detect'])) {
 		echo('<P>You are not currently connected to the Internet.</P>');
 		echo('<P><A HREF="index.php?form=menu">Return to the main menu.</A></P>');
 		includeFooter();
 		die();
 	};
+
+	$api_passed = false;
 
 	$ch = curl_init();
 	$data = array(
@@ -56,6 +70,7 @@
 		};
 		file_put_contents('data/roster.xml', $xml->asXML());
 		echo('<P>Download Team Roster ... passed<br/>');
+		$api_passed = true;
 	} else {
 		echo('<P>Download Team Roster ... failed</br>');
 	};
@@ -83,7 +98,7 @@
 			if(trim($supplementals->version) == trim($existing->version)) {
 				$doDownload = false;
 			};
-			echo('Download supplemental files list ... passed and up-to-date<br/>');
+			echo('Download supplemental files list ... passed, up-to-date<br/>');
 			ob_flush(); flush();
 		};
 
@@ -118,6 +133,75 @@
 		};
 		
 	};
+	
+	// Handle FCC database download
+	if($Config['include_fcc']) {
+		
+		if(!$api_passed) {
+			echo('Download FCC data ... failed<br/>');
+			ob_flush(); flush();
+		} else {
+			echo('Download FCC data ... ');
+			ob_flush(); flush();
+			$ch = curl_init();
+			$data = array(
+				'user' => $Config['my_call'],
+				'api_key' => $Config['api_key'],
+				'req' => 'fcc'
+			);
+			$opt_array = array(
+				CURLOPT_URL => 'http://dev.wx4akq.org/ops/xml_query.php',
+				CURLOPT_RETURNTRANSFER => true,
+				CURLOPT_POST => 1,
+				CURLOPT_POSTFIELDS => $data
+			);
+			curl_setopt_array($ch, $opt_array);
+			$result = curl_exec($ch);
+			curl_close($ch);
+			$xml = simplexml_load_string($result);
+			
+			// Check existing file version
+			if(file_exists('data/fcc.xml')) {
+				$existing_xml = simplexml_load_file('data/fcc.xml');
+				$existing_version = $existing_xml->timestamp;
+			} else {
+				$existing_version = 1;
+			};
+			
+			if(($xml->passfail=='PASS') && ($xml->filesize>0)) {
+				if(intval($existing_version) >= intval($xml->timestamp)) {
+					echo('passed, up-to-date<br/>');
+				} else {
+					$ch = curl_init();
+					$data = array(
+						'user' => $Config['my_call'],
+						'api_key' => $Config['api_key'],
+						'req' => 'fccdata'
+					);
+					$opt_array = array(
+						CURLOPT_URL => 'http://dev.wx4akq.org/ops/xml_query.php',
+						CURLOPT_RETURNTRANSFER => true,
+						CURLOPT_POST => 1,
+						CURLOPT_POSTFIELDS => $data
+					);
+					curl_setopt_array($ch, $opt_array);
+					file_put_contents('data/fcc.sqlite3.gz', curl_exec($ch));
+					curl_close($ch);
+					// Handle decompression here
+					echo('unpacking ... ');
+					ob_flush(); flush();
+					gzUncompressFile('data/fcc.sqlite3.gz', 'data/fcc.sqlite3');
+					// Unlink compressed file
+					unlink('data/fcc.sqlite3.gz');
+					// Write the XML
+					file_put_contents('data/fcc.xml', $xml->asXML());
+					echo('pass<br/>');
+				};
+			} else {
+				echo('skipped, no database available<br/>');
+			};
+		}; // end API validation
+	}; // end FCC database download
 	
 ?>
 
