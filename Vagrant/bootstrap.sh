@@ -20,6 +20,8 @@ then
 	sudo debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password password f0a8266bb2930e6b'
 	sudo debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password_again password f0a8266bb2930e6b'
 	
+	sudo apt-get update
+
 	sudo apt-get install -y apache2 zip curl mysql-server-5.5
 	sudo apt-get --purge -y remove php5
 	sudo apt-get install -y php5 php5-sqlite php5-mysql
