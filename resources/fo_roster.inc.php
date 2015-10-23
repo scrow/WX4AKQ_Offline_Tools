@@ -87,7 +87,7 @@
 
 ?>
 
-<P><A HREF="index.php">Return to main menu.</A></P>
+<P><A HREF="index.php">Return to main menu</A></P>
 
 <?php includeFooter();?>
 </div>
