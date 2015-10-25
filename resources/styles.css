@@ -60,7 +60,7 @@
 		background-color:#000000
 	}
 	  
-	p, form {
+	p, form, table {
 		margin: 12px 2px 14px 2px;
 		color: white;
 		text-align: left;
@@ -299,8 +299,7 @@
 	}
 	
 	table {
-		color: white;
-		font-family: "Source Sans Pro",sans-serif
+		color: white
 	}
 	
 	tr {

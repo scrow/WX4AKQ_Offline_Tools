@@ -52,19 +52,57 @@
 		foreach($xml->entry as $entry) {
 			if(!$found && strtolower($entry->callsign)==strtolower($_GET['callsign'])) {
 				$found = true;
+				switch($entry->areanum) {
+					case 1:
+						$areanum = '1 - Richmond';
+						break;
+					case 2:
+						$areanum = '2 - Southern Virginia';
+						break;
+					case 3:
+						$areanum = '3 - Williamsburg';
+						break;
+					case 4:
+						$areanum = '4 - Piedmont';
+						break;
+					case 5:
+						$areanum = '5 - Southeast Virginia';
+						break;
+					case 6:
+						$areanum = '6 - Smithfield';
+						break;
+					case 7:
+						$areanum = '7 - Northeast North Carolina';
+						break;
+					case 8:
+						$areanum = '8 - Northern Neck';
+						break;
+					case 9:
+						$areanum = '9 - Eastern Shore';
+						break;
+					default:
+						$areanum = $entry->areanum;
+						break;
+				}; // end switch($entry->areanum);
+				if(trim($entry->availability) == '') {
+					$availability = 'No information provided.';
+				} else {
+					$availability = $entry->availability;
+				};
 				echo "<table>";
 				echo "<tr><td> Callsign </td><td>$entry->callsign</td></tr>";
 				echo "<tr><td> Status</td><td>$entry->memberstatus</td></tr>";
 				echo "<tr><td> Name </td><td>$entry->firstname $entry->lastname</td></tr>";
-				echo "<tr><td> Primary Area </td><td>$entry->areanum </td></tr>";
+				echo "<tr><td> Primary Area </td><td>$areanum </td></tr>";
 				echo "<tr><td> Primary Location </td><td>$entry->location </td></tr>";
 				echo "<tr><td> Primary Role </td><td>$entry->role</td></tr>";
 				echo "<tr><td> Primary Contact </td><td>$entry->pricontact</td></tr>";
 				echo "<tr><td> Alternate Contact </td><td>$entry->altcontact</td></tr>";
 				echo "<tr><td> Email </td><td>$entry->extemail</td></tr>";
 				echo "<tr><td> Has Winlink Address </td><td>$entry->haswinlink</td></tr>";
-				echo "<tr><td> Availability </td><td>$entry->availability</td></tr>";
+				echo "<tr><td> Availability </td><td>$availability</td></tr>";
 				echo "</table>";
+				echo '<P><A HREF="?form=roster">Return to Roster listing</A></P>';
 			};
 		};
 		if(!$found) {
@@ -74,7 +112,10 @@
 	} else {
 		// Step through the roster data and show summary.  Sort order is determined by the XML file.
 		// This should look similar to http://ops.wx4akq.org/roster.php
-		echo "<table><thead><tr><td>Area</td><td>Callsign</td><td>Name</td><td>Role</td></tr></thead>";
+
+		echo('<P>Click on a call sign to view Team Member details.</P>');
+
+		echo '<table style="text-align: center"><thead><tr><td>Area</td><td>Callsign</td><td>Name</td><td>Role</td></tr></thead>';
 		foreach($xml->entry as $entry) {
 			echo "<tr><td>$entry->areanum</td>";
 			echo "<td><a href=\"?form=roster&callsign=$entry->callsign\"> $entry->callsign </a></td>"; // display as link to ?form=roster&callsign=$entry->callsign
