@@ -178,15 +178,23 @@
 						'api_key' => $Config['api_key'],
 						'req' => 'fccdata'
 					);
+					$fp = fopen('data/fcc.sqlite3.gz.tmp','w');
 					$opt_array = array(
 						CURLOPT_URL => 'http://dev.wx4akq.org/ops/xml_query.php',
 						CURLOPT_RETURNTRANSFER => true,
+						CURLOPT_FILE => $fp,
 						CURLOPT_POST => 1,
 						CURLOPT_POSTFIELDS => $data
 					);
 					curl_setopt_array($ch, $opt_array);
-					file_put_contents('data/fcc.sqlite3.gz', curl_exec($ch));
+					curl_exec($ch);
 					curl_close($ch);
+					fclose($fp);
+					// Swap out the file
+					if(file_exists('data/fcc.sqlite3.gz')) {
+						unlink('data/fcc.sqlite3.gz');
+					};
+					rename('data/fcc.sqlite3.gz.tmp', 'data/fcc.sqlite3.gz');
 					// Handle decompression here
 					echo('unpacking ... ');
 					ob_flush(); flush();
