@@ -246,10 +246,37 @@ switch($_SERVER['REQUEST_METHOD']) {
 								// Do FCC database dip and return string formatted for NCO Form
 								if(file_exists('data/fcc.sqlite3')) {
 									$db = new PDO('sqlite:data/fcc.sqlite3');
-									$sth = $db->prepare('SELECT * FROM fcc WHERE callsign=?');
+									
+									$found = false;
+									
+									// Try all three tables, smallest to largest
+									
+									$sth = $db->prepare('SELECT * FROM fcc_express WHERE callsign=?');
 									$sth->execute(array(strtoupper(trim($_GET['callsign']))));
 									$result = $sth->fetch(PDO::FETCH_ASSOC);
-									if(($result['callsign']==strtoupper(trim($_GET['callsign']))) && (trim($result['last'])!=='')) {
+									if($result['callsign'] == strtoupper(trim($_GET['callsign']))) {
+										$found = true;
+									};
+									
+									if(!$found) {
+										$sth = $db->prepare('SELECT * FROM fcc_regional WHERE callsign=?');
+										$sth->execute(array(strtoupper(trim($_GET['callsign']))));
+										$result = $sth->fetch(PDO::FETCH_ASSOC);
+										if($result['callsign'] == strtoupper(trim($_GET['callsign']))) {
+											$found = true;
+										};
+									};
+
+									if(!$found) {
+										$sth = $db->prepare('SELECT * FROM fcc_remainder WHERE callsign=?');
+										$sth->execute(array(strtoupper(trim($_GET['callsign']))));
+										$result = $sth->fetch(PDO::FETCH_ASSOC);
+										if($result['callsign'] == strtoupper(trim($_GET['callsign']))) {
+											$found = true;
+										};
+									};
+									
+									if(($found) && (trim($result['last'])!=='')) {
 										if(trim($result['address']=='')) {
 											$address = '';
 											$divHeight = '42px';
