@@ -6,4 +6,3 @@ files/*
 !files/.htaccess
 .vagrant
 config.xml
-offline_files.xml

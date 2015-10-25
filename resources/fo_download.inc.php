@@ -93,8 +93,8 @@
 		ob_flush(); flush();
 	} else {
 		$doDownload = true;
-		if(file_exists('offline_files.xml')) {
-			$existing = new SimpleXMLElement(file_get_contents('offline_files.xml'));
+		if(file_exists('data/offline_files.xml')) {
+			$existing = new SimpleXMLElement(file_get_contents('data/offline_files.xml'));
 			if(trim($supplementals->version) == trim($existing->version)) {
 				$doDownload = false;
 			};
@@ -103,7 +103,7 @@
 		};
 
 		if($doDownload) {
-			file_put_contents('offline_files.xml', $supplementals->asXML());
+			file_put_contents('data/offline_files.xml', $supplementals->asXML());
 			if(!file_exists('files')) {
 				mkdir('files');
 				file_put_contents('files/.htaccess',"IndexOrderDefault Ascending Name\nIndexOptions FancyIndexing ScanHTMLTitles SuppressDescription NameWidth=65 FoldersFirst");

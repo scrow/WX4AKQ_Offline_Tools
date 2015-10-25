@@ -62,9 +62,9 @@ echo('</P>');
 </P>
 
 <?php
-	if(file_exists('offline_files.xml')) {
+	if(file_exists('data/offline_files.xml')) {
 		echo('<P>Offline files:');
-		$xml = new SimpleXMLElement(file_get_contents('offline_files.xml'));
+		$xml = new SimpleXMLElement(file_get_contents('data/offline_files.xml'));
 		foreach($xml->file as $thisFile) {
 			echo('<br/><A HREF="files/'.$thisFile->saveas.'" TARGET="_blank">'.$thisFile->title.'</A>');
 		};
