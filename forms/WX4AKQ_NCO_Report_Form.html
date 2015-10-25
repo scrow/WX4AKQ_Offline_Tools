@@ -573,6 +573,13 @@
 					document.getElementById('spotterCall').select();
 					return false;
 				};
+				
+				if(document.getElementById('spotterCall').value == document.getElementById('ncoCall').value) {
+					alert('You may not submit your own reports through this form.  Please enter a valid Spotter call sign.');
+					document.getElementById('spotterCall').focus();
+					document.getElementById('spotterCall').select();
+					return false;
+				};
 
 				if(document.getElementById('relayedVia').value !== '6') {
 					// Need to validate all required fields are entered
@@ -658,7 +665,7 @@
 
 <form id="report" method="post" target="targetFrame" action="http://{FormServer}:{FormPort}" enctype="multipart/form-data">
 
-<input type="hidden" name="ncoCall" value="{Callsign}"/>
+<input type="hidden" name="ncoCall" id="ncoCall" value="{Callsign}"/>
 
 <fieldset class="call">
 	<table>
