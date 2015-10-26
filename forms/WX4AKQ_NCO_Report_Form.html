@@ -630,7 +630,10 @@
 
 			}
 
-			function submitAndClose(skipValidate = false){
+			function submitAndClose(skipValidate){
+
+				// Define default value
+				skipValidate = typeof skipValidate !== 'undefined' ? skipValidate : false;
 
 				if(skipValidate || validate()){
 					// Disable all form fields here
