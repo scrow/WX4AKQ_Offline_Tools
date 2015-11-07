@@ -14,8 +14,8 @@
 chdir "%~dp0"
 
 if not exist "c:\rms express\global folders\templates" goto errormsg
-copy /y forms/*.txt "c:\rms express\global folders\templates"
-copy /y forms/*.html "c:\rms express\global folders\templates"
+copy /y forms\*.txt "c:\rms express\global folders\templates"
+copy /y forms\*.html "c:\rms express\global folders\templates"
 goto end
 
 :errormsg
