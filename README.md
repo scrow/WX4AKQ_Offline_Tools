@@ -126,6 +126,8 @@ Upload methods require an embedded API Key, which can be obtained from the [My A
 
 # Known Issues
 
+For a full list of current issues or to submit a bug, refer to the [Issues](https://github.com/scrow/wx4akq-offline-tools/issues) tracker.
+
 ## Mobile Broadband Users
 
 Users of some mobile broadband service providers (specifically AT&T Wireless, and probably some other carriers, too) may experience "Bad header line" error messages during the initial provisioning of the Vagrant virtual machine.  These errors are likely caused by the upstream proxy services utilized by the mobile broadband service.  Users encountering these error conditions will be missing some functionality or could end up with an unusable virtual machine, and will need to re-provision their virtual machine using the `utils/reprovision_machine.bat` or `utils/reprovision_machine.sh` script.  For more information, see [Issue #32](https://github.com/scrow/wx4akq-offline-tools/issues/32).
