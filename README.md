@@ -135,13 +135,25 @@ Users of some mobile broadband service providers (specifically AT&T Wireless, an
 
 # Change Log
 
-## v0.1.0-alpha1 Initial alpha test
+## v1.0.0-beta2 Second beta release
 
-Initial alpha test release version.
+* Corrected Issues #27 and #31 plus assorted other documentation cleanup.
+* Corrected Issue #28 which prevented proper RMS Express form operation under certain browsers.
+* Corrected Issue #29 which prevented the `start_server.bat` file from working under Windows 8.
+* Corrected Issue #30 which resolved a missing Vagrant boostrap file in the release distribution ZIP file.
+* Addressed Issue #32 by adding a Known Issues section with content describing provisioning failures some or all mobile broadband users may encounter when spinning up a new Vagrant virtual machine over said mobile broadband connection.  Created a `utils/` folder with scripts to destroy and reprovision a bad Vagrant virtual machine.
+* Corrected Issue #33 to fix a syntax error in the file copy routine in `install_rms_forms.bat`
+* Corrected Issue #34 which prevented the `install_rms_forms.bat` file from working under Windows 8.
+* Windows users will now have their default browser auto-launch to http://localhost:8080 after running `start_server.bat`
+* Created a Change Log in the README file.
 
 ## v1.0.0-beta1 First beta release
 
 This is the first beta release.  Please submit any issues or feature requests to the [Issues](https://github.com/scrow/wx4akq-offline-tools/issues) tracker.
+
+## v0.1.0-alpha1 Initial alpha test
+
+Initial alpha test release version.
 
 
 # Contributors
