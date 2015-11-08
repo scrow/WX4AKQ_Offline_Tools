@@ -1,6 +1,6 @@
 # Synopsis
 
-This project contains SKYWARN-related forms for use by SKYWARN Spotters and Net Control Operators within the NWS Wakefield, Virginia County Warning Area (CWA).  The forms can be used either with the [RMS Express](http://www.winlink.org/tags/rms_express) amateur radio messaging software or in a standalone form using a locally-installed web browser.  These forms are designed and maintained for the [Wakefield SKYWARN Amateur Radio Support Team](http://www.wx4akq.org/).
+This project contains SKYWARN-related forms for use by SKYWARN Spotters and Net Control Operators within the NWS Wakefield, Virginia County Warning Area (CWA).  The forms can be used either with the [RMS Express](http://www.winlink.org/tags/rms_express) amateur radio messaging software or in a standalone form using a locally-installed web server.  These forms are designed and maintained for the [Wakefield SKYWARN Amateur Radio Support Team](http://www.wx4akq.org/).
 
 For information on the forms included in this project, see "Included Forms."
 
@@ -58,7 +58,7 @@ The template will automatically set the destination e-mail address and attach a 
 
 # Running from a Local Web Server
 
-The forms incldued in this project can also be accessed through a local web server.  In this configuration, there are four ways to get reports to the SKYWARN team:
+The forms included in this project can also be accessed through a local web server.  In this configuration, there are four ways to get reports to the SKYWARN team:
 
 1. Reports can be staged in a queue folder and either:
 	a. Uploaded to the SKYWARN server once Internet access is restored using a built-in uploader tool; or,
@@ -75,9 +75,9 @@ Copy the project files to your web server's content folder, such as `/var/www/si
 
 ## Using Vagrant
 
-For users without an existing local web server, a `Vagrantfile` is provided for use with the [Vagrant](http://www.vagrantup.com) virtualization environment.
+For users without an existing local web server, a `Vagrantfile` is provided for use with the [Vagrant](http://www.vagrantup.com) virtualization environment.  Please note that Vagrant is dependent on a virtualization environment (either VMWare or Virtualbox) so you must have one of those installed *before* installing Vagrant.  [Virtualbox](http://www.virtualbox.org/) is available for free and is compatible with Windows, Mac, and Linux operating systems.
 
-To use Vagrant, extract the project files to a folder on your machine, for example, `/home/ab1cde` or `C:\skywarn`.  Then from a terminal or command prompt, navigate to that folder and run `vagrant up`.
+To use a Vagrant virtual machine as your local server, extract the project files to a folder on your machine, for example, `/home/ab1cde` or `C:\skywarn`.  Then from a terminal or command prompt, navigate to that folder and run `vagrant up`.
 
 The first time you run this command, Vagrant will download and configure your virtual machine.  This will require an Internet connection, and the time required will vary depending on the speed of your Internet connection and the capabilities of your computer.
 
