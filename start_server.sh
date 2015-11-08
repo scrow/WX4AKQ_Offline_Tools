@@ -8,7 +8,12 @@
 #	For license information, see the LICENSE.md file or visit
 #	http://wx4akq.org/software
 #	
+
+CURRDIR=`pwd`
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd $DIR
+
 vagrant up
 echo Navigate to http://localhost:8080 to access the WX4AKQ Offline Tools.
 
-
+cd $CURRDIR
