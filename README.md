@@ -10,9 +10,7 @@ This section is for SKYWARN Net Control Operators, Area Managers, Net Managers, 
 
 To get started, download and extract the latest [release](https://github.com/scrow/wx4akq-offline-tools/releases) to a folder on your computer, such as `C:\SKYWARN`.
 
-Exit RMS Express if it is currently running.  Copy (do not move) the extracted files located in the `forms` folder to your `C:\RMS Express\Global Folders\Templates` folder.  The forms will now appear within RMS Express.
-
-To use a form, click `Message`, then `New Message`, then `Select Template`.  Double-click the template name.  After submitting data into the template, close the browser window or tab, return to RMS Express, and send the Winlink message.
+Exit RMS Express if it is currently running.  Locate and run the `install_rms_forms.bat` file included with this package.  Restart RMS Express.  To use a form, click `Message`, then `New Message`, then `Select Template`.  Double-click the template name.  After submitting data into the template, close the browser window or tab, return to RMS Express, and transmit the Winlink message.
 
 
 # Winlink Use with RMS Express
@@ -27,7 +25,7 @@ You must have a recent version of Internet Explorer, Firefox, Chrome, Safari, or
 
 Templates provided by this project can be installed for use by a specific callsign or by all users of the RMS Express installation.  To install for a specific callsign, the target folder is `C:\RMS Express\<callsign>\Templates`.  To install for all users, the target folder is `C:\RMS Express\Global Folders\Templates`.
 
-To install a form and template, simply copy the desired `.html` file along with its corresponding `.txt` file from the `forms/` folder to the installation target folder.
+To install a form and template, simply copy the desired `.html` file along with its corresponding `.txt` file from the `forms/` folder to the installation target folder.  A script called `install_rms_forms.bat` is included with this package to provide a quick way to perform an installation for all users.  You may run that script instead of manually copying the files.
 
 ## Usage
 
