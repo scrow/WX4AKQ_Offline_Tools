@@ -57,6 +57,9 @@
 		CURLOPT_POSTFIELDS => $data
 	);
 	curl_setopt_array($ch, $opt_array);
+	// Set a timeout for slow connections - Bug #36
+	set_time_limit(120);
+
 	$result = curl_exec($ch);
 	curl_close($ch);
 	$xml = simplexml_load_string($result);
@@ -84,6 +87,8 @@
 		CURLOPT_RETURNTRANSFER => true
 	);
 	curl_setopt_array($ch, $opt_array);
+	// Set a timeout for slow connections - Bug #36
+	set_time_limit(120);
 	$result = curl_exec($ch);
 	$error = curl_errno($ch);
 	$supplementals = new SimpleXMLElement($result);
@@ -115,6 +120,9 @@
 					CURLOPT_RETURNTRANSFER => true
 				);
 				curl_setopt_array($ch, $opt_array);
+				// Set a timeout for slow connections - Bug #36
+				// Going with a big number in case included files happen to be huge
+				set_time_limit(1800);
 				$result = curl_exec($ch);
 				$error = curl_errno($ch);
 				echo('Download '.$thisFile->title.' ... ');
@@ -156,6 +164,8 @@
 				CURLOPT_POSTFIELDS => $data
 			);
 			curl_setopt_array($ch, $opt_array);
+			// Set a timeout for slow connections - Bug #36
+			set_time_limit(120);
 			$result = curl_exec($ch);
 			curl_close($ch);
 			$xml = simplexml_load_string($result);
@@ -187,6 +197,8 @@
 						CURLOPT_POSTFIELDS => $data
 					);
 					curl_setopt_array($ch, $opt_array);
+					// Set a timeout for slow connections - Bug #36
+					set_time_limit(3600);
 					curl_exec($ch);
 					curl_close($ch);
 					fclose($fp);
@@ -198,6 +210,8 @@
 					// Handle decompression here
 					echo('unpacking ... ');
 					ob_flush(); flush();
+					// Set a timeout for large files - Bug #6
+					set_time_limit(3600);
 					gzUncompressFile('data/fcc.sqlite3.gz', 'data/fcc.sqlite3');
 					// Unlink compressed file
 					unlink('data/fcc.sqlite3.gz');

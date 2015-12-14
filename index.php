@@ -22,6 +22,10 @@
 	something similar. 
 */
 
+// Set an execution time limit for Bug #36; will also have to perform
+// some other overrides in resources/fo_download.inc.php
+set_time_limit(90);
+
 const SAVE_TO_QUEUE = 1;
 const DOWNLOAD_ATTACHMENT = 2;
 
