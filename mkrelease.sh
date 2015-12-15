@@ -18,7 +18,7 @@ else
 	CURRDIR=`pwd`
 	cd ..
 	cp -R "$CURRDIR" "$newver"
-	zip -9 "$newver.zip" $newver/*.md $newver/*.php $newver/utils/* $newver/*.bat $newver/start_server.sh $newver/Vagrant/bootstrap.sh $newver/Vagrantfile $newver/resources/* $newver/data/.htaccess $newver/forms/* $newver/files/.htaccess
+	zip -9 "$newver.zip" $newver/.htaccess $newver/*.md $newver/*.php $newver/utils/* $newver/*.bat $newver/start_server.sh $newver/Vagrant/bootstrap.sh $newver/Vagrantfile $newver/resources/* $newver/data/.htaccess $newver/forms/* $newver/files/.htaccess
 	rm -Rf "$newver"
 	mv "$newver.zip" "$CURRDIR" 
 	cd $CURRDIR
