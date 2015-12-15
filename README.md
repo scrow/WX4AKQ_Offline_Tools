@@ -106,11 +106,9 @@ The offline FCC database is currently updated once weekly and the "Include FCC d
 
 This form is to be used by SKYWARN Spotters in relaying reports to the National Weather Service.  This form generates an `.xml` file which is sent to a specific e-mail address, where it is automagically processed and injected into the Wakefield SKYWARN Amateur Radio Support Team logs.  The report is then visible to Wakefield SKYWARN team members and certain Emergency Management partners.  The report is then sent to the National Weather Service along with other reports collected by SKYWARN nets.
 
-Additional forms planned for the future include utilities for SKYWARN Net Control Operators and team members.
-
 ## WX4AKQ_NCO_Report_Form
 
-This form provides offline net log entry creation for active SKYWARN Net Control Operators.  The form is designed to approximately mirror the layout of the existing form located within the NCO Dashboard on the SKYWARN Ops Portal, with a few key differences:
+This form provides offline net log entry creation for active SKYWARN Net Control Operators.  The form is designed to approximately mirror the layout of the existing form located within the NCO Dashboard on the SKYWARN Ops Portal, with two key differences:
 
   1. When used as an RMS Express template, call sign lookup functionality is not available.
   2. Spotter statistics, including training status, are not available.
