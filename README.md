@@ -133,6 +133,11 @@ Users of some mobile broadband service providers (specifically AT&T Wireless, an
 
 # Change Log
 
+## v1.0.0 Initial general release
+
+* Corrected Issue #36 by adding code in an attempt to avoid server timeouts during download sessions, particularly when an FCC database is downloaded and unpacked on a slow connection and slow computer.
+* Minor README cleanup.
+
 ## v1.0.0-beta2 Second beta release
 
 * Corrected Issues #27 and #31 plus assorted other documentation cleanup.
