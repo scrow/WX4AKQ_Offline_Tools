@@ -133,6 +133,10 @@ Users of some mobile broadband service providers (specifically AT&T Wireless, an
 
 # Change Log
 
+## v1.0.1 Bugfix release
+
+* Corrected Issue #38 which prevented a top-level `.htaccess` file from being included in the packaged output file.
+
 ## v1.0.0 Initial general release
 
 * Corrected Issue #36 by adding code in an attempt to avoid server timeouts during download sessions, particularly when an FCC database is downloaded and unpacked on a slow connection and slow computer.
