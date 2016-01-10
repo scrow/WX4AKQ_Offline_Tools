@@ -133,6 +133,11 @@ Users of some mobile broadband service providers (specifically AT&T Wireless, an
 
 # Change Log
 
+## v1.0.2 Minor enhancement release
+
+* Changed build output to new `build/` folder
+* Changed `.gitignore` to disregard `gh-pages/` folder
+
 ## v1.0.1 Bugfix release
 
 * Corrected Issue #38 which prevented a top-level `.htaccess` file from being included in the packaged output file.
