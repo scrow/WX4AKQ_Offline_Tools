@@ -4,6 +4,9 @@ This project contains SKYWARN-related forms for use by SKYWARN Spotters and Net 
 
 For information on the forms included in this project, see "Included Forms."
 
+The [project homepage](http://offline.wx4akq.org) contains additional information and an introductory video with a demonstration.
+
+
 # Quick Start for WX4AKQ Team Members
 
 This section is for SKYWARN Net Control Operators, Area Managers, Net Managers, and Responders.  All other users please skip to the next section, "Winlink Use with RMS Express."
