@@ -136,6 +136,12 @@ Users of some mobile broadband service providers (specifically AT&T Wireless, an
 
 # Change Log
 
+## v1.0.3 Minor enhancement release
+
+* Adds missing license text to `.gitattributes`, `.gitignore`, and several `.htaccess` files.
+* Updates the `README.md` file to provide a reference to the new project homepage URL.
+* Updates the forms to point to the new project homepage URL in the footer block.
+
 ## v1.0.2 Minor enhancement release
 
 * Changed build output to new `build/` folder
