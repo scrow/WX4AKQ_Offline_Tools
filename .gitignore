@@ -1,4 +1,3 @@
-*.zip
 queue/*
 data/*
 files/*
@@ -6,3 +5,4 @@ files/*
 !files/.htaccess
 .vagrant
 config.xml
+build/*
