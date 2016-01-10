@@ -1,2 +1,12 @@
+#	
+#	This file is part of WX4AKQ Offline Tools
+#	
+#	Copyright (c) 2015, Steve Crow, Reid Barden
+#	Licensed under the BSD 2-clause “Simplified” License
+#	
+#	For license information, see the LICENSE.md file or visit
+#	http://wx4akq.org/software
+#	
+
 IndexOrderDefault Ascending Name
 IndexOptions FancyIndexing ScanHTMLTitles SuppressDescription NameWidth=65 FoldersFirst
