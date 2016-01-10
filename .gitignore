@@ -6,3 +6,4 @@ files/*
 .vagrant
 config.xml
 build/*
+gh-pages/
