@@ -138,6 +138,10 @@ Users of some mobile broadband service providers (specifically AT&T Wireless, an
 
 # Change Log
 
+## v1.0.4 Minor enhancement release
+
+* Adds an `+rmsonly` build output to `mkrelease.sh`.  This build contains only the documentation, RMS Express forms, and installation batch file.
+
 ## v1.0.3 Minor enhancement release
 
 * Adds missing license text to `.gitattributes`, `.gitignore`, and several `.htaccess` files.
