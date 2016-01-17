@@ -16,15 +16,22 @@ if [[ -z "$1" ]]; then
 else
 	newver=wx4akq-offline-tools-$1
 	CURRDIR=`pwd`
-	cd ..
-	cp -R "$CURRDIR" "$newver"
-	zip -9 "$newver.zip" $newver/.htaccess $newver/*.md $newver/*.php $newver/utils/* $newver/*.bat $newver/start_server.sh $newver/Vagrant/bootstrap.sh $newver/Vagrantfile $newver/resources/* $newver/data/.htaccess $newver/forms/* $newver/files/.htaccess
-	rm -Rf "$newver"
 
 	if [ ! -d "$CURRDIR/build" ]; then
 		mkdir "$CURRDIR/build"
 	fi
 
+	cd ..
+	cp -R "$CURRDIR" "$newver"
+	zip -9 "$newver.zip" $newver/.htaccess $newver/*.md $newver/*.php $newver/utils/* $newver/*.bat $newver/start_server.sh $newver/Vagrant/bootstrap.sh $newver/Vagrantfile $newver/resources/* $newver/data/.htaccess $newver/forms/* $newver/files/.htaccess
+
+	# Build rmsonly bundle
+	zip -9 "$newver+rmsonly.zip" $newver/*.md $newver/forms/*.html $newver/forms/*.txt $newver/*.bat
+
+	rm -Rf "$newver"
+
 	mv "$newver.zip" "$CURRDIR/build"
+	mv "$newver+rmsonly.zip" "$CURRDIR/build"
+
 	cd $CURRDIR
 fi
