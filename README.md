@@ -13,6 +13,8 @@ This section is for SKYWARN Net Control Operators, Area Managers, Net Managers, 
 
 To get started, download and extract the latest [release](https://github.com/scrow/wx4akq-offline-tools/releases) to a folder on your computer, such as `C:\SKYWARN`.
 
+**Note:**  If you _only_ need RMS Express capability and have no desire to utilize the full offline web server capability, you may choose to download the `+rmsonly` bundle, which contains only the documentation, RMS Express forms, and installation script.
+
 Exit RMS Express if it is currently running.  Locate and run the `install_rms_forms.bat` file included with this package.  Restart RMS Express.  To use a form, click `Message`, then `New Message`, then `Select Template`.  Double-click the template name.  After submitting data into the template, close the browser window or tab, return to RMS Express, and transmit the Winlink message.
 
 
