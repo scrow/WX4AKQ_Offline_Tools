@@ -138,6 +138,10 @@ Users of some mobile broadband service providers (specifically AT&T Wireless, an
 
 # Change Log
 
+## v1.0.5 Bugfix release
+
+* Corrected Issue #45 which prevented the API key from being inserted into XML files when running in offline server mode.
+
 ## v1.0.4 Minor enhancement release
 
 * Adds an `+rmsonly` build output to `mkrelease.sh`.  This build contains only the documentation, RMS Express forms, and installation batch file.
