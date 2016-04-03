@@ -137,6 +137,7 @@ switch($_SERVER['REQUEST_METHOD']) {
 					};
 
 					if(isset($_GET['edit']) && (trim($_GET['edit'])!=='') && (file_exists($edit_filename))) {
+						// We are editing a report, so use some Javascript to populate the form
 						$edit_js = '';
 						
 						$xml = new SimpleXMLElement(file_get_contents($Config['queue_folder'].'/'.$_GET['edit']));
@@ -177,6 +178,13 @@ switch($_SERVER['REQUEST_METHOD']) {
 						$edit_js .= 'document.getElementById("edit_filename").value="'.basename($edit_filename).'";';
 						$edit_js .= 'document.getElementById("deleteBtn").style.display="inline";';
 						
+						$fd = str_replace('/* FORM_EDIT_PLACEHOLDER */',$edit_js, $fd);
+					} else {
+						// We are not editing, but we still need to stick an API key in here
+						$edit_js = '';
+
+						$edit_js .= 'document.getElementById("api_key").value="'.$Config['api_key'].'";';
+
 						$fd = str_replace('/* FORM_EDIT_PLACEHOLDER */',$edit_js, $fd);
 					};
 
