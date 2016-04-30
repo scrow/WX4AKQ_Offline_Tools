@@ -7,6 +7,11 @@ For information on the forms included in this project, see "Included Forms."
 The [project homepage](http://offline.wx4akq.org) contains additional information and an introductory video with a demonstration.
 
 
+# Get Notified of Updates
+
+Announcements of updates to this project will be made over the [wx4akq-offline-announce](http://www.wx4akq.org/mailman/listinfo/wx4akq-offline-announce) e-mail list.  This is a low-traffic, announce-only mailing list anyone can subscribe to.  Please sign up for the e-mail list as part of your installation of this project.  There may be critical updates we need to let you know about!
+
+
 # Quick Start for WX4AKQ Team Members
 
 This section is for SKYWARN Net Control Operators, Area Managers, Net Managers, and Responders.  All other users please skip to the next section, "Winlink Use with RMS Express."
