@@ -1,5 +1,16 @@
 # Change Log
 
+## v1.1.0 Feature release
+
+* Makes updates to the Roster Viewer function for improved compatibility with the back-end changes introduced in Ops Portal v8.4.
+* Addresses Issue #44 by removing "Send to NWS and Copy WX4AKQ via Winlink" option from the NCO form.  Beginning with Ops Portal v8.0, a 20-minute digest of all reports is sent to WX4AKQ over Winlink automatically.
+* Fixes Issue #40 by disabling access to the `.git/` folder by way of an `.htaccess` update.  This addresses a potential security concern for users with specific installation setups for offline functionality.
+* Addresses Issue #39 by allowing NCO's to submit their own reports via the NCO form.  This brings the offline forms in line with Ops Portal v8 changes.  Self-reports do not count for NCO activity credit but are otherwise handled as any other report.
+* Addresses Issue #41 by updating both the NCO and Spotter forms to support "estimated" and "unknown" times, syncing the functionality with Ops Portal v8.  This increments the version of these two forms to `2`.
+* Implemented Issue #46 by adding information on the [wx4akq-offline-announce](http://www.wx4akq.org/mailman/listinfo/wx4akq-offline-announce) e-mail list in the `README.md` file.
+* Moves the Change Log from `README.md` to a separate `CHANGELOG.md` file.
+* Miscellaneous minor cosmetic updates.
+
 ## v1.0.5 Bugfix release
 
 * Corrected Issue #45 which prevented the API key from being inserted into XML files when running in offline server mode.
