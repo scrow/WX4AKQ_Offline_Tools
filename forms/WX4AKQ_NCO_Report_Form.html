@@ -574,13 +574,6 @@
 					return false;
 				};
 				
-				if(document.getElementById('spotterCall').value == document.getElementById('ncoCall').value) {
-					alert('You may not submit your own reports through this form.  Please enter a valid Spotter call sign.');
-					document.getElementById('spotterCall').focus();
-					document.getElementById('spotterCall').select();
-					return false;
-				};
-
 				if(document.getElementById('relayedVia').value !== '6') {
 					// Need to validate all required fields are entered
 					if(document.getElementById('eventDate').value == '') {
