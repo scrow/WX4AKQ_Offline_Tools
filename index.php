@@ -177,7 +177,12 @@ switch($_SERVER['REQUEST_METHOD']) {
 						$edit_js .= 'document.getElementById("api_key").value="'.$Config['api_key'].'";';
 						$edit_js .= 'document.getElementById("edit_filename").value="'.basename($edit_filename).'";';
 						$edit_js .= 'document.getElementById("deleteBtn").style.display="inline";';
-						
+
+						if($xml->variables->formversion >= 2) {
+							// Stuff specific to version 2 forms
+							$edit_js .= 'document.getElementById("timeType").value="'.$xml->variables->timetype.'";';
+						};
+
 						$fd = str_replace('/* FORM_EDIT_PLACEHOLDER */',$edit_js, $fd);
 					} else {
 						// We are not editing, but we still need to stick an API key in here

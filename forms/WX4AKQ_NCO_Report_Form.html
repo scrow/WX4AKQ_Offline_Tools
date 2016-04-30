@@ -621,6 +621,21 @@
 
 			}
 
+			function processTimeType() {
+				var t = document.getElementById('timeType');
+				switch(t.options[t.selectedIndex].value) {
+					case "0":
+						document.getElementById('eventTime').focus();
+						break;
+					case "1":
+						document.getElementById('eventTime').focus();
+						break;
+					case "2":
+						document.getElementById('reportComments').select();
+						break;
+				}
+			}
+
 			function submitAndClose(skipValidate){
 
 				// Define default value
@@ -714,6 +729,15 @@
 	<input style="display: inline !important" type="time" id="eventTime" name="eventTime"/>
 </fieldset>
 
+<fieldset>
+	<label class="required">Event Time Type:</label>
+	<select name="timeType" id="timeType" onChange="processTimeType()">
+		<option value="0">Actual</option>
+		<option value="1">Estimated</option>
+		<option value="2">Unknown</option>
+	</select>
+</fieldset>
+
 	<label for="spotterID">Trained Spotter?</label>
 	<input name="spotterID" id="spotterID" type="checkbox" value="yes" style="display: inline"/> YES - This person identifies as a Trained Spotter
 
@@ -751,7 +775,7 @@
 
 <input type="hidden" name="operation" id="operation" value="" />
 <input type="hidden" name="api_key" id="api_key" value="" />
-<input type="hidden" name="formVersion" id="formVersion" value="1" />
+<input type="hidden" name="formVersion" id="formVersion" value="2" />
 <input type="hidden" name="appName" id="appName" value="RMSExpress" />
 <input type="hidden" name="trainingBanner" id="trainingBanner" value="" />
 <input type="hidden" name="formName" id="formName" value="WX4AKQ_NCO_Report_Form" />

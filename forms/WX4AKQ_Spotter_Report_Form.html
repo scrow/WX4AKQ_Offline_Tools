@@ -227,7 +227,7 @@
 					margin-bottom: 2px
 				}
 				
-				textarea:focus, input:focus {
+				textarea:focus, input:focus, select:focus {
 					border: 1px solid #F6862F
 				}
 								
@@ -308,6 +308,17 @@
 					text-shadow: 2px 2px #303336
 				}
 			
+				select {
+					font-family: "Cousine";
+					font-size: 10pt;
+					color: white;
+					border: 1px solid #303336;
+					background: #101010;
+					width: 140px;
+					outline: none;
+					margin-bottom: 2px
+				}
+
 			}
 			/* End @media all */
 			
@@ -494,6 +505,9 @@
 					case 'dateTime':
 						document.getElementById('helpSpace').innerHTML = "Please provide the date and time the event occurred or conditions were observed. Use local (Eastern) time. If estimating, please note that in your report (\"Time is estimated\").";
 						break;
+					case 'timeType':
+						document.getElementById('helpSpace').innerHTML = "Indicate whether the event time provided is the actual time the event occurred or an estimate.  You may also specify &quot;unknown&quot; if you do not know when the event occurred and cannot reasonably estimate the time.";
+						break;
 					case 'contactNumber':
 						document.getElementById('helpSpace').innerHTML = "NWS employees and SKYWARN leadership may reply to your report via Winlink e-mail if more info is needed. Optionally provide a contact phone number here.";
 						break;
@@ -543,6 +557,21 @@
 				e.style.display = 'none';
 			}
 			
+			function processTimeType() {
+				var t = document.getElementById('timeType');
+				switch(t.options[t.selectedIndex].value) {
+					case "0":
+						document.getElementById('eventTime').focus();
+						break;
+					case "1":
+						document.getElementById('eventTime').focus();
+						break;
+					case "2":
+						document.getElementById('eventLocation').select();
+						break;
+				}
+			}
+
 			function validate() {
 				document.getElementById('eventDate').value.trim();
 				document.getElementById('eventTime').value.trim();
@@ -666,6 +695,15 @@
 	<input type="time" id="eventTime" name="eventTime" onmouseover="javascript:showHelp('dateTime');" onfocus="javascript:showHelp('dateTime');"/>
 </fieldset>
 
+<fieldset>
+	<label class="required">Event Time Type:</label>
+	<select name="timeType" id="timeType" onChange="processTimeType()" onmouseover="javascript:showHelp('timeType');">
+		<option value="0">Actual</option>
+		<option value="1">Estimated</option>
+		<option value="2">Unknown</option>
+	</select>
+</fieldset>
+
 <fieldset class="eventInfo">
 	<label for="eventLocation" class="required">Location of Event: </label>
 	<textarea name="eventLocation" id="eventLocation" onmouseover="javascript:showHelp('eventLocation');" onfocus="javascript:showHelp('eventLocation');"></textarea>
@@ -684,7 +722,7 @@
 </fieldset>
 <input type="hidden" name="reportDate" id="reportDate" value="" />
 <input type="hidden" name="reportTime" id="reportTime" value="" />
-<input type="hidden" name="formVersion" id="formVersion" value="1" />
+<input type="hidden" name="formVersion" id="formVersion" value="2" />
 <input type="hidden" name="appName" id="appName" value="RMSExpress" />
 <input type="hidden" name="trainingBanner" id="trainingBanner" value="" />
 <input type="hidden" name="formName" id="formName" value="WX4AKQ_Spotter_Report_Form" />
