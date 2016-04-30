@@ -92,14 +92,19 @@
 				echo "<table>";
 				echo "<tr><td> Callsign </td><td>$entry->callsign</td></tr>";
 				echo "<tr><td> Status</td><td>$entry->memberstatus</td></tr>";
-				echo "<tr><td> Name </td><td>$entry->firstname $entry->lastname</td></tr>";
+				echo "<tr><td> Name </td><td>$entry->firstname </td></tr>";
 				echo "<tr><td> Primary Area </td><td>$areanum </td></tr>";
 				echo "<tr><td> Primary Location </td><td>$entry->location </td></tr>";
 				echo "<tr><td> Primary Role </td><td>$entry->role</td></tr>";
 				echo "<tr><td> Primary Contact </td><td>$entry->pricontact</td></tr>";
 				echo "<tr><td> Alternate Contact </td><td>$entry->altcontact</td></tr>";
 				echo "<tr><td> Email </td><td>$entry->extemail</td></tr>";
-				echo "<tr><td> Has Winlink Address </td><td>$entry->haswinlink</td></tr>";
+				if($entry->haswinlink == 1) {
+					$winlink = 'Yes';
+				} else {
+					$winlink = 'No';
+				};
+				echo "<tr><td> Has Winlink Address </td><td>$winlink</td></tr>";
 				echo "<tr><td> Availability </td><td>$availability</td></tr>";
 				echo "</table>";
 				echo '<P><A HREF="?form=roster">Return to Roster listing</A></P>';
