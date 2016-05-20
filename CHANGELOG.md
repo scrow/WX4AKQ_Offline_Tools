@@ -1,5 +1,10 @@
 # Change Log
 
+## v1.1.1 Minor enhancement release
+
+* Removes the "Area Number" dropdown from the NCO form.  Effective with Ops Portal v8.11 (5/19/2016) the originating area number is no longer tracked in the logs.  This change increments the version number to `3`.
+* Adds input validation to both the NCO and Spotter forms to verify input length is at least 10 characters in the location and report fields.  Server-side validation has been in place since Ops Portal v8 which throws reports into manual review if this criteria was not met.  This client side validation should reduce the number of reports requiring manual review.
+
 ## v1.1.0 Feature release
 
 * Makes updates to the Roster Viewer function for improved compatibility with the back-end changes introduced in Ops Portal v8.4.
