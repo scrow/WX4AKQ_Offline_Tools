@@ -571,7 +571,7 @@
 					document.getElementById('spotterCall').select();
 					return false;
 				};
-				
+
 				if(document.getElementById('relayedVia').value !== '6') {
 					// Need to validate all required fields are entered
 					if(document.getElementById('eventDate').value == '') {
@@ -602,14 +602,14 @@
 						return false;
 					};
 
-					if(document.getElementById('reportInfo').value == '') {
-						alert('A report must be provided. Please enter all observations which satisfy SKYWARN Reporting Criteria.');
+					if(document.getElementById('reportInfo').value.length < 10) {
+						alert('A report must be provided. Please enter all observations which satisfy SKYWARN Reporting Criteria.  Reports must be at least 10 characters in length.');
 						document.getElementById('reportInfo').select();
 						return false;
 					};
 
-					if(document.getElementById('eventLocation').value == '') {
-						alert('An event location must be provided. Please enter specific location information.');
+					if(document.getElementById('eventLocation').value.length < 10) {
+						alert('An event location must be provided. Please enter specific location information.  Location information must be at least 10 characters in length.');
 						document.getElementById('eventLocation').select();
 						return false;
 					};
