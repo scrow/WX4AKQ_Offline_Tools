@@ -141,11 +141,9 @@ switch($_SERVER['REQUEST_METHOD']) {
 						$edit_js = '';
 						
 						$xml = new SimpleXMLElement(file_get_contents($Config['queue_folder'].'/'.$_GET['edit']));
-						$edit_js .= 'document.getElementById("areaNum").value="'.$xml->variables->areanum.'";';
 						$edit_js .= 'document.getElementById("spotterCall").value="'.$xml->variables->spottercall.'";';
 						$edit_js .= 'document.getElementById("reportInfo").value="'.$xml->variables->reportinfo.'";';
 						$edit_js .= 'document.getElementById("eventLocation").value="'.$xml->variables->eventlocation.'";';
-
 
 						if(trim($xml->variables->flagreport)=='yes') {
 							$edit_js .= 'document.getElementById("flagReport").checked = true;';

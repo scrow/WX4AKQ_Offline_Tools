@@ -467,7 +467,7 @@
 				document.getElementById('eventTime').value = now.format("HH:MM");
 				document.getElementById('reportDate').value = now.format("isoDate");
 				document.getElementById('reportTime').value = now.format("HH:MM");
-				document.getElementById('areaNum').focus();
+				document.getElementById('spotterCall').focus();
 				
 				if(document.getElementById('appName').value == 'runlocal') {
 					document.getElementById('cancelBtn').style.display = 'inline';
@@ -476,7 +476,6 @@
 				document.getElementById('fcc').innerHTML = '';
 
 				/* FORM_EDIT_PLACEHOLDER */
-
 			}
 
 			function getFcc(str)
@@ -677,31 +676,8 @@
 <input type="hidden" name="ncoCall" id="ncoCall" value="{Callsign}"/>
 
 <fieldset class="call">
-	<table>
-		<tr>
-			<td style="padding-right: 0px">
-				<label for="areaNum" class="required" style="padding-right: 2px; width: 157px"> Area </label>
-			</td>
-			<td>
-				<select name="areaNum" id="areaNum">
-					<option value="1">1 - Richmond</option>
-					<option value="2">2 - Southern VA</option>
-					<option value="3">3 - Williamsburg/Smithfield</option>
-					<option value="5">5 - Southeast VA</option>
-					<option value="7">7 - Northeast NC</option>
-					<option value="8">8 - Northern Neck</option>
-					<option value="9">9 - Eastern Shore</option>
-					<option value="99">99 - WFO Wakefield</option>
-				</select>
-			</td>
-			<td style="padding-right: 0px">
-				<label for="spotterCall" class="required" style="width: 155px; padding-right: 0px"> Spotter Callsign </label>
-			</td>
-			<td>
+				<label for="spotterCall" class="required"> Spotter Callsign </label>
 				<input type="text" id="spotterCall" name="spotterCall" onchange="javascript:processSpotterCall();" />
-			</td>
-		</tr>
-	</table>
 </fieldset>
 
 <span id="fcc"></span>
@@ -775,7 +751,7 @@
 
 <input type="hidden" name="operation" id="operation" value="" />
 <input type="hidden" name="api_key" id="api_key" value="" />
-<input type="hidden" name="formVersion" id="formVersion" value="2" />
+<input type="hidden" name="formVersion" id="formVersion" value="3" />
 <input type="hidden" name="appName" id="appName" value="RMSExpress" />
 <input type="hidden" name="trainingBanner" id="trainingBanner" value="" />
 <input type="hidden" name="formName" id="formName" value="WX4AKQ_NCO_Report_Form" />
