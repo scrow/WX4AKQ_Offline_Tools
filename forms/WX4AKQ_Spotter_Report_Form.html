@@ -580,27 +580,27 @@
 				document.getElementById('contactNumber').value.trim();
 				
 				if(document.getElementById('eventDate').value == '') {
-					alert('An event date must be specified. Please enter a date in YYYY-MM-DD format, Eastern time zone.');
+					alert('An event date must be specified.  Please enter a date in YYYY-MM-DD format, Eastern time zone.');
 					document.getElementById('eventDate').focus();  /* for Chrome, Opera */
 					document.getElementById('eventDate').select();  /* for all other browsers */
 					return false;
 				};
 				
 				if(document.getElementById('eventTime').value == '') {
-					alert('An event time must be specified. Please enter a time in 24-hour HH:MM format, Eastern time zone.');
+					alert('An event time must be specified.  Please enter a time in 24-hour HH:MM format, Eastern time zone.');
 					document.getElementById('eventTime').focus();  /* for Chrome, Opera */
 					document.getElementById('eventTime').select();  /* for all other browsers */
 					return false;
 				};
 				
-				if(document.getElementById('eventLocation').value == '') {
-					alert('An event location must be provided. Please enter specific location information. Refer to the help text for further instructions.');
+				if(document.getElementById('eventLocation').value.length < 10 ) {
+					alert('An event location must be provided.  Please enter specific location information. Location information must be at least 10 characters.  Refer to the help text for further instructions.');
 					document.getElementById('eventLocation').select();
 					return false;
 				};
 				
-				if(document.getElementById('reportInfo').value == '') {
-					alert('A report must be provided. Please enter all observations which satisfy SKYWARN Reporting Criteria.  Refer to the help text for further instructions.');
+				if(document.getElementById('reportInfo').value.length < 10 ) {
+					alert('A report must be provided.  Please enter all observations which satisfy SKYWARN Reporting Criteria.  Report must be at least 10 characters.  Refer to the help text for further instructions.');
 					showCriteria();
 					document.getElementById('reportInfo').select();
 					return false;
