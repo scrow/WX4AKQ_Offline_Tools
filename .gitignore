@@ -17,3 +17,4 @@ files/*
 config.xml
 build/*
 gh-pages/
+.DS_Store
