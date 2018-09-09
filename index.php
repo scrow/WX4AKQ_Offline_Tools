@@ -2,7 +2,7 @@
 /*	
 #	This file is part of WX4AKQ Offline Tools
 #	
-#	Copyright (c) 2015-16, Steve Crow, Reid Barden
+#	Copyright (c) 2015-18, Steve Crow, Reid Barden
 #	Licensed under the BSD 2-clause “Simplified” License
 #	
 #	For license information, see the LICENSE.md file or visit
@@ -73,7 +73,7 @@ if(file_exists('config.xml')) {
 	};
 	$Config['upload_url'] = trim($configFile->upload_url);
 	if($Config['upload_url'] == '') {
-		$Config['upload_url'] = 'http://ops.wx4akq.org/xml_upload.php';
+		$Config['upload_url'] = 'https://ops.wx4akq.org/xml_upload.php';
 	};
 	if(trim($configFile->override_connect_detect)=='true') {
 		$Config['override_connect_detect']=true;
@@ -89,7 +89,7 @@ if(file_exists('config.xml')) {
 	$Config['my_call'] = '';
 	$Config['queue_folder'] = 'queue';
 	$Config['op_mode'] = SAVE_TO_QUEUE;
-	$Config['upload_url'] = 'http://ops.wx4akq.org/xml_upload.php';
+	$Config['upload_url'] = 'https://ops.wx4akq.org/xml_upload.php';
 	$Config['api_key'] = '';
 	$Config['override_connect_detect'] = false;
 	$Config['include_fcc'] = false;
@@ -98,7 +98,7 @@ if(file_exists('config.xml')) {
 function includeFooter() {
 	echo <<< HTML
 <hr/>
-<p class="footer">Copyright &copy; 2015-16 Steve Crow, Reid Barden.  This work is licensed under the BSD 2-Clause &quot;Simplified&quot; License.  Update to the latest version of this form, download additional forms, request features and report bugs at the <a href="http://github.com/scrow/wx4akq-offline-tools" class="footer" TARGET="_blank">Project Homepage</a> (Internet connection required). SKYWARN&#0174 and the SKYWARN&#0174 logo are registered trademarks of the National Oceanic and Atmospheric Administration, used with permission.</p>
+<p class="footer">Copyright &copy; 2015-18 Steve Crow, Reid Barden.  This work is licensed under the BSD 2-Clause &quot;Simplified&quot; License.  Update to the latest version of this form, download additional forms, request features and report bugs at the <a href="https://github.com/scrow/wx4akq-offline-tools" class="footer" TARGET="_blank">Project Homepage</a> (Internet connection required). SKYWARN&#0174 and the SKYWARN&#0174 logo are registered trademarks of the National Oceanic and Atmospheric Administration, used with permission.</p>
 HTML;
 }
 

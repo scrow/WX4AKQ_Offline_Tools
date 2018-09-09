@@ -2,7 +2,7 @@
 /*	
 #	This file is part of WX4AKQ Offline Tools
 #	
-#	Copyright (c) 2015-16, Steve Crow, Reid Barden
+#	Copyright (c) 2015-18, Steve Crow, Reid Barden
 #	Licensed under the BSD 2-clause “Simplified” License
 #	
 #	For license information, see the LICENSE.md file or visit
@@ -47,7 +47,7 @@
 	
 	if(isset($_GET['callsign']) && (trim($_GET['callsign']!==''))) {
 		// Display details for a specific call sign
-		// This should look similar to http://ops.wx4akq.org/viewroster.php?call=N1VCU
+		// This should look similar to https://ops.wx4akq.org/viewroster.php?call=N1VCU
 		$found = false;
 		foreach($xml->entry as $entry) {
 			if(!$found && strtolower($entry->callsign)==strtolower($_GET['callsign'])) {
@@ -116,7 +116,7 @@
 		
 	} else {
 		// Step through the roster data and show summary.  Sort order is determined by the XML file.
-		// This should look similar to http://ops.wx4akq.org/roster.php
+		// This should look similar to https://ops.wx4akq.org/roster.php
 
 		echo('<P>Click on a call sign to view Team Member details.</P>');
 

@@ -2,7 +2,7 @@
 /*	
 #	This file is part of WX4AKQ Offline Tools
 #	
-#	Copyright (c) 2015-16, Steve Crow, Reid Barden
+#	Copyright (c) 2015-18, Steve Crow, Reid Barden
 #	Licensed under the BSD 2-clause “Simplified” License
 #	
 #	For license information, see the LICENSE.md file or visit
@@ -51,7 +51,7 @@
 		'req' => 'roster'
 	);
 	$opt_array = array(
-		CURLOPT_URL => 'http://dev.wx4akq.org/ops/xml_query.php',
+		CURLOPT_URL => 'https://dev.wx4akq.org/ops/xml_query.php',
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_POST => 1,
 		CURLOPT_POSTFIELDS => $data
@@ -83,7 +83,7 @@
 	// Get the list of supplemental files
 	$ch = curl_init();
 	$opt_array = array(
-		CURLOPT_URL => 'http://files.wx4akq.org/offline_files.xml',
+		CURLOPT_URL => 'https://files.wx4akq.org/offline_files.xml',
 		CURLOPT_RETURNTRANSFER => true
 	);
 	curl_setopt_array($ch, $opt_array);
@@ -158,7 +158,7 @@
 				'req' => 'fcc'
 			);
 			$opt_array = array(
-				CURLOPT_URL => 'http://dev.wx4akq.org/ops/xml_query.php',
+				CURLOPT_URL => 'https://dev.wx4akq.org/ops/xml_query.php',
 				CURLOPT_RETURNTRANSFER => true,
 				CURLOPT_POST => 1,
 				CURLOPT_POSTFIELDS => $data
@@ -190,7 +190,7 @@
 					);
 					$fp = fopen('data/fcc.sqlite3.gz.tmp','w');
 					$opt_array = array(
-						CURLOPT_URL => 'http://dev.wx4akq.org/ops/xml_query.php',
+						CURLOPT_URL => 'https://dev.wx4akq.org/ops/xml_query.php',
 						CURLOPT_RETURNTRANSFER => true,
 						CURLOPT_FILE => $fp,
 						CURLOPT_POST => 1,

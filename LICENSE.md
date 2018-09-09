@@ -1,4 +1,4 @@
-Copyright (c) 2015-16, Steve Crow, Reid Barden  
+Copyright (c) 2015-18, Steve Crow, Reid Barden  
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

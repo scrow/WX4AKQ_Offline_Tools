@@ -1,5 +1,9 @@
 # Change Log
 
+## v1.1.2 SSL Updates
+
+* Makes various updates throughout the application to adjust for SSL on the WX4AKQ.org domain
+
 ## v1.1.1 Minor enhancement release
 
 * Removes the "Area Number" dropdown from the NCO form.  Effective with Ops Portal v8.11 (5/19/2016) the originating area number is no longer tracked in the logs.  This change increments the version number to `3`.

@@ -2,7 +2,7 @@
 /*	
 #	This file is part of WX4AKQ Offline Tools
 #	
-#	Copyright (c) 2015-16, Steve Crow, Reid Barden
+#	Copyright (c) 2015-18, Steve Crow, Reid Barden
 #	Licensed under the BSD 2-clause “Simplified” License
 #	
 #	For license information, see the LICENSE.md file or visit
@@ -39,7 +39,7 @@
 		'api_key' => $Config['api_key']
 	);
 	$opt_array = array(
-		CURLOPT_URL => 'http://ops.wx4akq.org/xml_apikey.php',
+		CURLOPT_URL => 'https://ops.wx4akq.org/xml_apikey.php',
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_POST => 1,
 		CURLOPT_POSTFIELDS => $data
