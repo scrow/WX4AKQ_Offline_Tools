@@ -1,5 +1,9 @@
 # Change Log
 
+## v1.1.3 SSL bugfixes
+
+* Addresses some issues relating to the SSL updates made in v1.1.2
+
 ## v1.1.2 SSL Updates
 
 * Makes various updates throughout the application to adjust for SSL on the WX4AKQ.org domain
