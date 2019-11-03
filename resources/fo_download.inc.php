@@ -99,12 +99,17 @@
 		echo('failed<br/>');
 		ob_flush(); flush();
 	} else {
+		echo('done');
+		ob_flush(); flush();
 		$doDownload = true;
 		if(file_exists('data/offline_files.xml')) {
 			$existing = new SimpleXMLElement(file_get_contents('data/offline_files.xml'));
 			if(trim($supplementals->version) == trim($existing->version)) {
 				$doDownload = false;
-				echo('up to date<br/>');
+				echo(', up to date<br/>');
+				ob_flush(); flush();
+			} else {
+				echo('<br/>');
 				ob_flush(); flush();
 			};
 		} else {
