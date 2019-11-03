@@ -66,7 +66,13 @@ echo('</P>');
 		echo('<P>Offline files:');
 		$xml = new SimpleXMLElement(file_get_contents('data/offline_files.xml'));
 		foreach($xml->file as $thisFile) {
-			echo('<br/><A HREF="files/'.$thisFile->saveas.'" TARGET="_blank">'.$thisFile->title.'</A>');
+			if($thisFile->always_refresh == "1") {
+				if($Config['always_refresh']==1) {
+					echo('<br/><A HREF="files/'.$thisFile->saveas.'" TARGET="_blank">'.$thisFile->title.'</A>');
+				};
+			} else {
+				echo('<br/><A HREF="files/'.$thisFile->saveas.'" TARGET="_blank">'.$thisFile->title.'</A>');
+			};
 		};
 		echo('<P>');
 	};

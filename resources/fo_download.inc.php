@@ -81,6 +81,8 @@
 	ob_flush(); flush();
 	
 	// Get the list of supplemental files
+	echo('Downloading supplemental files list ... ');
+	ob_flush(); flush();
 	$ch = curl_init();
 	$opt_array = array(
 		CURLOPT_URL => 'http://files.wx4akq.org/offline_files.xml',
@@ -94,7 +96,7 @@
 	$supplementals = new SimpleXMLElement($result);
 	curl_close($ch);
 	if($error!==0) {
-		echo('Download supplemental files list ... failed<br/>');
+		echo('failed<br/>');
 		ob_flush(); flush();
 	} else {
 		$doDownload = true;
@@ -102,12 +104,15 @@
 			$existing = new SimpleXMLElement(file_get_contents('data/offline_files.xml'));
 			if(trim($supplementals->version) == trim($existing->version)) {
 				$doDownload = false;
+				echo('up to date<br/>');
+				ob_flush(); flush();
 			};
-			echo('Download supplemental files list ... passed, up-to-date<br/>');
-			ob_flush(); flush();
+		} else {
+			echo('updates required<br/>');
 		};
 
 		if($doDownload) {
+			ob_flush(); flush();
 			file_put_contents('data/offline_files.xml', $supplementals->asXML());
 			if(!file_exists('files')) {
 				mkdir('files');
@@ -126,9 +131,7 @@
 				$result = curl_exec($ch);
 				$error = curl_errno($ch);
 				echo('Download '.$thisFile->title.' ... ');
-				
 				ob_flush(); flush();
-				
 				if($error==0) {
 					file_put_contents('files/'.$thisFile->saveas, $result);
 					echo('pass<br/>');
@@ -137,6 +140,35 @@
 				};
 				ob_flush(); flush();
 				curl_close($ch);
+			};
+		};
+
+		if((!$doDownload) && ($Config['always_refresh']==1)) {
+			// Refresh the "always refresh" files if enabled in config
+			foreach($supplementals->file as $thisFile) {
+				if($thisFile->always_refresh==1) {
+					$ch = curl_init();
+					$opt_array = array(
+						CURLOPT_URL => $thisFile->url,
+						CURLOPT_RETURNTRANSFER => true
+					);
+					curl_setopt_array($ch, $opt_array);
+					// Set a timeout for slow connections - Bug #36
+					// Going with a big number in case included files happen to be huge
+					set_time_limit(1800);
+					$result = curl_exec($ch);
+					$error = curl_errno($ch);
+					echo('Refresh '.$thisFile->title.' ... ');
+					ob_flush(); flush();
+					if($error==0) {
+						file_put_contents('files/'.$thisFile->saveas, $result);
+						echo('pass<br/>');
+					} else {
+						echo('fail<br/>');
+					};
+					ob_flush(); flush();
+					curl_close($ch);
+				};
 			};
 		};
 		
@@ -180,7 +212,7 @@
 			
 			if(($xml->passfail=='PASS') && ($xml->filesize>0)) {
 				if(intval($existing_version) >= intval($xml->timestamp)) {
-					echo('passed, up-to-date<br/>');
+					echo('up to date<br/>');
 				} else {
 					$ch = curl_init();
 					$data = array(

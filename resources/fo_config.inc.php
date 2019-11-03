@@ -71,7 +71,14 @@
 				<input type="checkbox" name="include_fcc" id="include_fcc" value="1" style="display: inline" <?php if($Config['include_fcc']) echo 'CHECKED';?>> Include FCC database when downloading from server
 			</fieldset>
 		</fieldset>
-		
+
+		<fieldset class="call">
+			<label for="always_refresh">Include dynamic content:</label>
+			<fieldset>
+				<input type="checkbox" name="always_refresh" id="always_refresh" value="1" style="display: inline" <?php if($Config['always_refresh']) echo 'CHECKED';?>> Refresh frequently updated content when downloading from server
+			</fieldset>
+		</fieldset>
+
 		&nbsp;<br/>
 		
 		<fieldset class="buttons">
