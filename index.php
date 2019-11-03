@@ -91,11 +91,6 @@ if(file_exists('config.xml')) {
 	} else {
 		$Config['always_refresh']=false;
 	};
-	if(trim($configFile->mesh_mode)=='1') {
-		$Config['mesh_mode']=true;
-	} else {
-		$Config['mesh_mode']=false;
-	};
 } else {
 	$Config['my_call'] = '';
 	$Config['queue_folder'] = 'queue';
@@ -105,7 +100,6 @@ if(file_exists('config.xml')) {
 	$Config['override_connect_detect'] = false;
 	$Config['include_fcc'] = false;
 	$Config['always_refresh'] = false;
-	$Config['mesh_mode'] = false;
 };
 
 function includeFooter() {
@@ -251,11 +245,6 @@ switch($_SERVER['REQUEST_METHOD']) {
 						$xml->addChild('always_refresh',1);
 					} else {
 						$xml->addChild('always_refresh',0);
-					};
-					if(isset($_GET['mesh_mode']) && (trim($_GET['mesh_mode']!==''))) {
-						$xml->addChild('mesh_mode',1);
-					} else {
-						$xml->addChild('mesh_mode',0);
 					};
 					if(isset($_GET['override_connect_detect']) && (trim($_GET['override_connect_detect']=='true'))) {
 						$xml->addChild('override_connect_detect','true');

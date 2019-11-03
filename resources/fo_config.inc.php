@@ -80,7 +80,7 @@
 		</fieldset>
 
 		&nbsp;<br/>
-		
+
 		<fieldset class="buttons">
 			<input type="submit" id="submitBtn" name="submitBtn" value="Submit" class="green" onClick=""/>
 			<input type="reset" id="resetBtn" name="resetBtn" value="Reset Form" class="gray" onClick="" />
