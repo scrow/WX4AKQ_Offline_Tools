@@ -83,7 +83,7 @@
 	// Get the list of supplemental files
 	$ch = curl_init();
 	$opt_array = array(
-		CURLOPT_URL => 'https://files.wx4akq.org/offline_files.xml',
+		CURLOPT_URL => 'http://files.wx4akq.org/offline_files.xml',
 		CURLOPT_RETURNTRANSFER => true
 	);
 	curl_setopt_array($ch, $opt_array);
