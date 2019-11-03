@@ -39,7 +39,7 @@
 		'api_key' => $Config['api_key']
 	);
 	$opt_array = array(
-		CURLOPT_URL => 'https://ops.wx4akq.org/xml_apikey.php',
+		CURLOPT_URL => 'https://dev.wx4akq.org/ops/xml_apikey.php',
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_POST => 1,
 		CURLOPT_POSTFIELDS => $data
