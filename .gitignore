@@ -20,4 +20,4 @@ gh-pages/
 .DS_Store
 .htpasswd
 .htaccess
-
+config.*.xml
