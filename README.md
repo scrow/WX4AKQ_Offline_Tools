@@ -110,6 +110,34 @@ These features all require configuration of a valid API key as described earlier
 The offline FCC database is currently updated once weekly and the "Include FCC database when downloading from server" option must be enabled in the System Configuration.  Disabling this option will not remove existing FCC data, but will prevent retrieval of the latest update.  Note that the FCC database is approximately a 75 MB download, so users over slow or restricted Internet connections may wish to forego this update.
 
 
+# Multi-User (Mesh) Mode
+
+A new multi-user mode is now available which allows deployment of the Offline Tools on a web server within a mesh network or other environment where there may be intermittent Internet connectivity.  The end user functionality is practically identical to running the Offline Tools on a local web server.  Users will have access as there is a mesh network path between their computer and the server.  Reports can be pushed from the server when connectivity is available, or they can be downloaded individually through the web browser for attachment to an e-mail message.
+
+## Prerequisites
+
+The prerequisites for multi-user mode are the same as running on a local web server.  Additionally, the server operator's Ops Portal account must be a member of the "mesh-ops" group.  (Users wishing to have their credentials available on these servers should ask to be added to the "mesh-users" group on Ops Portal.)
+
+## Deployment process
+
+Spawn a local server using Vagrant as usual or install on an existing web server as previously described.  Then:
+
+  1. Copy `mesh_mode.xml.example` to `mesh_mode.xml` and edit the new file to contain the server operator's call sign and Ops Portal API key.  Set `mesh_mode_enable` to `1`
+  2. Run `utils/sync_api_auth.php` to pull down the authentication file from Ops Portal.  The server must have working Internet connectivity to complete this step.  If this step fails, confirm that the account a member of the "mesh-ops" group in Ops Portal.
+  3. Confirm that there are user names and hashed passwords in the `.htpasswd` file in the server root
+  4. Edit `.htaccess` in the server root to enable password authentication
+
+## Login Process
+
+To log in, use the call sign for the username and the last 8 characters of the API key as the password.  Users can obtain their API key from the "My Account" page in Ops Portal and must be a member of the "mesh-users" group.
+
+## File Downloads and Authentication Synchronization
+
+Only the node owner (specified in `mesh_mode.xml`) can initiate downloads from the Ops Portal server while running in multi-user mode.  The Ops Portal user database will synchronize as part of the download activity, as long as the node owner remains in the "mesh-ops" group in Ops Portal.
+
+Files downloaded by the node owner will be available to all users of the server.
+
+
 # Included Forms
 
 ## WX4AKQ_Spotter_Report_Form

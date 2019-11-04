@@ -92,7 +92,7 @@ if($mesh_mode && !$is_mesh_operator) {
 	};
 
 	ob_flush(); flush();
-	
+
 	// Get the list of supplemental files
 	echo('Downloading supplemental files list ... ');
 	ob_flush(); flush();
@@ -189,12 +189,12 @@ if($mesh_mode && !$is_mesh_operator) {
 				};
 			};
 		};
-		
+
 	};
-	
+
 	// Handle FCC database download
 	if($Config['include_fcc']) {
-		
+
 		if(!$api_passed) {
 			echo('Download FCC data ... failed<br/>');
 			ob_flush(); flush();
@@ -219,7 +219,7 @@ if($mesh_mode && !$is_mesh_operator) {
 			$result = curl_exec($ch);
 			curl_close($ch);
 			$xml = simplexml_load_string($result);
-			
+
 			// Check existing file version
 			if(file_exists('data/fcc.xml')) {
 				$existing_xml = simplexml_load_file('data/fcc.xml');
@@ -227,7 +227,7 @@ if($mesh_mode && !$is_mesh_operator) {
 			} else {
 				$existing_version = 1;
 			};
-			
+
 			if(($xml->passfail=='PASS') && ($xml->filesize>0)) {
 				if(intval($existing_version) >= intval($xml->timestamp)) {
 					echo('up to date<br/>');
@@ -314,7 +314,7 @@ if($mesh_mode && !$is_mesh_operator) {
 
 		ob_flush(); flush();
 	};
-	
+
 ?>
 
 <P><A HREF="index.php">Return to main menu</A></P>

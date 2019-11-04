@@ -22,3 +22,4 @@ gh-pages/
 .DS_Store
 config.*.xml
 mesh_mode.xml
+*.tmp
