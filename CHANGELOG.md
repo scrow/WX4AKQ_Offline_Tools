@@ -1,5 +1,11 @@
 # Change Log
 
+## v2.0.0 Major version release
+
+* Adds support for "dynamic content" updates - the `always_refresh` parameter in the offline file index will cause the file to be re-downloaded with each run of fo_download
+* Adds multi-user support
+* Adds server shutdown scripts
+
 ## v1.1.3 SSL bugfixes
 
 * Addresses some issues relating to the SSL updates made in v1.1.2

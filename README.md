@@ -112,7 +112,7 @@ The offline FCC database is currently updated once weekly and the "Include FCC d
 
 # Multi-User (Mesh) Mode
 
-A new multi-user mode is now available which allows deployment of the Offline Tools on a web server within a mesh network or other environment where there may be intermittent Internet connectivity.  The end user functionality is practically identical to running the Offline Tools on a local web server.  Users will have access as there is a mesh network path between their computer and the server.  Reports can be pushed from the server when connectivity is available, or they can be downloaded individually through the web browser for attachment to an e-mail message.
+A new multi-user mode is now available which allows deployment of the Offline Tools on a web server within a mesh network or other environment where there may be intermittent Internet connectivity.  The end user functionality is practically identical to running the Offline Tools on a local web server.  Users will have access as long as there is a mesh network path between their computer and the server.  Reports can be pushed from the server when connectivity is available, or they can be downloaded individually through the web browser for attachment to an e-mail message.
 
 ## Prerequisites
 
