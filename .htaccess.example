@@ -10,3 +10,10 @@
 
 Options -Indexes
 RedirectMatch 404 /\.git
+
+AuthType Basic
+AuthName "WX4AKQ API Authentication"
+
+# Edit and un-comment the two lines below when enabling multi-user mode.  See README.md
+#AuthUserFile /full/path/to/.htpasswd
+#Require valid-user

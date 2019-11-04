@@ -42,30 +42,62 @@ function isOnline() {
 	};
 };
 
-// Read configuration Options or redirect to configuration form
+// Set up things for multi-user mode
+if(file_exists('mesh_mode.xml')) {
+	$meshConfig = simplexml_load_file('mesh_mode.xml');
+	if($meshConfig->mesh_mode_enable == 1) {
+		if(isset($_SERVER['PHP_AUTH_USER'])) {
+			$mesh_mode = true;
+			$config_file_name = 'config.' . trim(strtolower($_SERVER['PHP_AUTH_USER'])) . '.xml';
+			$mesh_operator = strtolower(trim($meshConfig->my_call));
+			$is_mesh_operator = ($mesh_operator == strtolower(trim($_SERVER['PHP_AUTH_USER'])));
+		} else {
+			die('Multi-user mode is enabled but user authentication not detected.  Please check server configuration or see README.md for information.');
+		};
+	};
+	// Load the mesh operator's configuration preferences, if available
+	if(file_exists('config.' . trim(strtolower($meshConfig->my_call)) .'.xml')) {
+		$meshOpConfig = simplexml_load_file('config.' . trim(strtolower($meshConfig->my_call)) . '.xml');
+		$meshOp_always_refresh = $meshOpConfig->always_refresh;
+	} else {
+		$meshOp_always_refresh = 0;
+	};
+} else {
+	$mesh_mode = false;
+	$mesh_operator = null;
+	$config_file_name = 'config.xml';
+	$is_mesh_operator = false;
+};
 
-if(!file_exists('config.xml')) {
+// Read configuration Options or redirect to configuration form
+if(!file_exists($config_file_name)) {
 	if(isset($_GET['form']) && ($_GET['form']!=='config') && ($_GET['form']!=='config_save')) {
 		header('Location: index.php?form=config');
 	};
 };
 
 $Config = array();
-if(file_exists('config.xml')) {
-	$configFile = simplexml_load_file('config.xml');
+if(file_exists($config_file_name)) {
+	$configFile = simplexml_load_file($config_file_name);
 	$Config['my_call'] = trim($configFile->my_call);
 	if($Config['my_call']=='') {
 		if(isset($_GET['form']) && ($_GET['form']!=='config') && ($_GET['form']!=='config_save')) {
 			header('Location: index.php?form=config');
 		};
 	};
+
 	$Config['queue_folder'] = trim($configFile->queue_folder);
 	if($Config['queue_folder']=='') {
-		$Config['queue_folder']=='queue';
+		if($mesh_mode) {
+			$Config['queue_folder'] == 'queue' . DIRECTORY_SEPARATOR . trim(strtolower($_SERVER['PHP_AUTH_USER']));
+		} else {
+			$Config['queue_folder']=='queue';
+		};
 	};
 	if(!file_exists($Config['queue_folder'])) {
 		mkdir($Config['queue_folder']);
 	};
+
 	$Config['api_key'] = trim($configFile->api_key);
 	$Config['op_mode'] = trim($configFile->op_mode);
 	if($Config['op_mode']=='') {
@@ -73,7 +105,7 @@ if(file_exists('config.xml')) {
 	};
 	$Config['upload_url'] = trim($configFile->upload_url);
 	if($Config['upload_url'] == '') {
-		$Config['upload_url'] = 'https://ops.wx4akq.org/xml_upload.php';
+		$Config['upload_url'] = 'https://dev.wx4akq.org/ops/xml_upload.php';
 	};
 	if(trim($configFile->override_connect_detect)=='true') {
 		$Config['override_connect_detect']=true;
@@ -91,15 +123,24 @@ if(file_exists('config.xml')) {
 	} else {
 		$Config['always_refresh']=false;
 	};
+
 } else {
-	$Config['my_call'] = '';
-	$Config['queue_folder'] = 'queue';
+	if($mesh_mode) {
+		$Config['my_call']=trim(strtoupper($_SERVER['PHP_AUTH_USER']));
+		$Config['queue_folder'] = 'queue' . DIRECTORY_SEPARATOR . trim(strtolower($_SERVER['PHP_AUTH_USER']));
+	} else {
+		$Config['my_call'] = '';
+		$Config['queue_folder'] = 'queue';
+	};
 	$Config['op_mode'] = SAVE_TO_QUEUE;
-	$Config['upload_url'] = 'https://ops.wx4akq.org/xml_upload.php';
+	$Config['upload_url'] = 'https://dev.wx4akq.org/ops/xml_upload.php';
 	$Config['api_key'] = '';
 	$Config['override_connect_detect'] = false;
 	$Config['include_fcc'] = false;
 	$Config['always_refresh'] = false;
+	if(isset($_GET['form']) && ($_GET['form']!=='config') && ($_GET['form']!=='config_save')) {
+		header('Location: index.php?form=config');
+	};
 };
 
 function includeFooter() {
@@ -251,7 +292,7 @@ switch($_SERVER['REQUEST_METHOD']) {
 					} else {
 						$xml->addChild('override_connect_detect','false');
 					};
-					$fp = fopen('config.xml','w');
+					$fp = fopen($config_file_name,'w');
 					fwrite($fp, $xml->asXML());
 					fclose($fp);
 					header('Location: index.php?form=menu');

@@ -11,6 +11,8 @@
 queue/*
 data/*
 files/*
+.htaccess
+.htpasswd
 !data/.htaccess
 !files/.htaccess
 .vagrant
@@ -18,6 +20,5 @@ config.xml
 build/*
 gh-pages/
 .DS_Store
-.htpasswd
-.htaccess
 config.*.xml
+mesh_mode.xml

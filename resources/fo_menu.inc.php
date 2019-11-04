@@ -67,7 +67,7 @@ echo('</P>');
 		$xml = new SimpleXMLElement(file_get_contents('data/offline_files.xml'));
 		foreach($xml->file as $thisFile) {
 			if($thisFile->always_refresh == "1") {
-				if($Config['always_refresh']==1) {
+				if(((!$mesh_mode) && ($Config['always_refresh']==1)) || ($mesh_mode && ($meshOp_always_refresh==1))) {
 					echo('<br/><A HREF="files/'.$thisFile->saveas.'" TARGET="_blank">'.$thisFile->title.'</A>');
 				};
 			} else {
@@ -86,8 +86,10 @@ echo('</P>');
 if(($Config['api_key']!=='') && (sizeof(glob($Config['queue_folder'].'/WX4AKQ_NCO_Report_Form-*.xml'))>0)) {
 	echo('<br/><a href="?form=editreport">Edit Queued NCO Reports</a>');
 };?>
-<br/><a href="?form=download">Download Offline Data and Files from Server</a></P>
-
+<br/><?php
+if((!$mesh_mode) || ($mesh_mode && $is_mesh_operator)) { ?>
+<a href="?form=download">Download Offline Data and Files from Server</a></P>
+<?php }; ?>
 <?php includeFooter();?>
 </div>
 </body>

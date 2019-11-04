@@ -68,11 +68,11 @@
 	$uploaded = 0;
 	$failed = 0;
 	$skipped = 0;
-	foreach(glob($Config['queue_folder'].'/*.xml') as $filename) {
-		
+	foreach(glob($Config['queue_folder'].DIRECTORY_SEPARATOR.'*.xml') as $filename) {
+
 		$rejected_due_to_acl = false;
 		$rejected_due_to_hold = false;
-		
+
 		// Let's make sure the API key and username are set to match current config
 		$xml = new SimpleXMLElement(file_get_contents($filename));
 		if(in_array($xml->variables->formname, $api_key_required)) {
@@ -80,17 +80,17 @@
 			$xml->variables->api_key = $Config['api_key'];
 		};
 		file_put_contents($filename, $xml->asXML());
-				
+
 		if(isset($xml->variables->formname) && ($xml->variables->formname=='WX4AKQ_NCO_Report_Form') && ($xml->variables->relayedvia=='6')) {
 			$rejected_due_to_hold = true;
 		};
-		
+
 		$success = true;
-		
+
 		if((!$rejected_due_to_acl) && (!$rejected_due_to_hold)) {
 			$ch = curl_init();
 			if(class_exists('CurlFile')) {
-				$uploadFile = new CurlFile($filename, mime_content_type($filename), $filename);	
+				$uploadFile = new CurlFile($filename, mime_content_type($filename), $filename);
 				$uploadFile->setPostFilename(basename($filename));
 			} else {
 				if(!function_exists('curl_file_create')) {
@@ -99,7 +99,7 @@
 						. ($postname ?: basename($filename))
 						. ($mimetype ? ";type=$mimetype" : '');
 					}
-				};							
+				};
 				$uploadFile = curl_file_create($filename, mime_content_type($filename), $filename);
 			};
 			$data = array(
@@ -126,7 +126,7 @@
 
 		} else {
 			$success = false;
-		}; // end if(!$rejected_due_to_acl);				
+		}; // end if(!$rejected_due_to_acl);
 
 		if($success) {
 			unlink($filename);
@@ -135,16 +135,16 @@
 			if($rejected_due_to_hold) {
 				$skipped++;
 			} else {
-				$failed++;			
+				$failed++;
 			};
 		};
 	}; // end foreach(glob(...
 	echo('<P>'.$uploaded.' files uploaded, '.$skipped.' skipped, '.$failed.' failed.</P>');
-	
+
 	if($skipped > 0) {
 		echo('<P>You have one or more reports on hold.  These reports were skipped.  Please <A HREF="?form=editreport">complete these reports and set message handling</A> and then retry the upload.</P>');
 	};
-	
+
 	if($rejected > 0) {
 		echo('<P>One or more files were rejected due to a bad API key. Check your <A HREF="?form=config">System Configuration</A> and try again.</P>');
 	};

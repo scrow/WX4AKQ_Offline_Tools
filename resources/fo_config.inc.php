@@ -21,6 +21,14 @@
 
 <H1><?php includeLogo();?> System Configuration</H1>
 
+<?php if($mesh_mode) {
+	echo('<HR/><P>Running in multi-user mode.  Your call sign and API key must match <A HREF="https://ops.wx4akq.org/index.php?mainframe=https://ops.wx4akq.org/myaccount.php" TARGET="_blank">Ops Portal</A>.</P>');
+
+	if($is_mesh_operator) {
+		echo('<P>You are the system operator.  If you change your call sign and/or API key, you will need to update <code>mesh_config.xml</code> as well, otherwise you will lose access to these system configuration options and you will no longer receive authentication updates.</P>');
+	};
+};?>
+
 <hr/>
 					
 <div id='settingsForm'>
@@ -65,6 +73,8 @@
 			</fieldset>
 		</fieldset>
 		
+<?php if((!$mesh_mode) || ($mesh_mode && $is_mesh_operator)) { ?>
+
 		<fieldset class="call">
 			<label for="include_fcc">Download FCC Data:</label>
 			<fieldset>
@@ -78,6 +88,11 @@
 				<input type="checkbox" name="always_refresh" id="always_refresh" value="1" style="display: inline" <?php if($Config['always_refresh']) echo 'CHECKED';?>> Refresh frequently updated content when downloading from server
 			</fieldset>
 		</fieldset>
+
+<?php } else { ?>
+<input type=hidden name="include_fcc" id="include_fcc" value="0"/>
+<input type=hidden name="always_refresh" id="always_refresh" value="0"/>
+<?php }; ?>
 
 		&nbsp;<br/>
 

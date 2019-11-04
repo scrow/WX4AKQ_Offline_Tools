@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config>
+	<my_call>AB1CDE</my_call>
+	<api_key>0123456789abcdef0123456789abcdef</api_key>
+	<mesh_mode_enable>1</mesh_mode_enable>
+</config>

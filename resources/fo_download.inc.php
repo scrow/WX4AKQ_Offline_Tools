@@ -23,6 +23,18 @@
 <hr/>
 
 <?php
+
+if($mesh_mode && !$is_mesh_operator) {
+	echo('<P>The system is running in multi-user mode and you are not the system operator.  This function is not available.</P>');
+?>
+<P><A HREF="index.php">Return to main menu</A></P>
+
+<?php includeFooter();?>
+</div>
+</body>
+</html>
+<?php die();
+};
 	
 	function gzUncompressFile($srcName, $dstName) {
 		$sfp = gzopen($srcName, "rb");
@@ -44,6 +56,7 @@
 
 	$api_passed = false;
 
+	// Download the roster
 	$ch = curl_init();
 	$data = array(
 		'user' => $Config['my_call'],
@@ -261,6 +274,46 @@
 			};
 		}; // end API validation
 	}; // end FCC database download
+
+	// Download the API authentication file
+	if($mesh_mode && $is_mesh_operator) {
+		echo('Downloading API authentication file ... ');
+		ob_flush(); flush();
+
+		$ch = curl_init();
+		$data = array(
+			'user' => $Config['my_call'],
+			'api_key' => $Config['api_key'],
+			'req' => 'api_htaccess'
+		);
+
+		$fp = fopen('.htpasswd.tmp','w');
+		$opt_array = array(
+			CURLOPT_URL => 'https://dev.wx4akq.org/ops/xml_query.php',
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_FILE => $fp,
+			CURLOPT_POST => 1,
+			CURLOPT_POSTFIELDS => $data
+		);
+		curl_setopt_array($ch, $opt_array);
+		// Set a timeout for slow connections - Bug #36
+		set_time_limit(3600);
+		curl_exec($ch);
+		curl_close($ch);
+		fclose($fp);
+		// Swap out the file
+		if(file_exists('.htpasswd.tmp')) {
+			if(file_exists('.htpasswd')) {
+				unlink('.htpasswd');
+			};
+			rename('.htpasswd.tmp','.htpasswd');
+			echo('pass<BR/>');
+		} else {
+			echo('fail<BR/>');
+		};
+
+		ob_flush(); flush();
+	};
 	
 ?>
 
