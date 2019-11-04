@@ -228,7 +228,7 @@ if($mesh_mode && !$is_mesh_operator) {
 				$existing_version = 1;
 			};
 
-			if(($xml->passfail=='PASS') && ($xml->filesize>0)) {
+			if(($xml->passfail=='PASS') && ($xml->filesize)>0) {
 				if(intval($existing_version) >= intval($xml->timestamp)) {
 					echo('up to date<br/>');
 				} else {
