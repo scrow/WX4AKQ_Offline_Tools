@@ -56,7 +56,7 @@ if(file_exists('../mesh_mode.xml')) {
 	curl_close($ch);
 	fclose($fp);
 	// Swap out the file
-	if(file_exists('.htpasswd.tmp')) {
+	if(file_exists('.htpasswd.tmp') && filesize('.htpasswd.tmp')>0 ) {
 		if(file_exists('../.htpasswd')) {
 			unlink('../.htpasswd');
 		};
