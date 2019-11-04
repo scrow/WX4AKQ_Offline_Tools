@@ -137,6 +137,10 @@ Only the node owner (specified in `mesh_mode.xml`) can initiate downloads from t
 
 Files downloaded by the node owner will be available to all users of the server.
 
+## System Bulletin
+
+A system bulletin file can be created as `bulletins/front_page.htm`.  When the system is running in multi-user mode and this file exists, it will replace the standard text at the top of the main menu.  This file is controlled by the system operator and does not synchronize from the network.
+
 
 # Included Forms
 
