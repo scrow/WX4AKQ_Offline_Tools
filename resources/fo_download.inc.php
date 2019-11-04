@@ -302,7 +302,7 @@ if($mesh_mode && !$is_mesh_operator) {
 		curl_close($ch);
 		fclose($fp);
 		// Swap out the file
-		if(file_exists('.htpasswd.tmp') && filesize('.htpasswd.tmp'>0)) {
+		if(file_exists('.htpasswd.tmp') && filesize('.htpasswd.tmp')>0) {
 			if(file_exists('.htpasswd')) {
 				unlink('.htpasswd');
 			};
