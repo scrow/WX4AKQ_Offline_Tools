@@ -2,8 +2,6 @@
 
 This project contains SKYWARN-related forms for use by SKYWARN Spotters and Net Control Operators within the NWS Wakefield, Virginia County Warning Area (CWA).  The forms can be used either with the [Winlink Express](http://www.winlink.org/tags/rms_express) amateur radio messaging software or in a standalone form using a locally-installed web server.  These forms are designed and maintained for the [Wakefield SKYWARN Amateur Radio Support Team](http://www.wx4akq.org/).
 
-For information on the forms included in this project, see "Included Forms."
-
 The [project homepage](http://offline.wx4akq.org) contains additional information and an introductory video with a demonstration.
 
 
