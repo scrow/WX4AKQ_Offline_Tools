@@ -23,3 +23,4 @@ gh-pages/
 config.*.xml
 mesh_mode.xml
 *.tmp
+bulletins/*.htm

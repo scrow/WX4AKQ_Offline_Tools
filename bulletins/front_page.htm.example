@@ -1,0 +1,15 @@
+<!--
+#
+#       This file is part of WX4AKQ Offline Tools
+#
+#       Copyright (c) 2015-19, Steve Crow, Reid Barden
+#       Licensed under the BSD 2-clause “Simplified” License
+#
+#       For license information, see the LICENSE.md file or visit
+#       http://wx4akq.org/software
+#
+-->
+
+<p>This is a broadcast message which can be displayed to all users.  When the system is operating in multi-user mode and this file exists, it will replace the standard text at the top of the main menu.</p>
+
+<p>This file is controlled entirely by the system operator.  It is not synchronized from the network.</p>
