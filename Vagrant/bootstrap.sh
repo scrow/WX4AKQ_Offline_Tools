@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
-#	
+#
 #	This file is part of WX4AKQ Offline Tools
-#	
+#
 #	Copyright (c) 2015-19, Steve Crow, Reid Barden
 #	Licensed under the BSD 2-clause “Simplified” License
-#	
+#
 #	For license information, see the LICENSE.md file or visit
 #	http://wx4akq.org/software
-#	
+#
 
 # Vagrant bootstrap file for wx4akq-offline-tools
 
@@ -19,7 +19,7 @@ if [ ! -f /var/log/swsetup ];
 then
 	sudo debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password password f0a8266bb2930e6b'
 	sudo debconf-set-selections <<< 'mysql-server-5.5 mysql-server/root_password_again password f0a8266bb2930e6b'
-	
+
 	sudo apt-get update
 
 	sudo apt-get install -y apache2 zip curl mysql-server-5.5
@@ -32,14 +32,16 @@ then
 		rm -rf /var/www
 		ln -fs /vagrant /var/www
 	fi
-	
+
 	apt-get -f install
 	chown -R vagrant.vagrant /var/lock/apache2
 	sudo sed -i "s|\("^export\ APACHE_RUN_USER=" * *\).*|\1vagrant|" /etc/apache2/envvars
 	sudo sed -i "s|\("^export\ APACHE_RUN_GROUP=" * *\).*|\1vagrant|" /etc/apache2/envvars
-	sudo sed -i "s|\("AllowOverride\ " * *\).*|\1all|" /etc/apache2/sites-enabled/000-default	
+	sudo sed -i "s|\("AllowOverride\ " * *\).*|\1all|" /etc/apache2/sites-enabled/000-default
 	sudo service apache2 stop
 	sudo service apache2 start
+
+	cp -n /var/www/.htaccess.example /var/www/.htaccess
 	touch /var/log/swsetup
 fi
 
