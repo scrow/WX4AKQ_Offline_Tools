@@ -102,11 +102,20 @@ if($mesh_mode && !$is_mesh_operator) {
 	curl_setopt($ch, CURLOPT_FILE, $fp);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 	$data = curl_exec($ch);
+	$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 	curl_close($ch);
-	if($data) {
+	fclose($fp);
+	if($http_code == 200) {
 		echo('done.<br/>');
 	} else {
-		echo('failed.<br/>');
+		if($http_code == 404) {
+			echo('not found<br/>');
+		} else {
+			echo('failed.<br/>');
+		};
+		if(file_exists('data/offline_motd.txt')) {
+			unlink('data/offline_motd.txt');
+		};
 	};
 	ob_flush(); flush();
 
