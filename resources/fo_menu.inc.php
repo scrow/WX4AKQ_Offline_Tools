@@ -50,14 +50,14 @@ if($numXML == 0) {
 
 echo('</P>');
 ?>
-<HR/>
 
 <?php
 if($mesh_mode && file_exists('data/offline_motd.txt') && strlen(trim(file_get_contents('data/offline_motd.txt')))>8) {
-	echo('<TEXTAREA READONLY style="width: 99%; margin-left: 0px; margin-right: 0px; height: 100px; overflow-y: auto">motd:' . "\r\n" . trim(file_get_contents('data/offline_motd.txt')) . '</TEXTAREA><HR/>');
+	echo('<TEXTAREA READONLY style="resize: vertical; width: 99%; margin-left: 0px; margin-right: 0px; height: 100px; overflow-y: auto">' . "\r\n" . strip_tags(trim(file_get_contents('data/offline_motd.txt'))) . '</TEXTAREA>');
+} else {
+	echo('<HR/>');
 };
 ?>
-
 
 <P>Available forms and tools:
 <br/><a href="?form=WX4AKQ_Spotter_Report_Form">Spotter Report Form</a>
