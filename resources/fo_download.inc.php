@@ -1,10 +1,10 @@
 <?php
-/*	
+/*
 #	This file is part of WX4AKQ Offline Tools
-#	
+#
 #	Copyright (c) 2015-19, Steve Crow, Reid Barden
 #	Licensed under the BSD 2-clause “Simplified” License
-#	
+#
 #	For license information, see the LICENSE.md file or visit
 #	http://wx4akq.org/software
 */
@@ -35,7 +35,7 @@ if($mesh_mode && !$is_mesh_operator) {
 </html>
 <?php die();
 };
-	
+
 	function gzUncompressFile($srcName, $dstName) {
 		$sfp = gzopen($srcName, "rb");
 		$fp = fopen($dstName, "w");
@@ -46,7 +46,7 @@ if($mesh_mode && !$is_mesh_operator) {
 		gzclose($sfp);
 		fclose($fp);
 	};
-	
+
 	if((!isOnline()) && (!$Config['override_connect_detect'])) {
 		echo('<P>You are not currently connected to the Internet.</P>');
 		echo('<P><A HREF="index.php?form=menu">Return to the main menu.</A></P>');
@@ -91,6 +91,23 @@ if($mesh_mode && !$is_mesh_operator) {
 		echo('<P>Download Team Roster ... failed</br>');
 	};
 
+	ob_flush(); flush();
+
+	// Get the current MOTD, if any
+	echo('Downloading MOTD ... ');
+	ob_flush(); flush();
+	$fp = fopen('data/offline_motd.txt','w');
+	$ch = curl_init('http://files.wx4akq.org/offline_motd.txt');
+	curl_setopt($ch, CURL_TIMEOUT, 120);
+	curl_setopt($ch, CURLOPT_FILE, $fp);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+	$data = curl_exec($ch);
+	curl_close($ch);
+	if($data) {
+		echo('done.<br/>');
+	} else {
+		echo('failed.<br/>');
+	};
 	ob_flush(); flush();
 
 	// Get the list of supplemental files
