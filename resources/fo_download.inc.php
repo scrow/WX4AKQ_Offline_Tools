@@ -144,6 +144,7 @@ if($mesh_mode && !$is_mesh_operator) {
 			};
 		} else {
 			echo('updates required<br/>');
+			ob_flush(); flush();
 		};
 
 		if($doDownload) {
