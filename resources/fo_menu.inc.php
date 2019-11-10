@@ -53,7 +53,7 @@ echo('</P>');
 
 <?php
 if($mesh_mode && file_exists('data/offline_motd.txt') && strlen(trim(file_get_contents('data/offline_motd.txt')))>8) {
-	echo('<TEXTAREA READONLY style="resize: vertical; width: 99%; margin-left: 0px; margin-right: 0px; height: 100px; overflow-y: auto">' . "\r\n" . strip_tags(trim(file_get_contents('data/offline_motd.txt'))) . '</TEXTAREA>');
+	echo('<TEXTAREA READONLY style="width: 99%; margin-left: 0px; margin-right: 0px; height: 100px; overflow-y: scroll; resize: vertical">' . "\r\n" . strip_tags(trim(file_get_contents('data/offline_motd.txt'))) . '</TEXTAREA>');
 } else {
 	echo('<HR/>');
 };
